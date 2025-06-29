@@ -15,7 +15,7 @@ INSTALLED_APPS += [
 
 # IMPORTANTE: Aggiorna questo con l'URL effettivo della tua app Railway
 # Lo troverai nella dashboard di Railway dopo il primo deployment.
-ALLOWED_HOSTS = ['your-railway-app-name.up.railway.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['web-production-6298c6.up.railway.app', 'localhost', '127.0.0.1']
 
 # Database configuration for Railway
 # Railway inietta automaticamente DATABASE_URL
