@@ -1,0 +1,46 @@
+{# CarrozzeriaSanGiorgio/templates/index.html #}
+{% extends 'base.html' %}
+{% load static %} {# Assicurati che sia qui per usare il tag static #}
+
+{% block title %}Carrozzeria San Giorgio - Benvenuti{% endblock %}
+
+{% block content %}
+<section class="hero-section"> {# Usa la classe CSS #}
+    <h1>Benvenuti alla Carrozzeria San Giorgio!</h1>
+    <p>La tua carrozzeria di fiducia a Chiasso per riparazioni di qualità e servizio impeccabile.</p>
+    <p>Siamo specializzati in riparazioni di carrozzeria, verniciatura, ripristino danni da grandine e molto altro.</p>
+    {# Includi l'immagine di copertina statica #}
+    <img src="{% static 'img/copertina.png' %}" alt="Carrozzeria San Giorgio" class="hero-image"> {# Usa la classe CSS #}
+    <a href="#" style="display: inline-block; background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px;">Scopri i nostri servizi</a>
+</section>
+
+<section style="padding: 30px 20px; background-color: #e9ecef; text-align: center;">
+    <h2>Perché Sceglierci?</h2>
+    <ul style="list-style: none; padding: 0; display: flex; justify-content: center; flex-wrap: wrap;">
+        <li style="margin: 10px; flex: 1 1 200px;">Esperienza decennale</li>
+        <li style="margin: 10px; flex: 1 1 200px;">Personale qualificato</li>
+        <li style="margin: 10px; flex: 1 1 200px;">Attrezzature all'avanguardia</li>
+        <li style="margin: 10px; flex: 1 1 200px;">Preventivi gratuiti</li>
+    </ul>
+</section>
+
+---
+
+{# Sezione per visualizzare i post #}
+<section class="post-grid"> {# Usa la classe CSS #}
+    <h2>Ultime Notizie dalla Carrozzeria</h2>
+    {% for post in posts %}
+    <div class="post-card"> {# Usa la classe CSS #}
+        <h3>{{ post.title }}</h3>
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        {% endif %}
+        <p>{{ post.content|truncatechars:100 }}</p>
+        <p style="font-size: 0.8em; color: #666;">Pubblicato il: {{ post.published_date|date:"d M Y" }}</p>
+    </div>
+    {% empty %}
+    <p>Nessun post disponibile al momento.</p>
+    {% endfor %}
+</section>
+
+{% endblock %}

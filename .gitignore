@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Django stuff:
+*.log
+*.pot
+*.mo
+db.sqlite3 # NON caricare il database locale in produzione!
+/media/ # NON caricare i media files locali, saranno su Cloudinary
+/staticfiles/ # NON caricare i staticfiles generati, saranno su Cloudinary
+
+# Environment variables
+.env

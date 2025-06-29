@@ -1,0 +1,30 @@
+{# CarrozzeriaSanGiorgio/templates/base.html #}
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Carrozzeria San Giorgio{% endblock %}</title>
+    {# Includi il tuo file CSS #}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> {# <-- Rimuovi il commento e usa il tuo file #}
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header>
+        {% include 'nav.html' %}
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+
+    {# Lascia questo commentato per ora, o includi se hai JS globale #}
+    {# <script src="{% static 'js/global.js' %}"></script> #}
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

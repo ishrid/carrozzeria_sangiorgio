@@ -1,0 +1,54 @@
+/* CarrozzeriaSanGiorgio/static/css/style.css */
+
+/* Stile per i titoli in rosso come richiesto */
+h1, h2, h3 {
+    color: red; /* Titoli in rosso */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Stile per la sezione hero/copertina */
+.hero-section {
+    background-color: #f8f9fa; /* Un leggero sfondo */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.hero-image {
+    max-width: 80%; /* Rendi l'immagine responsiva */
+    height: auto;
+    border-radius: 8px; /* Bordi leggermente arrotondati */
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Piccola ombra */
+}
+
+/* Stile per la sezione post (giusto per dare un'idea) */
+.post-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 20px;
+}
+
+.post-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: left;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.post-card:hover {
+    transform: translateY(-5px); /* Effetto hover */
+}
+
+.post-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
