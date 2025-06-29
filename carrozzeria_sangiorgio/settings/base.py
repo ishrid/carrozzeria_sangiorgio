@@ -10,7 +10,6 @@ load_dotenv() # Carica le variabili da .env
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# Legge la SECRET_KEY dal .env per lo sviluppo, come preferisci.
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-insecure-key-if-not-set')
 
 # DEBUG è gestito nei file dev.py e prod.py
@@ -23,11 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', # Lascia SOLO questo per gli statici
+    'django.contrib.staticfiles',
     'main',
-    # Rimuovi completamente le seguenti righe se erano qui:
-    # 'cloudinary_storage',
-    # 'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -46,7 +42,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True, # Lascia a True per trovare i template delle app Django
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
