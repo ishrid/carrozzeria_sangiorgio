@@ -9,8 +9,8 @@ gunicorn==23.0.0
 idna==3.10
 packaging==25.0
 pillow==11.2.1
+psycopg2-binary==2.9.10
 python-dotenv==1.1.1
-psycopg2-binary==2.9.9  # <--- Questa è la riga che abbiamo aggiunto
 requests==2.32.4
 six==1.17.0
 sqlparse==0.5.3
