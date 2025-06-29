@@ -50,3 +50,5 @@ CSRF_COOKIE_SECURE = True
 
 # La SECRET_KEY deve essere letta da variabile d'ambiente in produzione
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
