@@ -2,20 +2,16 @@
 
 import os
 from pathlib import Path
-from dotenv import load_dotenv # Aggiungi questa riga
+from dotenv import load_dotenv
 
-load_dotenv() # Carica le variabili da .env
+load_dotenv()  # Carica variabili da .env
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-insecure-key-if-not-set')
 
-# DEBUG è gestito nei file dev.py e prod.py
-ALLOWED_HOSTS = [] # Questo è gestito nei file dev.py e prod.py
+ALLOWED_HOSTS = []  # Override in dev.py e prod.py
 
-# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -56,39 +52,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'carrozzeria_sangiorgio.wsgi.application'
 
-# Password validation
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Impostazioni per i MEDIA files (immagini dei post - LOCALE)
+# MEDIA (per immagini e file caricati dagli utenti)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Directory locale per i media
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # locale
 
-# Impostazioni per i STATIC files (CSS, JS, immagine di copertina - LOCALE)
+# STATIC (css, js, immagini statiche)
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Directory locale per collectstatic
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'), # Dove cerchi i tuoi statici personalizzati
-]
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage' # Usa lo storage predefinito di Django
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
