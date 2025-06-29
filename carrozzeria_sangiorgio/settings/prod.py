@@ -1,12 +1,6 @@
 
 # .env
-#CLOUD_NAME="dxp5e9cfd"
-#API_KEY="897212832896676"
-#API_SECRET="_Q7GeJQ4HcBxPgbr65kp2I177l4"
 
-# Una SECRET_KEY per il tuo ambiente di sviluppo locale.
-# In produzione, ne useremo una diversa su Railway.
-#DJANGO_SECRET_KEY="17rb)x^uaahz_7^!f_+w1o4pes&4_)h@#1hw%9m#83#jkl6zzv"
 # carrozzeria_sangiorgio/settings/prod.py
 
 import os
