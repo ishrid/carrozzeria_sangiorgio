@@ -13,5 +13,6 @@ DATABASES = {
     }
 }
 
-# Usa il backend default di Django per file media (locale)
-# NON serve sovrascrivere DEFAULT_FILE_STORAGE qui
+# MEDIA (per immagini e file caricati dagli utenti)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # locale

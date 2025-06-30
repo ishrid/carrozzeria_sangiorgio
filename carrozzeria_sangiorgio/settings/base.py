@@ -65,9 +65,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# MEDIA (per immagini e file caricati dagli utenti)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # locale
+
 
 # STATIC (css, js, immagini statiche)
 STATIC_URL = '/static/'
