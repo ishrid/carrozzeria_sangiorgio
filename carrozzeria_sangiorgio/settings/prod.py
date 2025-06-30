@@ -28,7 +28,7 @@ CLOUDINARY_STORAGE = {
 
 # Imposta Cloudinary come storage per media e static in produzione
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
+#STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
 
 # STATIC_ROOT deve essere definito per collectstatic
 STATIC_ROOT = BASE_DIR / 'staticfiles'
