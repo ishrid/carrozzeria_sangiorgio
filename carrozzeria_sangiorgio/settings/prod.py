@@ -2,7 +2,7 @@ import os
 from .base import *
 import dj_database_url
 
-DEBUG = True
+DEBUG = False
 
 INSTALLED_APPS += [
     'cloudinary_storage',
@@ -27,7 +27,7 @@ STORAGES = {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
 
