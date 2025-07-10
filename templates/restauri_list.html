@@ -1,0 +1,242 @@
+{# carrozzeria_sangiorgio_project/templates/restauri/restauri_list.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Restauri - Carrozzeria Sangiorgio{% endblock %}
+
+ 
+    <meta name="description" content="Around - Multipurpose Bootstrap HTML Template">
+    <meta name="keywords" content="bootstrap, business, corporate, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, saas, multipurpose, product landing, shop, software, ui kit, web studio, landing, light and dark mode, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Heich One Sagl">
+
+    
+    <!-- Vendor styles -->
+    <link rel="stylesheet" media="screen" href="{% static 'vendor/aos/dist/aos.css' %}">
+{% block content %}
+
+ 
+
+ 
+
+
+
+
+
+
+<!--
+ 
+
+<section class="container-fluid g-0">
+  <div class="row g-0 align-items-center">
+
+    <div class="col-lg-6">
+      <div class="min-vh-100" style="background-image: url('https://images.unsplash.com/photo-1553949345-eb786bb3f7ba?q=80&w=2070'); background-size: cover; background-position: center;">
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="d-flex flex-column justify-content-center p-5" style="min-height: 100vh;">
+        <h1 class="display-3 fw-bolder">Esperienza, Qualità e Passione al tuo Servizio</h1>
+        <p class="fs-lg text-muted my-4">Specialisti in riparazioni di alta gamma, verniciatura a forno e restauro di veicoli d'epoca. La tua auto merita il meglio.</p>
+        
+        <div class="d-flex align-items-center pt-3">
+          <a href="#servizi" class="btn btn-primary btn-lg">Scopri i Servizi</a>
+          <a href="#contatti" class="btn btn-outline-secondary btn-lg ms-3">Contattaci Ora</a>
+        </div>
+
+        <div class="pt-5 mt-4 border-top">
+            <h6 class="mb-3">I nostri clienti ci premiano:</h6>
+            <img src="{% static 'img/landing/insurance/hero/google-reviews.png' %}" width="250" alt="Google reviews">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+-->
+
+ 
+
+
+
+      <!-- Hero -->
+      <section class="position-relative pt-md-2 pt-lg-4 pt-xl-4 pb-5 pb-lg-0">
+        <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block" style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none" style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
+          <div class=" py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5  "  >
+             <!-- Breadcrumb -->
+              <nav aria-label="breadcrumb">
+                <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="/">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Restauri</li>
+                </ol>
+              </nav>
+            <h1 class="display-3 pb-1 pb-sm-2 pb-md-3">I Nostri Restauri e Progetti Speciali</h1>
+            <p class="fs-lg mb-0">Diamo nuova vita alle auto d'epoca e realizziamo modifiche uniche con passione e precisione. Esplora il nostro portfolio.</p>
+          </div>
+
+           
+          
+          <!-- Parallax image -->
+          <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
+            <div class="d-none d-md-block ratio ratio-21x9"></div>
+            <div class="d-md-none ratio ratio-16x9"></div>
+             
+            <div class="jarallax-img" style="background-image: url({% static 'img/copertine/cop-restauri.jpg' %});"></div>
+          </div>
+
+           
+        </div>
+      </section>
+
+ 
+  
+
+       {% if restauri_in_evidenza %}
+
+      <!-- Case studies list -->
+      <section class="container pt-5 pb-sm-3 mt-5 mb-2 mb-md-3 mb-lg-4 mb-xxl-5">
+
+        
+
+        <!-- Page title -->
+         
+        <div class="fs-sm text-uppercase mb-3">La Nostra Passione</div>
+                <h2 class="display-6">I Nostri Gioiellio</h2>
+ 
+        {% for restauro in restauri_in_evidenza %}
+        <!-- Item -->
+         
+<div class="row align-items-center pt-xl-2 pb-5 mb-lg-2 mb-xl-3 mb-xxl-4">
+
+    <div class="col-md-7 col-lg-6 mb-4 mb-md-0">
+        <a class="d-block position-relative" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">
+            
+            <img class="d-block position-relative z-2 mx-auto rounded-5 shadow-lg" src="{{ restauro.foto_copertina.url }}" width="636" alt="{{ restauro.titolo }}" data-aos="fade-in" data-aos-duration="400" data-aos-offset="250">
+
+        </a>
+    </div>
+    
+    <div class="col-md-5 col-xl-4 offset-lg-1" data-aos="fade-up" data-aos-duration="400" data-aos-offset="170">
+        <div class="ps-md-3 ps-lg-0">
+            <h3 class="h2">{{ restauro.titolo }}</h3>
+            <p class="fs-sm pb-3 pb-lg-4 mb-3">{{ restauro.descrizione_breve }}</p>
+            <a class="btn btn-sm btn-outline-primary rounded-pill" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">Scopri il progetto</a>
+        </div>
+    </div>
+
+</div>
+
+        {% endfor %}
+
+
+ 
+
+      </section>
+
+  {% endif %}
+     
+
+ 
+ 
+
+ 
+ 
+ 
+    <section class="container py-5 mt-2 mt-sm-3 mt-md-4 mt-lg-5">
+
+           
+             
+        <div class="masonry-filterable">
+
+            <div class="row pb-lg-4 mb-2 mb-sm-3">
+
+                
+
+                <div class="col-xxl-4 col-lg-4 text-center text-lg-start">
+                    <div class="fs-sm text-uppercase mb-3">La Nostra Passione</div>
+                <h2 class="display-6">Esplora il Portfolio</h2>
+              </div>
+
+            
+             
+              
+             <!-- Filters -->
+                <div class="col-xxl-7 col-lg-8 d-flex offset-xxl-1">
+
+                    <ul class="masonry-filters nav nav-pills fs-sm flex-nowrap overflow-auto text-nowrap w-100 mx-auto me-lg-0 pb-3" >
+                        <li class="nav-item mb-0"><a class="nav-link border active" href="#" data-group="all">Tutti</a></li>
+                        {% for value, label in tipi_veicolo %}
+                        <li class="nav-item mb-0"><a class="nav-link border" href="#" data-group="{{ value }}">{{ label }}</a></li>
+                        {% endfor %}
+                    </ul>
+
+ 
+
+                </div>
+            </div>
+
+            <div class="masonry-grid" data-columns="3">
+                {% for restauro in restauri %}
+                <article class="masonry-grid-item pb-5 mb-md-2" data-groups='["{{ restauro.tipo_veicolo }}"]'>
+                    <div class="card card-portfolio zoom-effect border-0">
+                        <div class="card-img-wrapper">
+                            <img src="{{ restauro.foto_copertina.url }}" alt="{{ restauro.titolo }}">
+                        </div>
+
+
+                        <div class="card-body px-0 pt-4">
+                            <h3 class="h4 mb-2">
+                                <a class="stretched-link" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">{{ restauro.titolo }}</a>
+                            </h3>
+
+                            <div class="d-flex justify-content-between fs-sm text-body-secondary ">
+                                <span>{{ restauro.get_tipo_veicolo_display }}</span>
+                                <span>{{ restauro.anno_veicolo }}</span>   
+
+                            </div>
+
+                            <div class="d-flex justify-content-between fs-sm text-body-secondary mt-3">
+                                
+                                <span>{{ restauro.descrizione_breve }}</span>
+
+                            </div>
+
+                             
+
+
+                        </div>
+
+
+                    </div>
+                </article>
+                {% empty %}
+                <div class="col-12 text-center">
+                    <p>Nessun progetto di restauro da mostrare.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+ 
+ 
+ 
+  
+    <!-- Vendor scripts: JS libraries and plugins -->
+    <script src="{% static 'vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendor/shufflejs/dist/shuffle.min.js' %}"></script>
+ 
+
+    <!-- Vendor scripts: JS libraries and plugins -->
+    <script src="{% static 'vendor/aos/dist/aos.js' %}"></script>
+  
+
+
+{% endblock %}
+
+

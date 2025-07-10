@@ -1,0 +1,244 @@
+{# carrozzeria_sangiorgio_project/templates/veicoli_detail.html #}
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %} {# Per formattare numeri grandi #}
+{% load custom_filters %}  
+ 
+
+
+{% block title %}{{ veicolo.marca }} {{ veicolo.modello }} ({{veicolo.anno}}) - Usato Garantito{% endblock %}
+
+{% block head %}
+    <meta name="description" content="In vendita: {{ veicolo.marca }} {{ veicolo.modello }} del {{ veicolo.anno }} con {{ veicolo.chilometraggio|intcomma }} KM. Scopri i dettagli e richiedi un test drive alla Carrozzeria Sangiorgio.">
+    <link rel="stylesheet" media="screen" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+
+
+    <section class="position-relative pt-md-2 pt-lg-3 pt-xl-3 pb-5 pb-lg-0">
+        <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block" style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none" style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
+            <div class=" py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5">
+                <nav aria-label="breadcrumb">
+                    <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
+                           <li class="breadcrumb-item"><a href="{% url 'main:home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'vendita:lista_veicoli' %}">Vendita Veicoli</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ veicolo.marca }} {{ veicolo.modello }}</li>
+        
+                    </ol>
+                </nav>
+                <h1 class="display-3 pb-1 pb-sm-2 pb-md-3">{{ veicolo.marca }} {{ veicolo.modello }}</h1>
+                <p class="lead text-primary fs-2 fw-bold mb-4">{{ veicolo.prezzo|intcomma }} CHF</p>
+                
+        {% if veicolo.status != 'disponibile' %}
+            <span class="badge bg-dark fs-sm">{{ veicolo.get_status_display }}</span>
+        {% endif %}
+            </div>
+            
+            <div class="row">
+        {# Colonna sinistra: Galleria immagini #}
+        <div class="col-lg-8">
+            <div id="veicoloGallery" class="carousel slide carousel-fade mb-4" data-bs-ride="carousel">
+                <div class="carousel-inner rounded-3 shadow-sm">
+                    {# Immagine principale per prima slide #}
+                    <div class="carousel-item active">
+                        <img src="{{ veicolo.foto_principale.url }}" class="d-block w-100 object-fit-cover" alt="{{ veicolo.marca }} {{ veicolo.modello }}" style="height: 550px;">
+                    </div>
+                    {# Altre immagini della galleria #}
+                    {% for img in veicolo.galleria_foto.all %}
+                    <div class="carousel-item">
+                        <img src="{{ img.immagine.url }}" class="d-block w-100 object-fit-cover" alt="{{ img.alt_text }}" style="height: 550px;">
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#veicoloGallery" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#veicoloGallery" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            {# Thumbnail per la navigazione (richiede JS extra per il sync col carosello principale) #}
+            <div class="d-flex overflow-auto pb-2 mb-4">
+                <img src="{{ veicolo.foto_principale.url }}" class="img-thumbnail me-2 active" data-bs-target="#veicoloGallery" data-bs-slide-to="0" alt="Thumbnail Principale" style="width: 100px; height: 70px; object-fit: cover; cursor: pointer;">
+                {% for img in veicolo.galleria_foto.all %}
+                <img src="{{ img.immagine.url }}" class="img-thumbnail me-2" data-bs-target="#veicoloGallery" data-bs-slide-to="{{ forloop.counter }}" alt="{{ img.alt_text }}" style="width: 100px; height: 70px; object-fit: cover; cursor: pointer;">
+                {% endfor %}
+            </div>
+            <h2 class="h3 mt-5 mb-3">Descrizione</h2>
+            <p class="fs-lg text-muted mb-5">{{ veicolo.descrizione|linebreaksbr|default:"Nessuna descrizione disponibile." }}</p>
+
+            <h2 class="h3 mt-5 mb-3">Dettagli del Veicolo</h2>
+            <div class="row mb-5">
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Marca:</strong> {{ veicolo.marca }}</li>
+                        <li class="list-group-item"><strong>Modello:</strong> {{ veicolo.modello }}</li>
+                        <li class="list-group-item"><strong>Anno:</strong> {{ veicolo.anno }}</li>
+                        <li class="list-group-item"><strong>Chilometraggio:</strong> {{ veicolo.chilometraggio|intcomma }} KM</li>
+                        <li class="list-group-item"><strong>Carburante:</strong> {{ veicolo.get_tipo_carburante_display }}</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Cambio:</strong> {{ veicolo.get_tipo_cambio_display }}</li>
+                        <li class="list-group-item"><strong>Trazione:</strong> {{ veicolo.get_trazione_display }}</li>
+                        <li class="list-group-item"><strong>Colore Esterno:</strong> {{ veicolo.colore_esterno|default:"N.D." }}</li>
+                        <li class="list-group-item"><strong>Colore Interno:</strong> {{ veicolo.colore_interno|default:"N.D." }}</li>
+                        {% if veicolo.potenza_cv %}<li class="list-group-item"><strong>Potenza:</strong> {{ veicolo.potenza_cv }} CV</li>{% endif %}
+                        {% if veicolo.cilindrata %}<li class="list-group-item"><strong>Cilindrata:</strong> {{ veicolo.cilindrata }} cc</li>{% endif %}
+                        {% if veicolo.numero_porte %}<li class="list-group-item"><strong>Porte:</strong> {{ veicolo.numero_porte }}</li>{% endif %}
+                        {% if veicolo.numero_posti %}<li class="list-group-item"><strong>Posti:</strong> {{ veicolo.numero_posti }}</li>{% endif %}
+                    </ul>
+                </div>
+            </div>
+
+            
+            {% if veicolo.dotazione_opzionale %}
+            <h2 class="h3 mt-5 mb-3">Dotazione Opzionale</h2>
+            <ul class="list-unstyled mb-5">
+                {% for item in veicolo.dotazione_opzionale|splitlines %}
+                    {# CHANGED: Removed |strip from the if condition #}
+                    {% if item %} 
+                        <li class="d-flex align-items-baseline mb-2">
+                            <i class="ai-check text-primary me-2"></i> {{ item }} {# CHANGED: Removed |strip from display #}
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+
+
+  
+
+        </div>
+        {# Colonna destra: Modulo di contatto fisso #}
+        <div class="col-lg-4">
+            <div class="card p-4 shadow-sm border-0 sticky-top" style="top: 100px;">
+                <h4 class="card-title text-center mb-4">Richiesta Informazioni</h4>
+                <p class="text-center text-muted mb-4">Compila il modulo per maggiori dettagli su questo veicolo.</p>
+                
+                <form action="{% url 'main:contatti' %}" method="get">
+                    <div class="mb-3">
+                        <label for="id_nome" class="form-label">Nome Completo</label>
+                        <input type="text" class="form-control" id="id_nome" name="nome" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="id_email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_messaggio" class="form-label">Messaggio</label>
+                        <textarea class="form-control" id="id_messaggio" name="messaggio" rows="5" required>Sono interessato al veicolo {{ veicolo.marca }} {{ veicolo.modello }} (Anno {{ veicolo.anno }}, KM {{ veicolo.chilometraggio|intcomma }}). Potreste fornirmi maggiori informazioni?</textarea>
+                    </div>
+                    <input type="hidden" name="veicolo_riferimento" value="{{ veicolo.id }}">
+                    <button type="submit" class="btn btn-primary w-100">Invia Richiesta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+        </div>
+    </section>
+
+
+  
+
+
+ 
+{% if altri_veicoli %}
+<section class="container mt-5 py-5 border-top">
+    <h2 class="h1 text-center mb-5">Potrebbe interessarti anche</h2>
+    <div class="row">
+        {% for altro_veicolo in altri_veicoli %}
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <img src="{{ altro_veicolo.foto_principale.url }}" class="card-img-top object-fit-cover" alt="{{ altro_veicolo.marca }} {{ altro_veicolo.modello }}" style="height: 200px;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ altro_veicolo.marca }} {{ altro_veicolo.modello }}</h5>
+                    <p class="card-text text-primary fs-5 fw-bold mb-2">{{ altro_veicolo.prezzo|intcomma }} CHF</p>
+                    <div class="fs-sm text-muted">
+                        <span>{{ altro_veicolo.anno }}</span> &middot; <span>{{ altro_veicolo.chilometraggio|intcomma }} km</span>
+                    </div>
+                    <a href="{% url 'vendita:dettaglio_veicolo' slug=altro_veicolo.slug %}" class="btn btn-outline-primary mt-3 mt-auto">Vedi Dettagli</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+{# Script per inizializzare il carosello delle thumbnail (se Bootstrap non lo fa automaticamente col data-bs-target) #}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var galleryThumbs = document.querySelectorAll('#veicoloGallery + div .img-thumbnail');
+        var mainCarousel = document.getElementById('veicoloGallery');
+
+        galleryThumbs.forEach(function(thumb, index) {
+            thumb.addEventListener('click', function() {
+                var carousel = bootstrap.Carousel.getInstance(mainCarousel);
+                if (carousel) {
+                    carousel.to(index);
+                }
+                // Rimuovi 'active' da tutti i thumbnail e aggiungi all'attuale
+                galleryThumbs.forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+            });
+        });
+
+        // Aggiorna lo stato "active" dei thumbnail quando il carosello cambia slide
+        mainCarousel.addEventListener('slid.bs.carousel', function (event) {
+            galleryThumbs.forEach(t => t.classList.remove('active'));
+            galleryThumbs[event.to].classList.add('active');
+        });
+    });
+</script>
+
+
+ 
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Inizializza Swiper per le miniature
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+        breakpoints: {
+            // when window width is >= 576px
+            576: {
+                slidesPerView: 5,
+                spaceBetween: 15
+            }
+        }
+    });
+
+    // Inizializza Swiper per l'immagine principale
+    var galleryTop = new Swiper('.gallery-top', {
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        thumbs: {
+            swiper: galleryThumbs
+        }
+    });
+});
+</script>
+{% endblock %} 

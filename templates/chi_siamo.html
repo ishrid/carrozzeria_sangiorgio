@@ -1,0 +1,354 @@
+{# CarrozzeriaSanGiorgio/templates/chi_siamo.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Storia, Valori e Team | Carrozzeria San Giorgio{% endblock %}
+
+{%block head %}
+<!-- SEO meta tags -->
+     
+    <meta name="description" content="Scopri la storia della Carrozzeria San Giorgio, nata da una passione nel 1985. Incontra il nostro team di esperti e conosci i valori che guidano ogni nostra riparazione.">
+<meta name="keywords" content="carrozzeria san giorgio, storia carrozzeria, team carrozzieri, valori carrozzeria, riparazioni auto chiasso, restauro auto d'epoca ticino, convenzioni assicurative auto">
+<meta name="author" content="Heich One Sagl">
+
+    <!-- Vendor styles  -->
+    <link rel="stylesheet" media="screen" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" media="screen" href="{% static 'vendor/lightgallery/css/lightgallery-bundle.min.css' %}">
+ 
+ 
+ {% endblock %}   
+
+{% block content %}
+ 
+     
+    
+
+      <!-- Hero -->
+      <section class="position-relative pt-md-2 pt-lg-3 pt-xl-3 pb-5 pb-lg-0">
+        <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block" style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none" style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
+          <div class=" py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5  "  >
+             <!-- Breadcrumb -->
+              <nav aria-label="breadcrumb">
+                <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="/">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Chi siamo</li>
+                </ol>
+              </nav>
+            <h1 class="display-3 pb-1 pb-sm-2 pb-md-3">La Nostra Passione, la Vostra Auto</h1>
+            <p class="fs-lg mb-0">Crediamo che la vera qualità si veda nei risultati. Il nostro impegno è offrirti non solo una riparazione perfetta, ma un'esperienza basata su trasparenza e fiducia, per ridare alla tua auto il valore e la bellezza che merita.</p>
+           
+          </div>
+
+           
+          
+          <!-- Parallax image -->
+          <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
+            <div class="d-none d-md-block ratio ratio-21x9"></div>
+            <div class="d-md-none ratio ratio-16x9"></div>
+             
+            <div class="jarallax-img" style="background-image: url({% static 'img/copertine/cop-chisiamo.jpg' %});"></div>
+          </div>
+
+           
+        </div>
+      </section>
+
+
+ 
+
+
+ 
+
+
+      <!-- About -->
+      <section class="container position-relative  "   >
+         
+        <div class="row pt-5 mt-n2 mt-sm-0 mt-md-2 mt-lg-4 mt-xl-5">
+          <div class="col-md-6 col-lg-5">
+            <div class="fs-sm text-uppercase mb-3">La Nostra Storia</div>
+            <h2 class="display-6">Artigiani della Carrozzeria dal 1985</h2>
+          </div>
+          <div class="col-md-6 col-xl-5 offset-lg-1 offset-xl-2 pt-1 pt-sm-2 pt-md-5">
+            <p class="fs-xl">Fondata nel 1985 dalla passione di [Nome Fondatore], la Carrozzeria San Giorgio nasce come un piccolo laboratorio dedicato alla cura meticolosa dell'automobile. La visione era semplice: <strong>offrire riparazioni impeccabili</strong> e costruire un rapporto di fiducia con ogni cliente.</p>
+            <p class="fs-xl">Anno dopo anno, la nostra reputazione è cresciuta, permettendoci di espanderci e investire in tecnologie avanzate senza mai perdere di vista <strong>l'approccio artigianale</strong> che ci contraddistingue.</p>
+            <p class="fs-xl mb-0">Oggi, quella stessa passione vive nel nostro team e si riflette in ogni veicolo che ci viene affidato, dal piccolo graffio al restauro completo di auto d'epoca.</p>
+          </div>
+        </div>
+      </section>
+ 
+
+ 
+
+
+
+      <!-- Approach -->
+      <section class="pt-5 mt-md-2 mt-xl-4 mt-xxl-5">
+        <div class="container pt-2 pt-sm-4 pt-lg-5 mt-xxl-2">
+          <div class="fs-sm text-uppercase mb-3">Missione e Valori</div>
+          <h2 class="display-6 pb-3 mb-lg-4">I Nostri Principi Guida</h2>
+          <div class="swiper" data-swiper-options='
+            {
+              "spaceBetween": 24,
+              "pagination": {
+                "el": ".swiper-pagination",
+                "clickable": true
+              },
+              "breakpoints": {
+                "576": { "slidesPerView": 2 },
+                "992": { "slidesPerView": 3 }
+              }
+            }
+          '>
+            <div class="swiper-wrapper">
+
+              <!-- Item -->
+              <div class="swiper-slide h-auto">
+                <div class="card border-0 bg-secondary rounded-5 h-100">
+                  <div class="card-body">
+                    <svg class="d-block mt-1 mt-sm-0 mb-4" width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                      <g class="text-info">
+                        <path d="M20.0004 36.0226L10.982 21.3535C9.42594 23.3156 8.49609 25.7968 8.49609 28.4955C8.49609 34.8492 13.6467 39.9998 20.0004 39.9998C26.3541 39.9998 31.5047 34.8492 31.5047 28.4955C31.5047 25.7969 30.5749 23.3156 29.0188 21.3535L20.0004 36.0226Z" fill="currentColor"></path>
+                      </g>
+                      <g class="text-primary">
+                        <path d="M39.3962 0H0.605469L20.0009 31.5477L39.3962 0ZM25.7601 7.62359L20.0009 16.9914L14.2416 7.62359H25.7601Z" fill="currentColor"></path>
+                      </g>
+                    </svg>
+                    <h3 class="h4">Qualità Senza Compromessi</h3>
+                    <p class="mb-0">Utilizziamo solo materiali di prima scelta e le migliori tecniche di lavorazione per garantire risultati eccellenti e duraturi nel tempo.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item -->
+              <div class="swiper-slide h-auto">
+                <div class="card border-0 bg-secondary rounded-5 h-100">
+                  <div class="card-body">
+                    <svg class="d-block mt-1 mt-sm-0 mb-4" width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                      <g class="text-info">
+                        <path d="M26.307 23.1116C26.307 28.3136 22.09 32.5307 16.888 32.5307C11.6859 32.5307 7.46891 28.3136 7.46891 23.1116C7.46891 17.9096 11.6859 13.6925 16.888 13.6925C17.1467 13.6925 17.4028 13.7038 17.6562 13.7243V6.24121C17.4016 6.22973 17.1455 6.22363 16.888 6.22363C7.56102 6.22363 0 13.7846 0 23.1116C0 32.4386 7.56102 39.9996 16.888 39.9996C26.2149 39.9996 33.7759 32.4386 33.7759 23.1116C33.7759 22.8541 33.7698 22.598 33.7584 22.3433H26.2753C26.2958 22.5968 26.307 22.8529 26.307 23.1116Z" fill="currentColor"></path>
+                      </g>
+                      <g class="text-primary">
+                        <path d="M40 20C40 8.9543 31.0457 0 20 0V20H40Z" fill="currentColor"></path>
+                      </g>
+                    </svg>
+                    <h3 class="h4">Trasparenza e Fiducia</h3>
+                    <p class="mb-0">Crediamo in una comunicazione chiara. Forniamo preventivi dettagliati e ti teniamo aggiornato in ogni fase della lavorazione.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item -->
+              <div class="swiper-slide h-auto">
+                <div class="card border-0 bg-secondary rounded-5 h-100">
+                  <div class="card-body">
+                    <svg class="d-block mt-1 mt-sm-0 mb-4" width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                      <g class="text-primary">
+                        <path d="M25.2791 12.7502C28.1954 9.83389 28.1954 5.10556 25.2791 2.18921C22.3627 -0.727136 17.6344 -0.727137 14.718 2.18921C11.8017 5.10556 11.8017 9.83389 14.718 12.7502C17.6344 15.6666 22.3627 15.6666 25.2791 12.7502Z" fill="currentColor"></path>
+                      </g>
+                      <g class="text-info">
+                        <path d="M14.6859 29.3056C15.6559 27.0123 16.9202 24.8838 18.4577 22.9467C13.8666 17.9802 7.29664 14.8701 0 14.8701V40.0004H12.5259C12.5259 36.2925 13.2527 32.6942 14.6859 29.3056Z" fill="currentColor"></path>
+                      </g>
+                      <g class="text-primary">
+                        <path d="M40.0014 40.0004V14.8701C26.1223 14.8701 14.8711 26.1214 14.8711 40.0004H40.0014Z" fill="currentColor"></path>
+                      </g>
+                    </svg>
+                    <h3 class="h4">Passione Artigianale</h3>
+                    <p class="mb-0">L'amore per le auto è il motore del nostro lavoro. Trattiamo ogni veicolo, moderno o d'epoca, con la cura che merita.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pagination (bullets) -->
+            <div class="swiper-pagination position-relative bottom-0 mt-2 pt-4 d-lg-none"></div>
+          </div>
+        </div>
+      </section>
+
+ 
+  
+ 
+ 
+
+ 
+
+      <!-- Team -->
+      <section class="pt-5 mt-2 mt-xl-4 mt-xxl-5">
+        <div class="container pt-3 pt-sm-4 pt-lg-5 mt-xl-2 mt-xxl-3">
+          <div class="fs-sm text-uppercase mb-3">Le Persone</div>
+          <h2 class="display-6 pb-3 mb-lg-4">Incontra il Nostro Team</h2>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+
+             
+
+             
+            {% for member in team_members %}
+            <!-- Item -->
+            <div class="col">
+    <div class="card border-0 bg-transparent text-center h-100">
+        
+        <div class="position-relative">
+            {% if member.foto %}
+                <img src="{{ member.foto.url }}" class="rounded-5" alt="Foto di {{ member.nome }}">
+            {% else %}
+                <img src="{% static 'img/placeholder-team.jpg' %}" class="rounded-5" alt="Membro del team">
+            {% endif %}
+        </div>
+
+        <div class="card-body px-0 pt-4">
+            
+            <h3 class="h5 mb-1">{{ member.nome }}</h3>
+            
+            <p class="text-body-secondary mb-3">{{ member.ruolo }}</p>
+
+            {% if member.descrizione_breve %}
+            <p class="fs-sm fst-italic text-body mb-0">"{{ member.descrizione_breve }}"</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+ {% empty %}
+        <div class="col-12 text-center">
+            <p>Nessun membro del team disponibile al momento.</p>
+        </div>
+        {% endfor %}
+
+          </div>
+        </div>
+      </section>
+
+  
+
+      <!-- Gallery (Carousel) -->
+      <section class="position-relative pt-5 mt-2 mt-xl-4 mt-xxl-5 ">
+         
+        <div class="container py-3 pt-sm-4 pt-lg-5 mt-xl-2 mt-xxl-3 mb-3 mb-lg-4">
+          <div class="fs-sm text-uppercase mb-3">Spazi e Tecnologie</div>
+          <div class="d-sm-flex align-items-center justify-content-between">
+            <h2 class="display-6 mb-0 me-sm-4">La Nostra Officina</h2>
+
+            
+            <!-- Swiper controls (Prev/next buttons) visible on screens > 576px -->
+            <div class="d-none d-sm-flex">
+              <button class="prev-gallery btn btn-icon btn-outline-primary rounded-circle me-3" type="button" aria-label="Prev">
+                <i class="ai-arrow-left"></i>
+              </button>
+              <button class="next-gallery btn btn-icon btn-outline-primary rounded-circle" type="button" aria-label="Next">
+                <i class="ai-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+           
+        </div>
+
+        <!-- Swiper slider -->
+        <div class="container-start position-relative z-2 pe-0">
+          <div class="swiper" data-swiper-options='{
+            "slidesPerView": "auto",
+            "spaceBetween": 24,
+            "loop": true,
+            "navigation": {
+              "prevEl": ".prev-gallery",
+              "nextEl": ".next-gallery"
+            }
+          }'>
+            <div class="swiper-wrapper gallery align-items-end">
+
+               
+ 
+ 
+ 
+ 
+{% for foto in foto_list %}
+              <!-- Item -->
+              <div class="swiper-slide w-auto">
+                <a class="d-block gallery-item card-hover zoom-effect" href="{{ foto.foto.url }}" style="max-width: {{foto.max_width}}px;"  >
+                  <div class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-5 overflow-hidden z-2 opacity-0">
+                    <i class="ai-zoom-in fs-2 text-white position-relative z-2"></i>
+                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-40"></div>
+                  </div>
+                  <div class="zoom-effect-wrapper rounded-5">
+                    <div class="zoom-effect-img">
+                      <img src="{{ foto.foto.url }}" alt="{{ foto.titolo }}">
+                    </div>
+                  </div>
+                </a>
+              </div>
+{% empty %}
+        <div class="col-12">
+            <p class="text-center">Al momento non ci sono foto da mostrare. Torna a trovarci presto!</p>
+        </div>
+        {% endfor %}
+
+
+
+         
+        
+    </div>
+</section>
+ 
+
+
+
+            </div>
+          </div>
+
+          <!-- Swiper controls (Prev/next buttons) visible on screens < 576px -->
+          <div class="d-flex d-sm-none pt-4">
+            <button class="prev-gallery btn btn-icon btn-outline-primary rounded-circle me-3" type="button" aria-label="Prev">
+              <i class="ai-arrow-left"></i>
+            </button>
+            <button class="next-gallery btn btn-icon btn-outline-primary rounded-circle" type="button" aria-label="Next">
+              <i class="ai-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+ 
+ 
+      <!-- Convenzioni -->
+
+
+      <section class="py-5 my-2 my-xl-4 my-xxl-5">
+  <div class="container pt-3 pt-sm-4 pt-lg-5 mt-xl-2 mt-xxl-3">
+    <div class="fs-sm text-uppercase mb-3">Le Nostre Certificazioni</div>
+    <h2 class="display-6 pb-3 mb-lg-4">Garanzia di Qualità e Affidabilità</h2>
+
+    <div class="overflow-auto pb-sm-4 pb-md-5 pt-sm-2 pt-md-3 mt-n2 mt-sm-0 mt-md-1 mt-lg-3 mb-lg-2" data-simplebar>
+      <div class="row row-cols-5 g-0 pb-2" style="min-width: 768px;">
+        {% for certificazione in certificazioni %}
+        <div class="col d-flex justify-content-center">
+          <img src="{{ certificazione.immagine.url }}" width="196" alt="{{ certificazione.nome }}">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+       
+
+ 
+       
+     {% block extra_js %}
+    <!-- Vendor scripts: JS libraries and plugins -->  
+    <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+    <script src="{% static 'vendor/lightgallery/lightgallery.min.js' %}"></script>
+
+    <script src="{% static 'vendor/lightgallery/plugins/fullscreen/lg-fullscreen.min.js' %}"></script>
+
+    <script src="{% static 'vendor/lightgallery/plugins/zoom/lg-zoom.min.js' %}"></script>
+ 
+
+    {% endblock %}
+ 
+     
+{% endblock %}

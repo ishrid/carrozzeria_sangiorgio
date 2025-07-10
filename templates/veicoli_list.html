@@ -1,0 +1,144 @@
+{# carrozzeria_sangiorgio_project/templates/vendita/veicoli_list.html #}
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Veicoli vendita - Carrozzeria Sangiorgio{% endblock %}
+
+{% block head %}
+    {# Blocco corretto per meta tag e CSS #}
+    <meta name="description" content="Scopri i veicoli usati e d'occasione selezionati e garantiti dalla Carrozzeria Sangiorgio a Chiasso. Qualità e affidabilità a portata di mano.">
+    <meta name="keywords" content="auto usate chiasso, veicoli occasione ticino, vendita auto, carrozzeria sangiorgio, auto garantite">
+    
+    <link rel="stylesheet" media="screen" href="{% static 'vendor/nouislider/dist/nouislider.min.css'%}">
+    <link rel="stylesheet" media="screen" href="{% static 'vendor/swiper/swiper-bundle.min.css'%}">
+{% endblock %}
+
+
+{% block content %}
+
+    <section class="position-relative pt-md-2 pt-lg-3 pt-xl-3 pb-5 pb-lg-0">
+        <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block" style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none" style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
+            <div class=" py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5">
+                <nav aria-label="breadcrumb">
+                    <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Vendita veicoli</li>
+                    </ol>
+                </nav>
+                <h1 class="display-3 pb-1 pb-sm-2 pb-md-3">Veicoli usati e d'occasione</h1>
+                <p class="fs-lg mb-0"> Scopri la nostra selezione di veicoli in vendita. Ogni auto è controllata e garantita dalla Carrozzeria Sangiorgio.
+                </p>
+            </div>
+            
+            <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
+                <div class="d-none d-md-block ratio ratio-21x9"></div>
+                <div class="d-md-none ratio ratio-16x9"></div>
+                
+                <div class="jarallax-img" style="background-image: url({% static 'img/copertine/cop-veicoli.jpg' %});"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5 my-md-3 my-lg-5 text-center">
+        <h2 class="h1 mb-4">La Garanzia di Acquistare da Professionisti</h2>
+        <p class="lead text-muted mb-5">Ogni veicolo in vendita è stato ispezionato e preparato dai nostri tecnici per garantirti la massima tranquillità.</p>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="ai-shield h1 text-primary"></i>
+                <h3 class="h5 mt-2 mb-0">Garanzia 12 Mesi</h3>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="ai-checks  h1 text-primary"></i>
+                <h3 class="h5 mt-2 mb-0">Chilometraggio Certificato</h3>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="ai-settings h1 text-primary"></i>
+                <h3 class="h5 mt-2 mb-0">Oltre 50 Controlli Tecnici</h3>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <i class="ai-phone h1 text-primary"></i>
+                <h3 class="h5 mt-2 mb-0">Assistenza Post-Vendita</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="container pb-5 mb-md-4">
+    
+        <div class="card card-body shadow-sm mb-5">
+            <form method="GET" action="{% url 'vendita:lista_veicoli' %}" id="filterSortForm">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-4">
+                        <label for="marcaFilter" class="form-label">Marca</label>
+                        <select name="marca" id="marcaFilter" class="form-select">
+                            <option value="">Tutte le Marche</option>
+                            {% for marca in marche_disponibili %}
+                            <option value="{{ marca }}" {% if request.GET.marca == marca %}selected{% endif %}>{{ marca }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="orderBy" class="form-label">Ordina per</label>
+                        <select name="order_by" id="orderBy" class="form-select">
+                            <option value="-data_pubblicazione" {% if request.GET.order_by == '-data_pubblicazione' %}selected{% endif %}>Più Recenti</option>
+                            <option value="prezzo" {% if request.GET.order_by == 'prezzo' %}selected{% endif %}>Prezzo (basso > alto)</option>
+                            <option value="-prezzo" {% if request.GET.order_by == '-prezzo' %}selected{% endif %}>Prezzo (alto > basso)</option>
+                            <option value="chilometraggio" {% if request.GET.order_by == 'chilometraggio' %}selected{% endif %}>KM (basso > alto)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">Filtra</button>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{% url 'vendita:lista_veicoli' %}" class="btn btn-outline-secondary w-100">Reset</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for veicolo in veicoli %}
+            <div class="col" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{{ forloop.counter0|stringformat:"%s00" }}">
+                <div class="card h-100 shadow-sm border-0 position-relative">
+                    
+                    {% if veicolo.status != 'disponibile' %}
+                        <span class="badge bg-dark position-absolute top-0 end-0 m-2 fs-sm" style="z-index: 2;">{{ veicolo.get_status_display }}</span>
+                    {% endif %}
+
+                    <img src="{{ veicolo.foto_principale.url }}" class="card-img-top object-fit-cover {% if veicolo.status == 'venduto' %}opacity-50{% endif %}" alt="{{ veicolo.marca }} {{ veicolo.modello }}" style="height: 220px;">
+                    
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ veicolo.marca }} {{ veicolo.modello }}</h5>
+                        <p class="card-text text-primary fs-4 fw-bold mb-2">{{ veicolo.prezzo|intcomma }} CHF</p>
+                        <ul class="list-unstyled mb-3 fs-sm text-muted">
+                            <li>Anno: {{ veicolo.anno }}</li>
+                            <li>KM: {{ veicolo.chilometraggio|intcomma }}</li>
+                            <li>Carburante: {{ veicolo.get_tipo_carburante_display }}</li>
+                            <li>Cambio: {{ veicolo.get_tipo_cambio_display }}</li>
+                        </ul>
+                        <p class="card-text flex-grow-1">{{ veicolo.descrizione|truncatechars:100 }}</p>
+                        <a href="{% url 'vendita:dettaglio_veicolo' slug=veicolo.slug %}" class="btn btn-outline-primary mt-auto">Vedi Dettagli</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <p>Nessun veicolo attualmente disponibile per la vendita.</p>
+                <p class="text-muted">Torna a trovarci presto per scoprire le nuove occasioni.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}
+
+
+{% block extra_js %}
+    <script src="{% static 'vendor/jarallax/dist/jarallax.min.js' %}"></script>
+    <script src="{% static 'vendor/nouislider/dist/nouislider.min.js' %}"></script>
+    <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+{% endblock %}

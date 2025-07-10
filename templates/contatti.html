@@ -1,0 +1,287 @@
+{# CarrozzeriaSanGiorgio/templates/index.html #}
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %}Carrozzeria San Giorgio | Contatti{% endblock %}
+
+{% block content %}
+ 
+  <head>
+      
+    <meta name="description" content="Around - Multipurpose Bootstrap HTML Template">
+    <meta name="keywords" content="bootstrap, business, corporate, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, saas, multipurpose, product landing, shop, software, ui kit, web studio, landing, light and dark mode, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Heich One">
+ 
+      
+    <!-- Vendor styles -->
+    <link rel="stylesheet" media="screen" href="{% static 'vendor/leaflet/dist/leaflet.css' %}">
+     
+ 
+  </head>
+
+ 
+ 
+      <!-- Hero -->
+      <section class="position-relative pt-md-2 pt-lg-3 pt-xl-3 pb-5 pb-lg-0">
+        <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block" style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none" style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
+          <div class=" py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5  "  >
+             <!-- Breadcrumb -->
+              <nav aria-label="breadcrumb">
+                <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="/">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Contatti</li>
+                </ol>
+              </nav>
+            <h1 class="display-3 pb-1 pb-sm-2 pb-md-3">Rimaniamo in contatto</h1>
+            <p class="fs-lg mb-0">Siamo a tua disposizione. Compila il modulo sottostante, chiamaci o vieni a trovarci in sede. Ti risponderemo il prima possibile.</p>
+          </div>
+
+           
+          
+          <!-- Parallax image -->
+          <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
+            <div class="d-none d-md-block ratio ratio-21x9"></div>
+            <div class="d-md-none ratio ratio-16x9"></div>
+             
+            <div class="jarallax-img" style="background-image: url({% static 'img/copertine/cop-contatti.jpg' %});"></div>
+          </div>
+
+           
+        </div>
+      </section>
+
+ 
+      
+ 
+       
+       
+
+
+      <!-- Page content-->
+      <section class="container pt-5 pb-lg-2 pb-xl-4 py-xxl-5 my-5">
+
+         
+ 
+        <!-- Contact details -->
+        
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 pt-2">
+
+            <!-- Address -->
+            <div class="col pb-2">
+              <h4 class="mb-lg-4">Indirizzo</h4>
+              <p class="fs-lg fw-medium pb-3 mb-3">Via dei Carrozzieri, 12<br>6830 Chiasso, Svizzera</p>
+              <a class="btn btn-sm btn-outline-primary" href="https://www.google.com/maps/search/?api=1&query=Chiasso" target="_blank">
+                    <i class="ai-map-pin me-1"></i>
+                    Ottieni indicazioni
+                  </a>
+            </div>
+
+            <!-- Phone -->
+            <div class="col pb-2">
+              <h4 class="mb-lg-4">Chiamaci</h4>
+              <ul class="list-unstyled mb-0">
+                <li class="pb-1 mb-2">
+                  <span class="d-block fs-sm text-body-secondary mb-1">Ufficio 1</span>
+                  <a class="nav-link fs-lg p-0" href="tel:+178632256033">+41 91 000 00 00</a>
+                </li>
+                <li class="pb-1 mb-2">
+                  <span class="d-block fs-sm text-body-secondary mb-1">Ufficio 2</span>
+                  <a class="nav-link fs-lg p-0" href="tel:+178630056044">+41 91 000 00 00</a>
+                </li>
+                 
+              </ul>
+            </div>
+
+            <!-- Schedule -->
+            <div class="col pb-2">
+              <h4 class="mb-lg-4">Orari di Apertura</h4>
+              <ul class="list-unstyled mb-0">
+                <li class="pb-1 mb-2">
+                  <span class="d-block fs-sm text-body-secondary mb-1">Lunedì - Venerdì</span>
+                  <div class="d-flex align-items-center">
+                    <span class="text-nav fs-lg fw-medium">08:00</span>
+                    <span class="border-top mx-4" style="width: 36px; height: 1px;"></span>
+                    <span class="text-nav fs-lg fw-medium">18:30</span>
+                  </div>
+                </li>
+                <li class="pb-1 mb-2">
+                  <span class="d-block fs-sm text-body-secondary mb-1">Sabato</span>
+                  <div class="d-flex align-items-center">
+                    <span class="text-nav fs-lg fw-medium">10:00</span>
+                    <span class="border-top mx-4" style="width: 36px; height: 1px;"></span>
+                    <span class="text-nav fs-lg fw-medium">18:00</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="d-block fs-sm text-body-secondary mb-1">Domenica</span>
+                  <div class="d-flex align-items-center">
+                    <span class="text-nav fs-lg fw-medium">Chiuso</span> 
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Email -->
+            <div class="col pb-2">
+              <h4 class="mb-lg-4">Email</h4>
+              <a class="nav-link fs-lg p-0" href="mailto:info@carrozzeriasangiorgio.ch">info@carrozzeriasangiorgio.ch</a>
+            </div>
+          </div>
+        
+      </section>
+
+ 
+ 
+
+ <section class="container pb-5 mb-2 mb-md-4 mb-lg-5">
+    <div class="row">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+            <h2 class="h3 mb-4">Dove Trovarci</h2>
+            <div class="ratio ratio-4x3 rounded-3 overflow-hidden">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11211.53509129501!2d9.0152536871582!3d45.835848500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478683b6e864551b%3A0x406e32d2910a310!2s6830%20Chiasso!5e0!3m2!1sit!2sch!4v1690000000000" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <div class="col-lg-6 ps-lg-5">
+            <h2 class="h3 mb-4">Inviaci un Messaggio</h2>
+            <form class="row g-4 needs-validation" novalidate>
+                <div class="col-sm-6">
+                    <label class="form-label fs-base" for="name">Nome</label>
+                    <input class="form-control form-control-lg" type="text" placeholder="Il tuo nome" required id="name">
+                    <div class="invalid-feedback">Per favore, inserisci il tuo nome!</div>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label fs-base" for="email">Email</label>
+                    <input class="form-control form-control-lg" type="email" placeholder="Indirizzo email" required id="email">
+                    <div class="invalid-feedback">Per favore, fornisci un indirizzo email valido!</div>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label fs-base" for="phone">Telefono</label>
+                    <input class="form-control form-control-lg" type="text" placeholder="Numero di telefono (opzionale)" id="phone">
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label fs-base" for="request-type">Tipo di richiesta</label>
+                    <select class="form-select form-select-lg" id="request-type">
+                        <option value="Preventivo Riparazione">Preventivo Riparazione</option>
+                        <option value="Informazioni Restauro">Informazioni Restauro</option>
+                        <option value="Servizi Generali">Servizi Generali</option>
+                        <option value="Altro">Altro</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label class="form-label fs-base" for="id_messaggio">Come possiamo aiutarti?</label>
+                    <textarea class="form-control form-control-lg" rows="5" placeholder="Scrivi qui il tuo messaggio..." required id="id_messaggio"></textarea>
+                    <div class="invalid-feedback">Per favore, inserisci un messaggio!</div>
+                </div>
+                <div class="col-12 pt-2">
+                    <button class="btn btn-lg btn-primary" type="submit">Invia Richiesta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+  
+ 
+
+    <!-- Vendor scripts: JS libraries and plugins -->
+    <script src="{% static 'vendor/leaflet/dist/leaflet.js' %}"></script>
+
+{# Se hai bisogno di JS specifico per la validazione del form o per Leaflet, mettilo qui. #}
+{# Altrimenti, non è necessario per questo layout. #}
+{# Se hai deciso di usare Leaflet, il suo JS deve essere in base.html o qui, e la mappa deve essere inizializzata. #}
+<script>
+    // Esempio per la validazione del form Bootstrap (se non gestita da Django Forms)
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
+    // Logica per precompilare il messaggio se si arriva da pagina veicolo/servizio
+    document.addEventListener('DOMContentLoaded', function() {
+        const messageField = document.getElementById('id_messaggio');
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        const veicoloRiferimento = urlParams.get('veicolo_riferimento');
+        const servizioRiferimento = urlParams.get('servizio'); // Dal link Servizi
+
+        let prefillMessage = '';
+
+        if (veicoloRiferimento) {
+            // Nota: per ottenere marca/modello del veicolo, dovresti passarlo dalla view di dettaglio veicolo,
+            // oppure fare una chiamata AJAX qui per recuperarlo se il veicolo_riferimento è solo l'ID.
+            // Per ora, assumo che tu passi il nome completo del veicolo nel parametro URL 'messaggio'
+            // come fatto nel template veicoli_detail.html: `?servizio={{ servizio.nome|urlencode }}`
+            // ... ma per i veicoli, si usa 'veicolo_riferimento', quindi il nome andrebbe passato separatamente o recuperato.
+            // Per semplicità, qui useremo il messaggio pre-compilato dal template del veicolo.
+            // Se arrivi da vendita, il textarea è già compilato via Django.
+        } else if (servizioRiferimento) {
+            prefillMessage = `Sono interessato al servizio di ${decodeURIComponent(servizioRiferimento)}. Potreste fornirmi maggiori informazioni?`;
+        }
+
+        // Se il messaggio non è già precompilato da Django, usa quello generato qui
+        if (messageField.value.trim() === '' && prefillMessage !== '') {
+            messageField.value = prefillMessage;
+        }
+    });
+</script>
+
+  
+
+{% endblock %}
+
+{% block extra_js %}
+{# Se hai bisogno di JS specifico per la validazione del form o per Leaflet, mettilo qui. #}
+<script>
+    // Validazione del form Bootstrap
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })();
+
+    // Logica per pre-compilare il messaggio se si arriva da un'altra pagina
+    document.addEventListener('DOMContentLoaded', function() {
+        const messageField = document.getElementById('id_messaggio');
+        if (!messageField) return; // Esce se il campo non esiste
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const servizioRiferimento = urlParams.get('servizio');
+        const veicoloRiferimento = urlParams.get('veicolo_riferimento'); // Aggiunto per completezza
+
+        let prefillMessage = '';
+
+        if (veicoloRiferimento) {
+            prefillMessage = `Sono interessato al veicolo con riferimento: ${decodeURIComponent(veicoloRiferimento)}. Vorrei avere maggiori informazioni.`;
+        } else if (servizioRiferimento) {
+            prefillMessage = `Sono interessato al servizio di "${decodeURIComponent(servizioRiferimento)}". Potreste fornirmi maggiori informazioni?`;
+        }
+
+        if (messageField.value.trim() === '' && prefillMessage !== '') {
+            messageField.value = prefillMessage;
+        }
+    });
+</script>
+{% endblock %}

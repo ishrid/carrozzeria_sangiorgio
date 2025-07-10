@@ -1,0 +1,218 @@
+{# carrozzeria_sangiorgio_project/main/templates/main/servizi_detail.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ servizio.nome }} | Carrozzeria San Giorgio{% endblock %}
+
+{% block content %}
+ 
+ 
+{% block head %}
+{# Questo blocco è il posto giusto per meta tag e CSS specifici della pagina #}
+<meta name="description" content="{{ servizio.descrizione_breve }}">
+<meta name="keywords" content="{{ servizio.nome }}, carrozzeria chiasso, carrozzeria san giorgio, riparazione {{ servizio.nome|lower }}">
+<meta name="author" content="Heich One Sagl">
+<link rel="stylesheet" media="screen" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+{% endblock %}
+
+ 
+ 
+ 
+      <!-- Hero -->
+      <section class="position-relative pt-md-2 pt-lg-3 pt-xl-3 pb-5 pb-lg-0">
+        <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block" style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none" style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
+          <div class=" py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5  "  >
+             <!-- Breadcrumb -->
+              <nav aria-label="breadcrumb">
+                <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
+                   
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/">Servizi</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ servizio.nome }}</li>
+          
+                </ol>
+              </nav>
+            <h1 class="display-3 pb-1 pb-sm-2 pb-md-3">{{ servizio.nome }}</h1>
+            <p class="fs-lg mb-0">{{ servizio.descrizione_breve }}</p>
+          </div>
+
+           
+          
+          <!-- Parallax image -->
+          <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
+            <div class="d-none d-md-block ratio ratio-21x9"></div>
+            <div class="d-md-none ratio ratio-16x9"></div>
+             
+            <div class="jarallax-img" style="background-image: url({{ servizio.immagine_principale.url }});"></div>
+          </div>
+
+           
+        </div>
+      </section>
+
+
+ 
+<!-- INTRODUZIONE -->
+<div class="container pt-4 pt-sm-5">
+    <div class="fs-sm text-uppercase text-primary mb-3">La Nostra Gamma di Servizi</div>
+    <h2 class="display-6 pb-3 mb-lg-4">Offriamo soluzioni per ogni esigenza, garantendo sempre la massima qualità e attenzione al dettaglio.</h2>
+</div>
+ 
+ 
+
+ 
+
+
+      <!-- Post content -->
+      <section class="container py-5 my-md-2 my-lg-3 my-xl-4">
+        <div class="row pt-xxl-2">
+          <div class="col-lg-9 col-xl-8 pe-lg-4 pe-xl-0">
+
+
+ 
+        
+        {# Qui viene mostrata la descrizione completa del servizio #}
+        <div class="fs-lg">
+            {{ servizio.descrizione_completa|safe }}
+        </div>
+
+           
+             
+            <h2 class="h4 mb-lg-4 pt-3 pt-md-4 pt-xl-5">Dolor laoreet fermentum lectus praesent aenean</h2>
+            <p class="fs-lg pb-4 pb-xl-5">Ut pellentesque bibendum dignissim a molestie. Ultrices diam ut vel neque tincidunt eget. Sed ut quis sit semper nunc at etiam lacinia. Quam laoreet eget id sapien a pharetra, ornare diam dignissim. Lorem amet nisl, enim mi aenean mauris. Porta nisl a ultrices ut libero id. Gravida a mi neque, tristique justo, et pharetra. Laoreet nulla est nulla cras ac arcu sed mattis tristique. Morbi convallis suspendisse enim blandit massa. Cursus augue dui mattis morbi velit.</p>
+            
+            {# Esempio di galleria immagini se hai ServizioImmagine #}
+                    {% if servizio.galleria_immagini.exists %}
+                    <h2 class="h3 mt-5 mb-3">Galleria Lavori</h2>
+                    <div id="servizioGallery" class="carousel slide mb-5" data-bs-ride="carousel">
+                        <div class="carousel-inner rounded-3 shadow-sm">
+                            {% for img in servizio.galleria_immagini.all %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ img.immagine.url }}" class="d-block w-100 object-fit-cover" alt="{{ img.alt_text }}" style="height: 450px;">
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#servizioGallery" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#servizioGallery" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    {% endif %}
+            
+            
+             
+            <h2 class="h4 mb-lg-4 pt-3 pt-md-4 pt-xl-5">Cursus augue dui mattis morbi velit</h2>
+            <p class="fs-lg pb-2 pb-lg-0 mb-4 mb-lg-5">Proin non congue sem, sed tristique ante. Donec et sollicitudin tellus. Duis maximus, dui eget egestas mattis, purus ex tempor nulla, quis tempor sapien neque at nisl. Aliquam eu nisi ut nisl ultrices posuere. Praesent dignissim efficitur nisi, a hendrerit ipsum elementum sit amet. Vivamus non ante nisl. Nunc faucibus velit at eros mollis semper. Curabitur aliquam eros tellus, nec facilisis nisl finibus sit amet. Ut et dolor nec lorem gravida elementum.</p>
+            <div class="card border-0 bg-secondary mb-3">
+              <div class="card-body">
+                <figure>
+                  <blockquote class="blockquote">
+                    <p>Ut pellentesque bibendum dignissim a molestie ultrices diam ut vel neque tincidunt eget sed ut quis sit semper nunc at etiam lacinia quam laoreet eget id sapien a pharetra, ornare diam dignissim  neque tincidunt.</p>
+                  </blockquote>
+                  <figcaption class="blockquote-footer">Darlene Robertson</figcaption>
+                </figure>
+              </div>
+            </div>
+            <h2 class="h4 mb-lg-4 pt-3 pt-md-4 pt-xl-5">Lorem ipsum dolor sit amet consectetur</h2>
+            <p class="fs-lg">Ut pellentesque bibendum dignissim a molestie. Ultrices diam ut vel neque tincidunt eget. Sed ut quis sit semper nunc at etiam lacinia. Quam laoreet eget id sapien a pharetra, ornare diam dignissim.</p>
+            <ul>
+              <li class="mb-1">Quam laoreet eget id sapien</li>
+              <li class="mb-1">Morbi convallis suspendisse</li>
+              <li class="mb-1">Vivamus non ante</li>
+              <li class="mb-1">Praesent dignissim efficitur</li>
+              <li class="mb-1">Gravida a mi neque</li>
+            </ul>
+            <p class="fs-lg">Donec diam neque, efficitur vitae ante a, eleifend placerat est. Phasellus dapibus scelerisque diam, eu rhoncus lorem vulputate lobortis. Praesent pulvinar venenatis mauris, eget fringilla sem.</p>
+
+             
+          </div>
+
+
+          <!-- Sidebar -->
+          <aside class="col-lg-3 offset-xl-1 pt-4 pt-lg-0" style="margin-top: -7rem;">
+            <div class="position-sticky top-0 mt-2 mt-md-3 mt-lg-0" style="padding-top: 7rem;">
+
+             <div class="card p-4 shadow-sm border-0 sticky-top" style="top: 100px;">
+                        <h4 class="card-title mb-3">Richiedi un Preventivo</h4>
+                        <p class="card-text">Interessato a questo servizio? Contattaci per un preventivo personalizzato e senza impegno.</p>
+                        <a href="{% url 'main:contatti' %}?servizio={{ servizio.nome|urlencode }}" class="btn btn-primary w-100 mt-3">Richiedi ora</a>
+                    </div>
+
+
+            </div>
+          </aside>
+        </div>
+      </section>
+
+ 
+
+ 
+
+ 
+
+ 
+            
+{% if altri_servizi %}
+<section class="container pt-2 pt-sm-3 pb-5 mb-md-3 mb-lg-4 mb-xl-5">
+    <div class="d-flex align-items-center pb-3 mb-3 mb-lg-4">
+        <h2 class="h1 mb-0 me-4">Altri Servizi</h2>
+        <div class="d-flex ms-auto">
+            <button class="btn btn-prev btn-icon btn-sm btn-outline-primary rounded-circle me-3" type="button" id="prev-service" aria-label="Prev">
+                <i class="ai-arrow-left"></i>
+            </button>
+            <button class="btn btn-next btn-icon btn-sm btn-outline-primary rounded-circle" type="button" id="next-service" aria-label="Next">
+                <i class="ai-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    <div class="swiper pb-2 pb-sm-3 pb-md-4" data-swiper-options='{
+        "spaceBetween": 24,
+        "loop": false,
+        "navigation": {
+            "prevEl": "#prev-service",
+            "nextEl": "#next-service"
+        },
+        "breakpoints": {
+            "576": { "slidesPerView": 2 },
+            "1000": { "slidesPerView": 3 }
+        }
+    }'>
+        <div class="swiper-wrapper">
+            {% for altro_servizio in altri_servizi %}
+            <article class="swiper-slide">
+                <a class="text-decoration-none" href="{% url 'main:servizi_detail' slug=altro_servizio.slug %}">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="position-relative">
+                            <img class="card-img-top" src="{{ altro_servizio.immagine_principale.url }}" alt="{{ altro_servizio.nome }}">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5 card-title mb-0">{{ altro_servizio.nome }}</h3>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+ 
+
+
+    <!-- Vendor scripts: JS libraries and plugins -->
+      
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+{% endblock %}
+
+{% block extra_js %}
+{# Carica i JS necessari per Jarallax e Swiper se non sono già in base.html #}
+<script src="{% static 'vendor/jarallax/dist/jarallax.min.js' %}"></script>
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+{% endblock %}

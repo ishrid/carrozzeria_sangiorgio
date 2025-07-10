@@ -1,0 +1,328 @@
+{# carrozzeria_sangiorgio_project/main/templates/servizi_list.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+  
+{% block title %}I Nostri Servizi | Carrozzeria San Giorgio{% endblock %}
+
+{% block head %}
+<meta name="description" content="Scopri i servizi completi della Carrozzeria San Giorgio a Chiasso: riparazioni, verniciatura a forno, restauro auto d'epoca, gestione sinistri e detailing.">
+<meta name="keywords" content="servizi carrozzeria, riparazione auto, verniciatura chiasso, restauro auto, gestione sinistri, lucidatura auto, carrozzeria ticino">
+<meta name="author" content="Heich One Sagl">
+
+<link rel="stylesheet" media="screen" href="{% static 'vendor/aos/dist/aos.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+
+      <!-- Hero -->
+      <section class="position-relative pt-md-2 pt-lg-3 pt-xl-3 pb-5 pb-lg-0">
+        <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block" style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none" style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
+          <div class=" py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5  "  >
+             <!-- Breadcrumb -->
+              <nav aria-label="breadcrumb">
+                <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="/">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Servizi</li>
+                </ol>
+              </nav>
+            <h1 class="display-3 pb-1 pb-sm-2 pb-md-3">I nostri servizi</h1>
+            <p class="fs-lg mb-0">Soluzioni complete per ogni esigenza automobilistica, dalla carrozzeria al restauro, con qualità e precisione svizzera.</p>
+          </div>
+
+           
+          
+          <!-- Parallax image -->
+          <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
+            <div class="d-none d-md-block ratio ratio-21x9"></div>
+            <div class="d-md-none ratio ratio-16x9"></div>
+             
+            <div class="jarallax-img" style="background-image: url({% static 'img/copertine/cop-servizi.jpg' %});"></div>
+          </div>
+
+           
+        </div>
+      </section>
+
+
+ 
+<!-- INTRODUZIONE -->
+<div class="container pt-4 pt-sm-5">
+    <div class="fs-sm text-uppercase text-primary mb-3">La Nostra Gamma di Servizi</div>
+    <h2 class="display-6 pb-3 mb-lg-4">Offriamo soluzioni per ogni esigenza, garantendo sempre la massima qualità e attenzione al dettaglio.</h2>
+</div>
+ 
+  
+
+
+{% for servizio in servizi %}
+
+    {% if forloop.counter|divisibleby:2 %}
+
+
+    <!-- Services: Car insurance -->
+      <section class="overflow-hidden pb-5">
+        <div class="container pb-sm-3 mb-md-2 mb-lg-3">
+          <div class="row g-4">
+            <div class="col-md-7" data-aos="fade-right" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
+              <img class="object-fit-cover w-100 h-100 rounded-3" src="{{ servizio.immagine_principale.url }}" alt="{{ servizio.nome }}">
+            </div>
+            <div class="col-md-5" data-aos="fade-left" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
+              <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
+                <h2 class="mb-xl-4">{{ servizio.nome }}</h2>
+                <p class="mb-4 mb-xl-5">{{ servizio.descrizione_dettagliata|default:servizio.descrizione_breve }}</p>
+                <ul class="list-unstyled mb-4 mb-xl-5">
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Comprehensive coverage
+                  </li>
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Customizable plans
+                  </li>
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Financial security
+                  </li>
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Car insurance discounts
+                  </li>
+                </ul>
+                <div class="mt-auto">
+                  <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
+                <i class="ai-arrow-right ms-2"></i>  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
+
+    {% else %}
+
+    
+      <!-- Services: Travel insurance -->
+      <section class="overflow-hidden pb-5">
+        <div class="container pb-sm-3 mb-md-2 mb-lg-3">
+          <div class="row g-4">
+            <div class="col-md-7 order-md-2" data-aos="fade-left" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
+              <img class="object-fit-cover w-100 h-100 rounded-3" src="{{ servizio.immagine_principale.url }}" alt="{{ servizio.nome }}">
+            </div>
+            <div class="col-md-5 order-md-1" data-aos="fade-right" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
+              <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
+                <h2 class="mb-xl-4">{{ servizio.nome }}</h2>
+                <p class="mb-4 mb-xl-5">{{ servizio.descrizione_dettagliata|default:servizio.descrizione_breve }}</p>
+                <ul class="list-unstyled mb-4 mb-xl-5">
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Comprehensive protection
+                  </li>
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Tailored plans
+                  </li>
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Emergency medical assistance
+                  </li>
+                </ul>
+                <div class="mt-auto">
+                  <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
+                <i class="ai-arrow-right ms-2"></i>
+            </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+ 
+
+    {% endif %}
+  {% empty %}
+    <div class="col-12 text-center py-5">
+      <p>Nessun servizio disponibile al momento.</p>
+    </div>
+  {% endfor %}
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+     
+     
+    <!-- Vendor styles -->
+    <link rel="stylesheet" media="screen" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+
+      
+   
+
+
+
+
+      <!-- Benefits PERCHÉ SCEGLIERE NOI -->
+      <section class="container pb-5 mb-md-3 mb-lg-4 mb-xxl-5">
+
+<div class="fs-sm text-uppercase text-primary mb-3">Perché Affidarsi a Noi</div>
+    <h2 class="display-6 pb-3 mb-lg-4">Tecnologia, esperienza e passione al tuo servizio.</h2>
+
+
+        <div class="row pb-md-4 pb-xl-5">
+
+  <div class="col-md-6 col-xl-5 ">
+            <div class="pt-4 pb-sm-4 ps-md-4 ps-xl-0">
+            
+              <div class="d-flex pb-3 mb-2 mb-xl-3">
+                <div class="text-body-secondary pt-1">01</div>
+                <div class="ps-3">
+                  <h3 class="h5">Tecnologia e Precisione</h3>
+                  <p class="mb-0">Utilizziamo banchi di riscontro e tintometri computerizzati per riparazioni precise e colori identici all'originale.</p>
+                </div>
+              </div>
+              <div class="d-flex pb-3 mb-2 mb-xl-3">
+                <div class="text-body-secondary pt-1">02</div>
+                <div class="ps-3">
+                  <h3 class="h5">Gestione Sinistri Semplificata</h3>
+                  <p class="mb-0">Pensiamo a tutta la burocrazia del sinistro, interfacciandoci direttamente con la tua assicurazione per un'esperienza senza stress.</p>
+                </div>
+              </div>
+              <div class="d-flex pb-3 mb-2 mb-xl-3">
+                <div class="text-body-secondary pt-1">03</div>
+                <div class="ps-3">
+                  <h3 class="h5">Materiali di Alta Qualità</h3>
+                  <p class="mb-0">Selezioniamo solo vernici e ricambi dei migliori marchi per assicurare un risultato non solo bello, ma anche duraturo.</p>
+                </div>
+              </div>
+              <div class="d-flex mb-2 mb-xl-3">
+                <div class="text-body-secondary pt-1">04</div>
+                <div class="ps-3">
+                  <h3 class="h5">Garanzia sul Lavoro</h3>
+                  <p class="mb-0">Ogni nostro intervento è coperto da garanzia, perché la tua tranquillità e la tua sicurezza sono la nostra priorità.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="col-md-6 mb-2 mb-md-0 offset-xl-1">
+            <div class="card border-0 h-100 bg-size-cover bg-position-center" style="background-image: url({% static 'img/servi/servizi-list.jpg'%}) ;">
+              <div class="d-none d-sm-block d-md-none" style="height: 450px;"></div>
+              <div class="d-sm-none" style="height: 350px;"></div>
+            </div>
+          </div>
+
+
+        
+
+ 
+
+
+        </div>
+      </section>
+ 
+  
+ 
+  
+
+
+
+
+
+<!-- Partner -->
+<section class="py-5 my-2 my-xl-4 my-xxl-5">
+  <div class="container pt-3 pt-sm-4 pt-lg-5 mt-xl-2 mt-xxl-3">
+    <div class="fs-sm text-uppercase mb-3">I Nostri Partner</div>
+    <h2 class="display-6 pb-3 mb-lg-4">Collaborazioni Strategiche</h2>
+
+    <div class="overflow-auto pb-sm-4 pb-md-5 pt-sm-2 pt-md-3 mt-n2 mt-sm-0 mt-md-1 mt-lg-3 mb-lg-2" data-simplebar>
+      <div class="row row-cols-5 g-0 pb-2" style="min-width: 768px;">
+        {% for p in partner %}
+        <div class="col d-flex justify-content-center">
+          <img src="{{ p.immagine.url }}" width="196" alt="{{ p.nome }}">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- CTA  sebra ok -->
+
+<section class="container pt-lg-4 pt-xl-5 mt-lg-2 mt-xxl-4 pb-5">
+    <div class="position-relative bg-size-cover bg-position-center rounded-3 py-5" style="background-image: url({% static 'img/cta/cta-bg.jpg' %});">
+        <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25 rounded-3"></span>
+        <div class="row position-relative z-2 py-md-4 py-lg-5 my-2">
+            <div class="col-8 col-sm-6 col-md-5     offset-1">
+                <h2 class="h1 text-white pb-2 pb-sm-3">Hai un Danno da Riparare o un Progetto in Mente?</h2>
+                   <p class="fs-lg text-white pb-3 mb-3">Contattaci per una consulenza e un preventivo dettagliato, gratuito e senza impegno. Il nostro team è a tua completa disposizione.</p>
+                
+                <a class="btn btn-primary" href="{% url 'main:contatti' %}">Richiedi un preventivo ora</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+ 
+
+
+    <!-- Vendor scripts: JS libraries and plugins -->
+    <script src="{% static 'vendor/jarallax/dist/jarallax.min.js' %}"></script>
+     
+    <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+ 
+ 
+
+ 
+
+ 
+
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script src="{% static 'vendor/aos/dist/aos.js' %}"></script>
+<script>
+  // Inizializza AOS se non è già stato fatto nel base.html
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+</script> 
+{% endblock %}
+  

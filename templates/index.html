@@ -1,46 +1,461 @@
 {# CarrozzeriaSanGiorgio/templates/index.html #}
+
 {% extends 'base.html' %}
-{% load static %} {# Assicurati che sia qui per usare il tag static #}
+{% load static %}
+{% load humanize %} {# Assicurati che django.contrib.humanize sia in INSTALLED_APPS #}
+{% load custom_filters %} {# Assicurati che custom_filters.py sia in main/templatetags/ #}
 
-{% block title %}Carrozzeria San Giorgio - Benvenuti{% endblock %}
+ 
+{% block title %}Carrozzeria San Giorgio | Riparazioni, Restauri e Vendita Auto a Chiasso{% endblock %}
 
+{% block head %}
+    <meta name="description" content="Dal 1985, la Carrozzeria San Giorgio a Chiasso è il punto di riferimento per riparazioni impeccabili, restauri d'auto d'epoca e vendita di veicoli usati garantiti.">
+    <meta name="keywords" content="carrozzeria chiasso, riparazioni auto, restauro auto d'epoca, auto usate garantite, carrozzeria ticino, verniciatura a forno, gestione sinistri">
+{% endblock %}
 {% block content %}
-<section class="hero-section"> {# Usa la classe CSS #}
-    <h1>Benvenuti alla Carrozzeria San Giorgio!</h1>
-    <p>La tua carrozzeria di fiducia a Chiasso per riparazioni di qualità e servizio impeccabile.</p>
-    <p>Siamo specializzati in riparazioni di carrozzeria, verniciatura, ripristino danni da grandine e molto altro.</p>
-    {# Includi l'immagine di copertina statica #}
-    <img src="{% static 'img/copertina.png' %}" alt="Carrozzeria San Giorgio" class="hero-image"> {# Usa la classe CSS #}
-    <a href="#" style="display: inline-block; background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px;">Scopri i nostri servizi</a>
-</section>
+  
 
-<section style="padding: 30px 20px; background-color: #e9ecef; text-align: center;">
-    <h2>Perché Sceglierci?</h2>
-    <ul style="list-style: none; padding: 0; display: flex; justify-content: center; flex-wrap: wrap;">
-        <li style="margin: 10px; flex: 1 1 200px;">Esperienza decennale</li>
-        <li style="margin: 10px; flex: 1 1 200px;">Personale qualificato</li>
-        <li style="margin: 10px; flex: 1 1 200px;">Attrezzature all'avanguardia</li>
-        <li style="margin: 10px; flex: 1 1 200px;">Preventivi gratuiti</li>
-    </ul>
-</section>
+      <!-- Hero -->
+      <section class="position-relative pt-md-2 pt-lg-4 pt-xl-5 pb-5 pb-lg-0">
+        <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block" style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none" style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+        <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
+          <div class="text-center py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5 mx-auto" style="max-width: 760px;">
+            <h1 class="display-3 pb-1 pb-sm-2 pb-md-3">Carrozzeria San Giorgio: Esperienza, Qualità e Passione al tuo Servizio</h1>
+            <p class="fs-lg mb-0">Specialisti in riparazioni auto, verniciatura e restauro veicoli d'epoca.</p>
+          </div>
 
----
+          <!-- Google reviews (visible on screens > 768px) -->
+          <div class="position-relative d-none d-md-block">
+            <div class="position-absolute" style="right: 78.24%;">
+                 
+              <img class="position-relative z-2" src="{% static 'img/landing/insurance/hero/google-reviews.png' %}" width="282" alt="Google reviews">
+              <div class="position-absolute top-0 start-0 w-100 h-100 bg-light rounded-3 shadow-sm d-dark-mode-none"></div>
+              <div class="position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block" style="background-color: #202327;"></div>
+            </div>
+          </div>
+          
+          <!-- Parallax image -->
+          <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
+            <div class="d-none d-md-block ratio ratio-21x9"></div>
+            <div class="d-md-none ratio ratio-16x9"></div>
+            <svg class="d-none d-md-block" width="0" height="0" viewBox="0 0 1296 506">
+              <defs>
+                <clipPath id="shape" clipPathUnits="objectBoundingBox" transform="scale(0.0007716049383, 0.001976284585)">
+                  <path d="M18 110H288C297.941 110 306 101.941 306 92V18C306 8.05887 314.059 0 324 0H1278C1287.94 0 1296 8.05888 1296 18V378C1296 387.941 1287.94 396 1278 396H1008C998.059 396 990 404.059 990 414V488C990 497.941 981.941 506 972 506H18C8.05887 506 0 497.941 0 488V128C0 118.059 8.05887 110 18 110Z"/>
+                </clipPath>
+              </defs>
+            </svg>
+            <img class="position-absolute top-0 end-0 z-2 mt-4 me-4" src="{% static 'img/landing/insurance/hero/award.png' %}" width="132" alt="Award">
+            <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25"></span>
+            <div class="jarallax-img" style="background-image: url({% static 'img/landing/insurance/hero/bg-image.jpg' %});"></div>
+          </div>
 
-{# Sezione per visualizzare i post #}
-<section class="post-grid"> {# Usa la classe CSS #}
-    <h2>Ultime Notizie dalla Carrozzeria</h2>
-    {% for post in posts %}
-    <div class="post-card"> {# Usa la classe CSS #}
-        <h3>{{ post.title }}</h3>
-        {% if post.image %}
-            <img src="{{ post.image.url }}" alt="{{ post.title }}">
-        {% endif %}
-        <p>{{ post.content|truncatechars:100 }}</p>
-        <p style="font-size: 0.8em; color: #666;">Pubblicato il: {{ post.published_date|date:"d M Y" }}</p>
+          <!-- Clients (visible on screens > 768px) -->
+          <div class="position-absolute bottom-0 d-none d-md-block" style="left: 77.5%;">
+            <img class="position-relative z-2 d-dark-mode-none" src="{% static 'img/landing/insurance/hero/clients-light.png' %}" width="282" alt="Google reviews">
+            <img class="position-relative z-2 d-none d-dark-mode-block" src="{% static 'img/landing/insurance/hero/clients-dark.png' %}" width="282" alt="Google reviews">
+            <div class="position-absolute top-0 start-0 w-100 h-100 bg-light rounded-3 shadow-sm d-dark-mode-none"></div>
+            <div class="position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block" style="background-color: #202327;"></div>
+          </div>
+
+          <!-- Google reviews + Clients (visible on screens < 768px) -->
+          <div class="d-flex flex-column flex-sm-row gap-3 pt-3 d-md-none">
+            <div class="position-relative d-flex justify-content-center w-100">
+              <img class="position-relative z-2" src="{% static 'img/landing/insurance/hero/google-reviews.png' %}" width="282" alt="Google reviews">
+              <div class="position-absolute top-0 start-0 w-100 h-100 bg-light rounded-3 shadow-sm d-dark-mode-none"></div>
+              <div class="position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block" style="background-color: #202327;"></div>
+            </div>
+            <div class="position-relative d-flex justify-content-center w-100">
+              <img class="position-relative z-2 d-dark-mode-none" src="{% static 'img/landing/insurance/hero/clients-light.png' %}" width="282" alt="Google reviews">
+              <img class="position-relative z-2 d-none d-dark-mode-block" src="{% static 'img/landing/insurance/hero/clients-dark.png' %}" width="282" alt="Google reviews">
+              <div class="position-absolute top-0 start-0 w-100 h-100 bg-light rounded-3 shadow-sm d-dark-mode-none"></div>
+              <div class="position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block" style="background-color: #202327;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+ 
+ 
+
+      <!-- Benefits -->
+      <section class="container pb-5 mb-lg-3 mb-xl-4 mb-xxl-5">
+        <div class="row gy-3 pb-sm-3 pb-md-4 pb-lg-5">
+          <div class="col-sm-6 col-lg-4">
+            <div class="d-flex align-items-center mb-3">
+              <div class="flex-shrink-0 bg-primary rounded-1 p-2">
+                <svg class="text-white" width="28" height="28" viewBox="0 0 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M26.251 13.8502C26.0512 11.5597 25.2134 9.37118 23.8326 7.53287C22.4518 5.69455 20.5834 4.2801 18.4394 3.45005C16.2953 2.61999 13.9615 2.40757 11.7029 2.83689C9.44419 3.26622 7.35109 4.32009 5.66111 5.87891C3.40499 7.95157 2.01112 10.7971 1.75643 13.8502C1.73566 14.0918 1.76535 14.3351 1.8436 14.5647C1.92185 14.7942 2.04696 15.005 2.211 15.1836C2.37503 15.3623 2.5744 15.5049 2.79647 15.6024C3.01853 15.6999 3.25843 15.7501 3.50096 15.75H13.126V21.875C13.126 22.8033 13.4947 23.6935 14.1511 24.3499C14.8075 25.0063 15.6977 25.375 16.626 25.375C17.5542 25.375 18.4445 25.0063 19.1008 24.3499C19.7572 23.6935 20.126 22.8033 20.126 21.875C20.126 21.6429 20.0338 21.4204 19.8697 21.2563C19.7056 21.0922 19.483 21 19.251 21C19.0189 21 18.7963 21.0922 18.6322 21.2563C18.4681 21.4204 18.376 21.6429 18.376 21.875C18.376 22.3391 18.1916 22.7843 17.8634 23.1124C17.5352 23.4406 17.0901 23.625 16.626 23.625C16.1618 23.625 15.7167 23.4406 15.3885 23.1124C15.0603 22.7843 14.876 22.3391 14.876 21.875V15.75H24.501C24.7439 15.7509 24.9844 15.7012 25.2072 15.604C25.4299 15.5068 25.6299 15.3644 25.7945 15.1856C25.9592 15.0069 26.0848 14.7959 26.1633 14.566C26.2419 14.336 26.2718 14.0923 26.251 13.8502ZM3.50096 14C3.69489 11.746 4.61052 9.61458 6.11193 7.92225C7.61334 6.22991 9.62047 5.06687 11.8353 4.60578C10.5535 6.34375 8.9533 9.41828 8.76955 14H3.50096ZM10.5174 14C10.6694 10.6345 11.6691 8.22391 12.5189 6.755C12.938 6.02531 13.4349 5.3432 14.001 4.72063C14.566 5.34329 15.0618 6.02541 15.4797 6.755C16.9322 9.26406 17.3916 11.9525 17.4813 14H10.5174ZM19.2291 14C19.0453 9.41828 17.4452 6.34375 16.1666 4.60031C18.3829 5.06038 20.3914 6.22384 21.8931 7.91752C23.3949 9.6112 24.3095 11.7445 24.501 14H19.2291Z"/>
+                </svg>
+              </div>
+              <h3 class="h5 ms-3 mb-0">One-stop insurance solution</h3>
+            </div>
+            <p class="fs-sm">Gaining access to a comprehensive suite of insurance products, it saves you time and effort by managing all your insurance needs under one roof.</p>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <div class="d-flex align-items-center mb-3">
+              <div class="flex-shrink-0 bg-primary rounded-1 p-2">
+                <svg class="text-white" width="28" height="28" viewBox="0 0 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 12.6875C21 12.9471 20.923 13.2008 20.7788 13.4167C20.6346 13.6325 20.4296 13.8008 20.1898 13.9001C19.9499 13.9994 19.686 14.0254 19.4314 13.9748C19.1768 13.9241 18.943 13.7991 18.7594 13.6156C18.5759 13.432 18.4509 13.1982 18.4002 12.9436C18.3496 12.689 18.3756 12.4251 18.4749 12.1852C18.5742 11.9454 18.7425 11.7404 18.9583 11.5962C19.1742 11.452 19.4279 11.375 19.6875 11.375C20.0356 11.375 20.3694 11.5133 20.6156 11.7594C20.8617 12.0056 21 12.3394 21 12.6875ZM16.625 7H12.25C12.0179 7 11.7954 7.09219 11.6313 7.25628C11.4672 7.42038 11.375 7.64294 11.375 7.875C11.375 8.10706 11.4672 8.32962 11.6313 8.49372C11.7954 8.65781 12.0179 8.75 12.25 8.75H16.625C16.8571 8.75 17.0796 8.65781 17.2437 8.49372C17.4078 8.32962 17.5 8.10706 17.5 7.875C17.5 7.64294 17.4078 7.42038 17.2437 7.25628C17.0796 7.09219 16.8571 7 16.625 7ZM27.125 12.25V15.75C27.125 16.4462 26.8484 17.1139 26.3562 17.6062C25.8639 18.0984 25.1962 18.375 24.5 18.375H24.2419L22.4689 23.3384C22.3475 23.6784 22.124 23.9725 21.8289 24.1805C21.5338 24.3884 21.1816 24.5 20.8206 24.5H19.4294C19.0684 24.5 18.7162 24.3884 18.4211 24.1805C18.126 23.9725 17.9025 23.6784 17.7811 23.3384L17.5711 22.75H11.3039L11.0939 23.3384C10.9725 23.6784 10.749 23.9725 10.4539 24.1805C10.1588 24.3884 9.80662 24.5 9.44563 24.5H8.05437C7.69338 24.5 7.3412 24.3884 7.04612 24.1805C6.75103 23.9725 6.52748 23.6784 6.40609 23.3384L5.03125 19.4928C3.72332 18.0125 2.90436 16.1645 2.68625 14.2012C2.40387 14.3496 2.16739 14.5722 2.00238 14.8452C1.83737 15.1182 1.7501 15.431 1.75 15.75C1.75 15.9821 1.65781 16.2046 1.49372 16.3687C1.32962 16.5328 1.10706 16.625 0.875 16.625C0.642936 16.625 0.420376 16.5328 0.256282 16.3687C0.0921873 16.2046 0 15.9821 0 15.75C0.00133698 14.9697 0.2634 14.2122 0.744553 13.5979C1.22571 12.9835 1.89835 12.5476 2.65563 12.3594C2.8511 9.94801 3.94627 7.69835 5.72368 6.0571C7.50109 4.41586 9.83073 3.50307 12.25 3.5H23.625C23.8571 3.5 24.0796 3.59219 24.2437 3.75628C24.4078 3.92038 24.5 4.14294 24.5 4.375C24.5 4.60706 24.4078 4.82962 24.2437 4.99372C24.0796 5.15781 23.8571 5.25 23.625 5.25H21.2855C22.7376 6.26882 23.8796 7.66941 24.5853 9.29688C24.6323 9.40625 24.6783 9.51562 24.722 9.625C25.3791 9.68077 25.991 9.98176 26.4363 10.4681C26.8815 10.9545 27.1274 11.5906 27.125 12.25ZM25.375 12.25C25.375 12.0179 25.2828 11.7954 25.1187 11.6313C24.9546 11.4672 24.7321 11.375 24.5 11.375H24.0997C23.9133 11.3752 23.7318 11.3159 23.5815 11.2057C23.4312 11.0956 23.32 10.9403 23.2641 10.7625C22.7627 9.16271 21.7633 7.76499 20.4115 6.77332C19.0598 5.78164 17.4265 5.24791 15.75 5.25H12.25C10.7217 5.24992 9.22644 5.69453 7.94649 6.52962C6.66655 7.36471 5.65725 8.55419 5.04167 9.95301C4.42609 11.3518 4.23084 12.8995 4.47971 14.4074C4.72859 15.9153 5.41084 17.3182 6.44328 18.445C6.52223 18.5309 6.58322 18.6316 6.62266 18.7414L8.05437 22.75H9.44563L9.86344 21.5808C9.9241 21.4109 10.0358 21.2639 10.1832 21.1599C10.3307 21.0559 10.5066 21.0001 10.687 21H18.188C18.3684 21.0001 18.5443 21.0559 18.6918 21.1599C18.8392 21.2639 18.9509 21.4109 19.0116 21.5808L19.4294 22.75H20.8206L22.8014 17.2058C22.8621 17.0359 22.9738 16.8889 23.1212 16.7849C23.2686 16.6809 23.4446 16.6251 23.625 16.625H24.5C24.7321 16.625 24.9546 16.5328 25.1187 16.3687C25.2828 16.2046 25.375 15.9821 25.375 15.75V12.25Z"/>
+                </svg>
+              </div>
+              <h3 class="h5 ms-3 mb-0">Bundle and Save</h3>
+            </div>
+            <p class="fs-sm">We offer attractive discounts and benefits when you bundle multiple insurance lines with us. Enjoy cost savings while ensuring comprehensive coverage for your well-being, your vehicle, and your adventures.</p>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <div class="d-flex align-items-center mb-3">
+              <div class="flex-shrink-0 bg-primary rounded-1 p-2">
+                <svg class="text-white" width="28" height="28" viewBox="0 0 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.75 4.375H5.25C4.78587 4.375 4.34075 4.55937 4.01256 4.88756C3.68437 5.21575 3.5 5.66087 3.5 6.125V12.5541C3.5 22.3552 11.7928 25.6069 13.4531 26.1592C13.8077 26.2798 14.1923 26.2798 14.5469 26.1592C16.2094 25.6069 24.5 22.3552 24.5 12.5541V6.125C24.5 5.66087 24.3156 5.21575 23.9874 4.88756C23.6592 4.55937 23.2141 4.375 22.75 4.375ZM22.75 12.5552C22.75 21.1323 15.493 23.998 14 24.4967C12.5202 24.0034 5.25 21.14 5.25 12.5552V6.125H22.75V12.5552ZM9.00594 15.4941C8.84175 15.3299 8.74951 15.1072 8.74951 14.875C8.74951 14.6428 8.84175 14.4201 9.00594 14.2559C9.17012 14.0918 9.39281 13.9995 9.625 13.9995C9.85719 13.9995 10.0799 14.0918 10.2441 14.2559L12.25 16.2619L17.7559 10.7559C17.8372 10.6746 17.9337 10.6102 18.04 10.5662C18.1462 10.5222 18.26 10.4995 18.375 10.4995C18.49 10.4995 18.6038 10.5222 18.71 10.5662C18.8163 10.6102 18.9128 10.6746 18.9941 10.7559C19.0754 10.8372 19.1398 10.9337 19.1838 11.04C19.2278 11.1462 19.2505 11.26 19.2505 11.375C19.2505 11.49 19.2278 11.6038 19.1838 11.71C19.1398 11.8163 19.0754 11.9128 18.9941 11.9941L12.8691 18.1191C12.7878 18.2004 12.6913 18.265 12.5851 18.309C12.4788 18.353 12.365 18.3757 12.25 18.3757C12.135 18.3757 12.0212 18.353 11.9149 18.309C11.8087 18.265 11.7122 18.2004 11.6309 18.1191L9.00594 15.4941Z"/>
+                </svg>
+              </div>
+              <h3 class="h5 ms-3 mb-0">Consistency and Trust</h3>
+            </div>
+            <p class="fs-sm">We have a proven track record of financial stability and commitment to customer satisfaction. Our experience and expertise ensure that you receive reliable coverage and support.</p>
+          </div>
+        </div>
+      </section>
+
+ 
+
+
+  
+ 
+
+
+ 
+
+<section class="position-relative d-flex align-items-center min-vh-100 py-5" style="background-image: url('{% static 'img/hero-homepage.jpg' %}'); background-size: cover; background-position: center;">
+    <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></span>
+    <div class="container position-relative z-2 text-white text-center">
+        <h1 class="display-3 text-white">La Nostra Passione, la Vostra Auto.</h1>
+        <p class="lead fs-lg mx-auto" style="max-width: 800px;">
+            Dal 1985 a Chiasso, siamo specialisti in riparazioni di alta gamma, restauro di veicoli d'epoca e vendita di auto usate garantite. Qualità, trasparenza e cura artigianale per la tua auto.
+        </p>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="{% url 'main:contatti' %}" class="btn btn-primary btn-lg">Richiedi un Preventivo</a>
+            <a href="{% url 'restauri:lista_restauri' %}" class="btn btn-outline-light btn-lg">Guarda i Nostri Lavori</a>
+        </div>
     </div>
-    {% empty %}
-    <p>Nessun post disponibile al momento.</p>
-    {% endfor %}
+</section>
+
+<section class="container py-5 my-md-3">
+    <div class="text-center mb-5">
+        <h2 class="h1">Soluzioni Complete per la Tua Auto</h2>
+        <p class="fs-lg text-muted">Dalla manutenzione ordinaria ai progetti più complessi, abbiamo il servizio che fa per te.</p>
+    </div>
+
+
+
+
+
+{% for servizio in servizi_in_evidenza %}
+
+    {% if forloop.counter|divisibleby:2 %}
+
+
+    <!-- Services: Car insurance -->
+      <section class="overflow-hidden pb-5">
+        <div class="container pb-sm-3 mb-md-2 mb-lg-3">
+          <div class="row g-4">
+            <div class="col-md-7" data-aos="fade-right" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
+              <img class="object-fit-cover w-100 h-100 rounded-3" src="{{ servizio.immagine_principale.url }}" alt="{{ servizio.nome }}">
+            </div>
+            <div class="col-md-5" data-aos="fade-left" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
+              <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
+                <h2 class="mb-xl-4">{{ servizio.nome }}</h2>
+                <p class="mb-4 mb-xl-5">{{ servizio.descrizione_dettagliata|default:servizio.descrizione_breve }}</p>
+                <ul class="list-unstyled mb-4 mb-xl-5">
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Comprehensive coverage
+                  </li>
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Customizable plans
+                  </li>
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Financial security
+                  </li>
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Car insurance discounts
+                  </li>
+                </ul>
+                <div class="mt-auto">
+                  <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
+                <i class="ai-arrow-right ms-2"></i>  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
+
+    {% else %}
+
+    
+      <!-- Services: Travel insurance -->
+      <section class="overflow-hidden pb-5">
+        <div class="container pb-sm-3 mb-md-2 mb-lg-3">
+          <div class="row g-4">
+            <div class="col-md-7 order-md-2" data-aos="fade-left" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
+              <img class="object-fit-cover w-100 h-100 rounded-3" src="{{ servizio.immagine_principale.url }}" alt="{{ servizio.nome }}">
+            </div>
+            <div class="col-md-5 order-md-1" data-aos="fade-right" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
+              <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
+                <h2 class="mb-xl-4">{{ servizio.nome }}</h2>
+                <p class="mb-4 mb-xl-5">{{ servizio.descrizione_dettagliata|default:servizio.descrizione_breve }}</p>
+                <ul class="list-unstyled mb-4 mb-xl-5">
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Comprehensive protection
+                  </li>
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Tailored plans
+                  </li>
+                  <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Emergency medical assistance
+                  </li>
+                </ul>
+                <div class="mt-auto">
+                  <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
+                <i class="ai-arrow-right ms-2"></i>
+            </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+ 
+
+    {% endif %}
+  {% empty %}
+    <div class="col-12 text-center py-5">
+      <p>Nessun servizio disponibile al momento.</p>
+    </div>
+  {% endfor %}
+
+
+ 
+ 
+</section>
+
+<section class="bg-secondary py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h1">Le Nostre Occasioni Garantite</h2>
+            <p class="fs-lg text-muted mx-auto" style="max-width: 700px;">
+                Oltre a prenderci cura della tua auto, selezioniamo e prepariamo i migliori veicoli usati. Scopri le auto disponibili, tutte ispezionate e garantite 12 mesi dal nostro team.
+            </p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-sm border-0 position-relative">
+                    <img src="{% static 'img/vendita/placeholder-car-1.jpg' %}" class="card-img-top object-fit-cover" alt="Marca Modello Veicolo" style="height: 220px;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Fiat 500 Abarth</h5>
+                        <p class="card-text text-primary fs-4 fw-bold mb-2">15.900 CHF</p>
+                        <ul class="list-unstyled mb-3 fs-sm text-muted">
+                            <li>Anno: 2018</li>
+                            <li>KM: 45.000</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-primary mt-auto">Vedi Dettagli</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-sm border-0 position-relative">
+                    <img src="{% static 'img/vendita/placeholder-car-2.jpg' %}" class="card-img-top object-fit-cover" alt="Marca Modello Veicolo" style="height: 220px;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Audi A3 Sportback</h5>
+                        <p class="card-text text-primary fs-4 fw-bold mb-2">22.500 CHF</p>
+                        <ul class="list-unstyled mb-3 fs-sm text-muted">
+                            <li>Anno: 2020</li>
+                            <li>KM: 38.000</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-primary mt-auto">Vedi Dettagli</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                 <div class="card h-100 shadow-sm border-0 position-relative">
+                    <img src="{% static 'img/vendita/placeholder-car-3.jpg' %}" class="card-img-top object-fit-cover" alt="Marca Modello Veicolo" style="height: 220px;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">BMW Serie 1</h5>
+                        <p class="card-text text-primary fs-4 fw-bold mb-2">19.800 CHF</p>
+                        <ul class="list-unstyled mb-3 fs-sm text-muted">
+                            <li>Anno: 2019</li>
+                            <li>KM: 55.000</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-primary mt-auto">Vedi Dettagli</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="{% url 'vendita:lista_veicoli' %}" class="btn btn-primary btn-lg">Scopri tutti i veicoli</a>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5 my-md-3">
+    <div class="row align-items-center">
+        <div class="col-md-6 col-xl-5 ">
+            <h2 class="h1 mb-4">Tecnologia, Esperienza e Passione al Tuo Servizio.</h2>
+            <div class="pt-2">
+                <div class="d-flex pb-3 mb-2">
+                    <div class="text-primary fs-xl fw-bold pt-1 me-3">01</div>
+                    <div>
+                        <h3 class="h5">Tecnologia e Precisione</h3>
+                        <p class="text-muted mb-0">Utilizziamo banchi di riscontro e tintometri computerizzati per riparazioni precise e colori identici all'originale.</p>
+                    </div>
+                </div>
+                <div class="d-flex pb-3 mb-2">
+                    <div class="text-primary fs-xl fw-bold pt-1 me-3">02</div>
+                    <div>
+                        <h3 class="h5">Gestione Sinistri Semplificata</h3>
+                        <p class="text-muted mb-0">Pensiamo a tutta la burocrazia del sinistro, interfacciandoci direttamente con la tua assicurazione per un'esperienza senza stress.</p>
+                    </div>
+                </div>
+                <div class="d-flex pb-3 mb-2">
+                    <div class="text-primary fs-xl fw-bold pt-1 me-3">03</div>
+                    <div>
+                        <h3 class="h5">Materiali di Alta Qualità</h3>
+                        <p class="text-muted mb-0">Selezioniamo solo vernici e ricambi dei migliori marchi per assicurare un risultato non solo bello, ma anche duraturo.</p>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="text-primary fs-xl fw-bold pt-1 me-3">04</div>
+                    <div>
+                        <h3 class="h5">Garanzia sul Lavoro</h3>
+                        <p class="text-muted mb-0">Ogni nostro intervento è coperto da garanzia, perché la tua tranquillità e la tua sicurezza sono la nostra priorità.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 offset-xl-1 mt-4 mt-md-0">
+             <img src="{% static 'img/servi/servizi-list.jpg' %}" class="rounded-3 shadow-lg" alt="Tecnico al lavoro">
+        </div>
+    </div>
+</section>
+
+<section class="bg-secondary py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h1">I Nostri Lavori Migliori</h2>
+            <p class="fs-lg text-muted">Le parole non bastano. Lascia che siano le immagini dei nostri restauri a parlare della nostra passione.</p>
+        </div>
+        <div class="row g-4">
+             <div class="col-lg-4 col-md-6">
+                <a href="#" class="card card-portfolio zoom-effect border-0 shadow-sm h-100 text-decoration-none">
+                    <div class="card-img-wrapper">
+                        <img src="{% static 'img/restauri/restauro-1.jpg' %}" alt="Restauro Lancia Delta">
+                    </div>
+                    <div class="card-body px-0 pt-4 text-center">
+                        <h3 class="h5 mb-2">Restauro Lancia Delta HF Integrale</h3>
+                        <p class="fs-sm text-muted mb-0">Un pezzo di storia del rally tornato al suo antico splendore.</p>
+                    </div>
+                </a>
+            </div>
+             <div class="col-lg-4 col-md-6">
+                 <a href="#" class="card card-portfolio zoom-effect border-0 shadow-sm h-100 text-decoration-none">
+                    <div class="card-img-wrapper">
+                        <img src="{% static 'img/restauri/restauro-2.jpg' %}" alt="Restauro Alfa Romeo">
+                    </div>
+                    <div class="card-body px-0 pt-4 text-center">
+                        <h3 class="h5 mb-2">Restauro Alfa Romeo Giulia GT</h3>
+                        <p class="fs-sm text-muted mb-0">Linee classiche e un cuore sportivo, riportati alla perfezione.</p>
+                    </div>
+                </a>
+            </div>
+             <div class="col-lg-4 col-md-6">
+                 <a href="#" class="card card-portfolio zoom-effect border-0 shadow-sm h-100 text-decoration-none">
+                    <div class="card-img-wrapper">
+                        <img src="{% static 'img/restauri/restauro-3.jpg' %}" alt="Restauro Porsche 911">
+                    </div>
+                    <div class="card-body px-0 pt-4 text-center">
+                        <h3 class="h5 mb-2">Restauro Porsche 911 Targa</h3>
+                        <p class="fs-sm text-muted mb-0">Un'icona senza tempo, curata in ogni minimo dettaglio.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5 my-md-3">
+    <div class="row align-items-center">
+        <div class="col-md-6 mb-4 mb-md-0">
+             <img src="{% static 'img/copertine/cop-chisiamo.jpg' %}" class="rounded-3 shadow-lg" alt="Team Carrozzeria San Giorgio">
+        </div>
+        <div class="col-md-6 ps-md-5">
+            <h2 class="h1">Artigiani della Carrozzeria dal 1985</h2>
+            <p class="fs-lg text-muted">Nati da una piccola officina e da una grande passione, siamo cresciuti investendo in tecnologia senza mai perdere l'anima artigianale. Il nostro team tratta ogni veicolo con la cura e l'attenzione che merita, come se fosse il nostro.</p>
+            <a href="{% url 'main:chi_siamo' %}" class="btn btn-outline-primary">Scopri la Nostra Storia</a>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="h4 text-center mb-5">Garanzia di Qualità e Affidabilità</h2>
+        <div class="swiper" data-swiper-options='{"slidesPerView": 2, "spaceBetween": 24, "loop": true, "autoplay": {"delay": 3000, "disableOnInteraction": false}, "breakpoints": {"576": {"slidesPerView": 3}, "768": {"slidesPerView": 4}, "992": {"slidesPerView": 5}}}'>
+            <div class="swiper-wrapper">
+               {% for p in partner_home %} 
+                <div class="swiper-slide"><img src="{{ p.immagine.url }}" class="d-block mx-auto" width="150" alt="{{ p.nome }}"></div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+ 
+
+
+      <!-- Partners -->
+      <section class="container py-5 my-lg-3 my-xl-4 my-xxl-5">
+        <div class="overflow-auto pb-sm-4 pb-md-5 pt-sm-2 pt-md-3 mt-n2 mt-sm-0 mt-md-1 mt-lg-3 mb-lg-2" data-simplebar>
+          <div class="row row-cols-5 g-0 pb-2" style="min-width: 768px;">
+             
+
+            {% for p in partner_home %}
+        <div class="col d-flex justify-content-center">
+          <img src="{{ p.immagine.url }}" width="196" alt="{{ p.nome }}">
+        </div>
+        {% endfor %}
+             
+             
+              
+          </div>
+        </div>
+      </section>
+
+ 
+
+ <!-- CTA  sebra ok -->
+
+<section class="container pt-lg-4 pt-xl-5 mt-lg-2 mt-xxl-4 pb-5">
+    <div class="position-relative bg-size-cover bg-position-center rounded-3 py-5" style="background-image: url({% static 'img/cta/cta-bg.jpg' %});">
+        <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25 rounded-3"></span>
+        <div class="row position-relative z-2 py-md-4 py-lg-5 my-2">
+            <div class="col-8 col-sm-6 col-md-5     offset-1">
+                <h2 class="h1 text-white pb-2 pb-sm-3">Hai un Danno da Riparare o un Progetto in Mente?</h2>
+                   <p class="fs-lg text-white pb-3 mb-3">Contattaci per una consulenza e un preventivo dettagliato, gratuito e senza impegno. Il nostro team è a tua completa disposizione.</p>
+                
+                <a class="btn btn-primary" href="{% url 'main:contatti' %}">Richiedi un preventivo ora</a>
+            </div>
+        </div>
+    </div>
 </section>
 
 {% endblock %}
