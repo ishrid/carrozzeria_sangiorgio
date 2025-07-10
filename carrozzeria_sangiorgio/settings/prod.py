@@ -2,7 +2,7 @@ import os
 from .base import *
 import dj_database_url
 
-DEBUG = True
+DEBUG = False
 
 INSTALLED_APPS += [
     'cloudinary_storage',
@@ -41,3 +41,5 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Leggi SECRET_KEY dalla variabile d'ambiente in produzione
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+if not SECRET_KEY:
+    raise Exception('DJANGO_SECRET_KEY non impostata!')
