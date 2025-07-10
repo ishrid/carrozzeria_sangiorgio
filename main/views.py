@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Servizio, MembroTeam, FotoOfficina, Certificazione, Partner
 # View per la homepage
 def home_view(request):
+    print("----------- LA VIEW DELLA HOME È STATA CHIAMATA -----------")
     servizi_in_evidenza = Servizio.objects.filter(attivo=True).order_by('ordine_visualizzazione')[:3] # Prendi 3 servizi attivi
     partner_home = Partner.objects.filter(in_homepage=True)
     # Qui potresti anche prendere gli ultimi restauri se hai un'app restauri
