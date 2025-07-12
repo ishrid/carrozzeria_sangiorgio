@@ -1,10 +1,16 @@
 # main/admin.py
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Servizio, ServizioImmagine, MembroTeam, FotoOfficina, Certificazione, Partner
+from .models import Servizio, ServizioImmagine, MembroTeam, FotoOfficina, Certificazione, Partner, PuntoChiaveServizio
 
 
- 
+class PuntoChiaveServizioInline(admin.TabularInline):
+    model = PuntoChiaveServizio
+    fields = ['testo', 'ordine'] # Campi da mostrare per ogni punto chiave
+    extra = 1 # Mostra uno slot vuoto per aggiungere un nuovo punto chiave
+    verbose_name = "Punto Chiave"
+    verbose_name_plural = "Punti Chiave del Servizio"
+
 
 class ServizioImmagineInline(admin.TabularInline):
     model = ServizioImmagine
@@ -16,7 +22,7 @@ class ServizioAdmin(admin.ModelAdmin):
     list_filter = ('attivo',)
     search_fields = ('nome', 'descrizione_breve')
     prepopulated_fields = {'slug': ('nome',)} # Genera lo slug automaticamente dal nome
-    inlines = [ServizioImmagineInline] # Abilita l'aggiunta di immagini alla galleria direttamente dal form del servizio
+    inlines = [PuntoChiaveServizioInline, ServizioImmagineInline] # Abilita l'aggiunta di immagini alla galleria direttamente dal form del servizio
 
 @admin.register(MembroTeam)
 class MembroTeamAdmin(admin.ModelAdmin):
@@ -78,8 +84,7 @@ class FotoOfficinaAdmin(admin.ModelAdmin):
         return "Nessuna Immagine"
     mostra_anteprima_grande.short_description = 'Anteprima Immagine Caricata'
 
-
-
+ 
 
 @admin.register(Certificazione)
 class CertificazioneAdmin(admin.ModelAdmin):

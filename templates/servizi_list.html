@@ -76,25 +76,19 @@
             <div class="col-md-5" data-aos="fade-left" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
               <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
                 <h2 class="mb-xl-4">{{ servizio.nome }}</h2>
-                <p class="mb-4 mb-xl-5">{{ servizio.descrizione_dettagliata|default:servizio.descrizione_breve }}</p>
-                <ul class="list-unstyled mb-4 mb-xl-5">
-                  <li class="d-flex pb-2 mb-1">
+                <p class="mb-4 mb-xl-5">{{ servizio.descrizione_breve }}</p>
+                 {% with punti_chiave=servizio.punti_chiave.all %}
+    {% if punti_chiave %}
+        <ul class="list-unstyled mb-4 mb-xl-5">
+            {% for punto in punti_chiave %}
+                <li class="d-flex pb-2 mb-1">
                     <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                    Comprehensive coverage
-                  </li>
-                  <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                    Customizable plans
-                  </li>
-                  <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                    Financial security
-                  </li>
-                  <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                    Car insurance discounts
-                  </li>
-                </ul>
+                    {{ punto.testo }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
                 <div class="mt-auto">
                   <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
                 <i class="ai-arrow-right ms-2"></i>  </a>
@@ -120,21 +114,19 @@
             <div class="col-md-5 order-md-1" data-aos="fade-right" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
               <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
                 <h2 class="mb-xl-4">{{ servizio.nome }}</h2>
-                <p class="mb-4 mb-xl-5">{{ servizio.descrizione_dettagliata|default:servizio.descrizione_breve }}</p>
-                <ul class="list-unstyled mb-4 mb-xl-5">
-                  <li class="d-flex pb-2 mb-1">
+                <p class="mb-4 mb-xl-5">{{ servizio.descrizione_breve }}</p>
+                {% with punti_chiave=servizio.punti_chiave.all %}
+    {% if punti_chiave %}
+        <ul class="list-unstyled mb-4 mb-xl-5">
+            {% for punto in punti_chiave %}
+                <li class="d-flex pb-2 mb-1">
                     <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                    Comprehensive protection
-                  </li>
-                  <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                    Tailored plans
-                  </li>
-                  <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                    Emergency medical assistance
-                  </li>
-                </ul>
+                    {{ punto.testo }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
                 <div class="mt-auto">
                   <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
                 <i class="ai-arrow-right ms-2"></i>

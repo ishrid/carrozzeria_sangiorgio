@@ -38,6 +38,25 @@ class Servizio(models.Model):
     def __str__(self):
         return self.nome
 
+
+# NUOVO MODELLO PER I PUNTI CHIAVE
+class PuntoChiaveServizio(models.Model):
+    """
+    Rappresenta un punto chiave o una caratteristica specifica di un servizio.
+    Es: "Garanzia sul lavoro", "Materiali di alta qualità", etc.
+    """
+    servizio = models.ForeignKey(Servizio, related_name='punti_chiave', on_delete=models.CASCADE, verbose_name="Servizio di Riferimento")
+    testo = models.CharField(max_length=255, verbose_name="Testo del Punto Chiave")
+    ordine = models.PositiveIntegerField(default=0, verbose_name="Ordine di Visualizzazione")
+
+    class Meta:
+        verbose_name = "Punto Chiave del Servizio"
+        verbose_name_plural = "Punti Chiave dei Servizi"
+        ordering = ['ordine', 'testo']
+
+    def __str__(self):
+        return self.testo
+
 # Modello per le immagini della galleria di un servizio (opzionale, per pagine di dettaglio)
 class ServizioImmagine(models.Model):
     servizio = models.ForeignKey(Servizio, related_name='galleria_immagini', on_delete=models.CASCADE)
