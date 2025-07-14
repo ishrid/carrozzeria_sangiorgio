@@ -31,10 +31,10 @@
           <a class="nav-link" href="{% url 'main:chi_siamo' %}">Chi Siamo</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarServicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#"   role="button" data-bs-toggle="dropdown" aria-expanded="false"    >
             Servizi
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarServicesDropdown">
+          <ul class="dropdown-menu"  >
             {% for servizio in servizi_menu %}
             <li><a class="dropdown-item" href="{% url 'main:servizi_detail' slug=servizio.slug %}">{{ servizio.nome }}</a></li>
             {% endfor %}
@@ -61,3 +61,5 @@
     </nav>
   </div>
 </header>
+
+ 

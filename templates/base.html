@@ -4,7 +4,9 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    
     <title>{% block title %}Carrozzeria San Giorgio | {% endblock %}</title>
 
     {%block head %}
@@ -14,20 +16,12 @@
     {# Includi il tuo file CSS #}
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
    
-    
-    {% block extra_head %}{% endblock %}
-
-
-    <meta charset="utf-8">
-
-    <!-- Viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
-    
+     
     <!-- SEO meta tags -->
-    <title>Around | Insurance Company</title>
-    <meta name="description" content="Around - Multipurpose Bootstrap HTML Template">
-    <meta name="keywords" content="bootstrap, business, corporate, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, saas, multipurpose, product landing, shop, software, ui kit, web studio, landing, light and dark mode, html5, css3, javascript, gallery, slider, touch, creative">
-    <meta name="author" content="Createx Studio">
+     
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}{% endblock %}">
+    <meta name="author" content="Heich One Sagl">
 
     <!-- Webmanifest + Favicon / App icons -->
     <link rel="manifest" href="{% static 'app-icons/manifest.json' %}">
@@ -48,8 +42,7 @@
     <!-- Font icons -->
     <link rel="stylesheet" href="{% static 'icons/around-icons.min.css' %}">
  
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
-
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
     <!-- Page loading styles -->
     <style>
       .page-loading {
@@ -165,9 +158,9 @@
     <!-- Page wrapper -->
     <main class="page-wrapper">
 
-    <header>
+     
         {% include 'nav.html' %}
-    </header>
+    
  
         {% block content %}{% endblock %}
       </main>
@@ -186,9 +179,6 @@
       <i class="ai-arrow-up"></i>
     </a>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
- 
 
     <!-- Vendor scripts: JS libraries and plugins HOME -->
     <script src="{% static 'vendor/jarallax/dist/jarallax.min.js' %}"></script>
@@ -197,6 +187,9 @@
 
     <!-- Bootstrap + Theme scripts -->
     <script src="{% static 'js/theme.js' %}"></script>
+
+ 
+
 
 
     {% block extra_js %}
