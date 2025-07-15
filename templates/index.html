@@ -277,39 +277,32 @@
             <p class="fs-lg text-muted">Le parole non bastano. Lascia che siano le immagini dei nostri restauri a parlare della nostra passione.</p>
         </div>
         <div class="row g-4">
-             <div class="col-lg-4 col-md-6">
-                <a href="#" class="card card-portfolio zoom-effect border-0 shadow-sm h-100 text-decoration-none">
-                    <div class="card-img-wrapper">
-                        <img src="{% static 'img/restauri/restauro-1.jpg' %}" alt="Restauro Lancia Delta">
-                    </div>
-                    <div class="card-body px-0 pt-4 text-center">
-                        <h3 class="h5 mb-2">Restauro Lancia Delta HF Integrale</h3>
-                        <p class="fs-sm text-muted mb-0">Un pezzo di storia del rally tornato al suo antico splendore.</p>
-                    </div>
-                </a>
-            </div>
-             <div class="col-lg-4 col-md-6">
-                 <a href="#" class="card card-portfolio zoom-effect border-0 shadow-sm h-100 text-decoration-none">
-                    <div class="card-img-wrapper">
-                        <img src="{% static 'img/restauri/restauro-2.jpg' %}" alt="Restauro Alfa Romeo">
-                    </div>
-                    <div class="card-body px-0 pt-4 text-center">
-                        <h3 class="h5 mb-2">Restauro Alfa Romeo Giulia GT</h3>
-                        <p class="fs-sm text-muted mb-0">Linee classiche e un cuore sportivo, riportati alla perfezione.</p>
-                    </div>
-                </a>
-            </div>
-             <div class="col-lg-4 col-md-6">
-                 <a href="#" class="card card-portfolio zoom-effect border-0 shadow-sm h-100 text-decoration-none">
-                    <div class="card-img-wrapper">
-                        <img src="{% static 'img/restauri/restauro-3.jpg' %}" alt="Restauro Porsche 911">
-                    </div>
-                    <div class="card-body px-0 pt-4 text-center">
-                        <h3 class="h5 mb-2">Restauro Porsche 911 Targa</h3>
-                        <p class="fs-sm text-muted mb-0">Un'icona senza tempo, curata in ogni minimo dettaglio.</p>
-                    </div>
-                </a>
-            </div>
+              
+{% for restauro in restauri_in_evidenza %}
+  <div class="col-lg-4 col-md-6 mb-4">
+    <a href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}" 
+       class="card h-100 border-0 text-decoration-none shadow-sm transition-all rounded-4 hover-shadow-lg">
+
+      <div class="card-img-wrapper overflow-hidden rounded-top-4">
+        <img src="{{ restauro.foto_copertina.url }}" 
+             alt="{{ restauro.titolo }}" 
+             class="w-100 h-100 object-fit-cover transition-transform" 
+             style="aspect-ratio: 4/3;">
+      </div>
+
+      <div class="card-body text-center px-3 py-4">
+        <h3 class="h5 mb-2">{{ restauro.titolo }}</h3>
+        <p class="fs-sm text-muted mb-0">{{ restauro.descrizione_breve|truncatechars:250 }}</p>
+      </div>
+    </a>
+  </div>
+{% endfor %}
+
+
+
+
+
+
         </div>
     </div>
 </section>
@@ -326,7 +319,7 @@
         </div>
     </div>
 </section>
-
+<!--
 <section class="py-5">
     <div class="container">
         <h2 class="h4 text-center mb-5">Garanzia di Qualità e Affidabilità</h2>
@@ -339,13 +332,15 @@
         </div>
     </div>
 </section>
- 
+-->
 
 
       <!-- Partners -->
       <section class="container py-5 my-lg-3 my-xl-4 my-xxl-5">
         <div class="overflow-auto pb-sm-4 pb-md-5 pt-sm-2 pt-md-3 mt-n2 mt-sm-0 mt-md-1 mt-lg-3 mb-lg-2" data-simplebar>
-          <div class="row row-cols-5 g-0 pb-2" style="min-width: 768px;">
+          <h2 class="h4 text-center mb-5">Garanzia di Qualità e Affidabilità</h2>
+       
+            <div class="row row-cols-5 g-0 pb-2" style="min-width: 768px;">
              
 
             {% for p in partner_home %}
