@@ -180,48 +180,34 @@
             </p>
         </div>
         <div class="row g-4">
-            <div class="col-lg-4 col-md-6">
-                <div class="card h-100 shadow-sm border-0 position-relative">
-                    <img src="{% static 'img/vendita/placeholder-car-1.jpg' %}" class="card-img-top object-fit-cover" alt="Marca Modello Veicolo" style="height: 220px;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Fiat 500 Abarth</h5>
-                        <p class="card-text text-primary fs-4 fw-bold mb-2">15.900 CHF</p>
-                        <ul class="list-unstyled mb-3 fs-sm text-muted">
-                            <li>Anno: 2018</li>
-                            <li>KM: 45.000</li>
-                        </ul>
-                        <a href="#" class="btn btn-outline-primary mt-auto">Vedi Dettagli</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card h-100 shadow-sm border-0 position-relative">
-                    <img src="{% static 'img/vendita/placeholder-car-2.jpg' %}" class="card-img-top object-fit-cover" alt="Marca Modello Veicolo" style="height: 220px;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Audi A3 Sportback</h5>
-                        <p class="card-text text-primary fs-4 fw-bold mb-2">22.500 CHF</p>
-                        <ul class="list-unstyled mb-3 fs-sm text-muted">
-                            <li>Anno: 2020</li>
-                            <li>KM: 38.000</li>
-                        </ul>
-                        <a href="#" class="btn btn-outline-primary mt-auto">Vedi Dettagli</a>
-                    </div>
-                </div>
-            </div>
+            
+
+{% for veicolo in veicoli %}
+
             <div class="col-lg-4 col-md-6">
                  <div class="card h-100 shadow-sm border-0 position-relative">
-                    <img src="{% static 'img/vendita/placeholder-car-3.jpg' %}" class="card-img-top object-fit-cover" alt="Marca Modello Veicolo" style="height: 220px;">
+                    <img src="{{ veicolo.foto_principale.url }}" class="card-img-top object-fit-cover" alt="Marca Modello Veicolo" style="height: 220px;">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">BMW Serie 1</h5>
-                        <p class="card-text text-primary fs-4 fw-bold mb-2">19.800 CHF</p>
+                        <h5 class="card-title">{{ veicolo.marca }} {{ veicolo.modello }}</h5>
+                        <p class="card-text text-primary fs-4 fw-bold mb-2">{{ veicolo.prezzo|intcomma }} CHF</p>
                         <ul class="list-unstyled mb-3 fs-sm text-muted">
-                            <li>Anno: 2019</li>
-                            <li>KM: 55.000</li>
+                            <li>Anno: {{ veicolo.anno }}</li>
+                            <li>KM: {{ veicolo.chilometraggio|intcomma }}</li>
+                            <li>Carburante: {{ veicolo.get_tipo_carburante_display }}</li>
+                            <li>Cambio: {{ veicolo.get_tipo_cambio_display }}</li>
                         </ul>
-                        <a href="#" class="btn btn-outline-primary mt-auto">Vedi Dettagli</a>
+                        <a href="{% url 'vendita:dettaglio_veicolo' slug=veicolo.slug %}" class="btn btn-outline-primary mt-auto">Vedi Dettagli</a>
                     </div>
                 </div>
             </div>
+
+   
+            {% endfor %}
+        </div>
+
+
+
+
         </div>
         <div class="text-center mt-5">
             <a href="{% url 'vendita:lista_veicoli' %}" class="btn btn-primary btn-lg">Scopri tutti i veicoli</a>

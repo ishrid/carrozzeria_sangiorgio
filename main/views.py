@@ -2,17 +2,20 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Servizio, MembroTeam, FotoOfficina, Certificazione, Partner
 from restauri.models import Restauro
+from vendita.models import VeicoloInVendita
 # View per la homepage
 def home_view(request):
     
     servizi_in_evidenza = Servizio.objects.filter(attivo=True).order_by('ordine_visualizzazione')[:3] # Prendi 3 servizi attivi
     partner_home = Partner.objects.filter(in_homepage=True)
     restauri_in_evidenza = Restauro.objects.filter(attivo=True, in_evidenza=True)
+    veicoli = VeicoloInVendita.objects.filter(attivo=True)
     # Qui potresti anche prendere gli ultimi restauri se hai un'app restauri
     context = {
         'servizi_in_evidenza': servizi_in_evidenza,
         'partner_home':partner_home,
-        'restauri_in_evidenza':restauri_in_evidenza
+        'restauri_in_evidenza':restauri_in_evidenza,
+        'veicoli':veicoli
     }
     return render(request, 'index.html', context)
 
