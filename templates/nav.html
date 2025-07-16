@@ -28,7 +28,7 @@
           <a class="nav-link " href="{% url 'main:home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'main:chi_siamo' %}">Chi Siamo</a>
+          <a class="nav-link" href="{% url 'main:chi_siamo' %}">Chi siamo</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#"   role="button" data-bs-toggle="dropdown" aria-expanded="false"    >
@@ -39,14 +39,14 @@
             <li><a class="dropdown-item" href="{% url 'main:servizi_detail' slug=servizio.slug %}">{{ servizio.nome }}</a></li>
             {% endfor %}
             <li><hr class="dropdown-divider"></li> {# Linea di separazione #}
-            <li><a class="dropdown-item" href="{% url 'main:servizi_list' %}">Tutti i Servizi</a></li>
+            <li><a class="dropdown-item" href="{% url 'main:servizi_list' %}">Tutti i servizi</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'restauri:lista_restauri' %}">Restauri</a>  
+          <a class="nav-link" href="{% url 'restauri:lista_restauri' %}">Restauri e modifiche</a>  
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'vendita:lista_veicoli' %}">Vendita veicoli</a> 
+          <a class="nav-link" href="{% url 'vendita:lista_veicoli' %}">Vendita</a> 
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'main:contatti' %}">Contatti</a>
