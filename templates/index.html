@@ -20,9 +20,13 @@
         <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block" style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
         <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none" style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
         <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
-          <div class="text-center py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5 mx-auto" style="max-width: 900px;">
-            <h1 class="display-4 pb-1 pb-sm-2 pb-md-3">Carrozzeria San Giorgio: Esperienza, Qualità e Passione al tuo Servizio</h1>
-            <p class="fs-lg mb-0">Dal 1977 ad Agno, siamo specialisti in riparazioni di alta gamma, restauro di veicoli d'epoca e vendita di auto usate garantite. Qualità, trasparenza e cura artigianale per la tua auto.</p>
+          <div class="  py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5 mx-auto" style="max-width: 900px;">
+            <h1 class="display-4 pb-1 pb-sm-2 pb-md-3">Carrozzeria San Giorgio
+Tradizione, qualità, fiducia</h1>
+            <p class="fs-lg mb-0">Dal 1973 ad Agno ci prendiamo cura di ogni veicolo con attenzione 
+              artigianale, tecniche all’avanguardia e trasparenza assoluta. </p>
+           <p class="fs-lg mb-0 mt-2"> Dalla riparazione più semplice al restauro completo, offriamo servizi su misura per auto moderne, moto e veicoli storici.</p>
+          
           </div>
 
           <!-- Google reviews (visible on screens > 768px) -->
@@ -72,20 +76,19 @@
 
 <section class="container py-5 my-md-3">
     <div class="text-center mb-5">
-        <h2 class="h1">Soluzioni Complete per la Tua Auto</h2>
-        <p class="fs-lg text-muted">Dalla manutenzione ordinaria ai progetti più complessi, abbiamo il servizio che fa per te.</p>
+        <h2 class="h1">Mostraci il danno, noi pensiamo al resto</h2>
+        <p class="fs-lg text-muted">Clicca sul bottone WhatsApp qui sotto, invia una foto e ricevi subito la nostra valutazione gratuita</p>
     </div>
 
 
-
+<!--
 
 
 {% for servizio in servizi_in_evidenza %}
 
     {% if forloop.counter|divisibleby:2 %}
 
-
-    <!-- Services: Car insurance -->
+ 
       <section class="overflow-hidden pb-5">
         <div class="container pb-sm-3 mb-md-2 mb-lg-3">
           <div class="row g-4">
@@ -122,8 +125,7 @@
 
     {% else %}
 
-    
-      <!-- Services: Travel insurance -->
+     
       <section class="overflow-hidden pb-5">
         <div class="container pb-sm-3 mb-md-2 mb-lg-3">
           <div class="row g-4">
@@ -169,8 +171,59 @@
 
  
  
-</section>
 
+
+
+-->
+<!-- Services: Car insurance -->
+      <section class="overflow-hidden pb-5">
+        <div class="container pb-sm-3 mb-md-2 mb-lg-3">
+          <div class="row g-4">
+            <div class="col-md-6 order-md-2" data-aos="fade-left" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
+              <img class="object-fit-cover w-100 h-100 rounded-3" src="{% static 'img/cta/cta-new.png' %}" alt="{{ servizio.nome }}">
+            </div>
+            <div class="col-md-6 order-md-1" data-aos="fade-right" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
+              <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
+                <h2 class="mb-xl-4"> 📷 Scatta e invia su 💬 WhatsApp  </h2>
+                <p class="mb-4 mb-xl-5">Un clic e siamo già al lavoro: inviaci una foto del danno e ti daremo in tempi rapidi la nostra consulenza e un primo preventivo, senza impegno.</p>
+                
+        <ul class="list-unstyled mb-4 mb-xl-5">
+             <p> <strong> Come funziona</strong></p>
+                <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                  Scatta una o più foto del danno 
+                </li>
+                <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                  Clicca sul bottone WhatsApp qui sotto
+                </li>
+                <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                  Indica marca, modello, anno del veicolo e compagnia d’assicurazione
+                </li>
+                <li class="d-flex pb-2 mb-1">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                  Ricevi la valutazione e il primo preventivo entro breve
+                </li> 
+           
+        </ul>
+   
+                <div class="mt-auto">
+                  <a class="btn btn-outline-primary"href="https://wa.me/41765322296?text=Buongiorno,%0Aallego%20la%20foto%20dei%20danni%20della%20mia%20auto%20per%20una%20prima%20valutazione.%0ADi%20seguito%20indico%20i%20dati%20del%20veicolo%3A%0A%0A%C2%B7%20Marca%3A%0A%C2%B7%20Modello%3A%0A%C2%B7%20Anno%3A%0A%C2%B7%20Compagnia%20d%E2%80%99assicurazione%0A%0AGrazie.
+" target="_blank" rel="noopener"><i class="ai-whatsapp fs-xl me-2 ms-n1"></i> 
+Valutazione gratuita in pochi minuti
+      
+            </a>
+
+             
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+</section>
 <section class="bg-secondary py-5">
     <div class="container">
         <div class="text-center mb-5">
