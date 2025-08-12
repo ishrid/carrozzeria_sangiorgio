@@ -76,7 +76,9 @@
             <div class="col-md-5" data-aos="fade-left" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
               <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
                 <h2 class="mb-xl-4">{{ servizio.nome }}</h2>
+                <!-- 
                 <p class="mb-4 mb-xl-5">{{ servizio.descrizione_breve }}</p>
+ -->
                  {% with punti_chiave=servizio.punti_chiave.all %}
     {% if punti_chiave %}
         <ul class="list-unstyled mb-4 mb-xl-5">
@@ -88,11 +90,13 @@
             {% endfor %}
         </ul>
     {% endif %}
-{% endwith %}
+{% endwith %}<!-- 
                 <div class="mt-auto">
                   <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
                 <i class="ai-arrow-right ms-2"></i>  </a>
                 </div>
+
+                 -->
               </div>
             </div>
           </div>
@@ -114,7 +118,9 @@
             <div class="col-md-5 order-md-1" data-aos="fade-right" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
               <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
                 <h2 class="mb-xl-4">{{ servizio.nome }}</h2>
+<!-- 
                 <p class="mb-4 mb-xl-5">{{ servizio.descrizione_breve }}</p>
+ -->
                 {% with punti_chiave=servizio.punti_chiave.all %}
     {% if punti_chiave %}
         <ul class="list-unstyled mb-4 mb-xl-5">
@@ -127,11 +133,15 @@
         </ul>
     {% endif %}
 {% endwith %}
+
+<!--
                 <div class="mt-auto">
                   <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
                 <i class="ai-arrow-right ms-2"></i>
             </a>
                 </div>
+
+                 -->
               </div>
             </div>
           </div>
