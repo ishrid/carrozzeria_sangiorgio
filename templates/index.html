@@ -20,12 +20,11 @@
         <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block" style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
         <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none" style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
         <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
-          <div class="  py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5 mx-auto" style="max-width: 900px;">
+          <div class=" text-center py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5 mx-auto" style="max-width: 900px;">
             <h1 class="display-4 pb-1 pb-sm-2 pb-md-3">Carrozzeria San Giorgio
 Tradizione, qualità, fiducia</h1>
             <p class="fs-lg mb-0">Dal 1973 ad Agno ci prendiamo cura di ogni veicolo con attenzione 
-              artigianale, tecniche all’avanguardia e trasparenza assoluta. </p>
-           <p class="fs-lg mb-0 mt-2"> Dalla riparazione più semplice al restauro completo, offriamo servizi su misura per auto moderne, moto e veicoli storici.</p>
+              artigianale, tecniche all’avanguardia e trasparenza assoluta. Dalla riparazione più semplice al restauro completo, offriamo servizi su misura per auto moderne, moto e veicoli storici.</p>
           
           </div>
 
@@ -184,7 +183,7 @@ Tradizione, qualità, fiducia</h1>
             </div>
             <div class="col-md-6 order-md-1" data-aos="fade-right" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
               <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
-                <h2 class="mb-xl-4"> 📷 Scatta e invia su 💬 WhatsApp  </h2>
+                <h2 class="mb-xl-4"> <i class="  ai-image me-2  "></i>Scatta e invia su <i class="ai-whatsapp  ai-image ms-2  "></i> WhatsApp  </h2>
                 <p class="mb-4 mb-xl-5">Un clic e siamo già al lavoro: inviaci una foto del danno e ti daremo in tempi rapidi la nostra consulenza e un primo preventivo, senza impegno.</p>
                 
         <ul class="list-unstyled mb-4 mb-xl-5">
@@ -224,6 +223,41 @@ Valutazione gratuita in pochi minuti
       </section>
 
 </section>
+
+
+<section class="container py-5 my-md-3">
+    <div class="row align-items-center">
+        <div class="col-md-6 mb-4 mb-md-0">
+             <img src="{% static 'img/copertine/cop-chisiamo.jpg' %}" class="rounded-3 shadow-lg" alt="Team Carrozzeria San Giorgio">
+        </div>
+        <div class="col-md-6 ps-md-5">
+            <h2 class="h1">Artigiani della Carrozzeria dal 1977</h2>
+            <p class="fs-lg text-muted">Nati da una piccola officina e da una grande passione, siamo cresciuti investendo in tecnologia senza mai perdere l'anima artigianale. Il nostro team tratta ogni veicolo con la cura e l'attenzione che merita, come se fosse il nostro.</p>
+            <a href="{% url 'main:chi_siamo' %}" class="btn btn-outline-primary">Scopri la Nostra Storia</a>
+        </div>
+    </div>
+</section>
+
+      <!-- Partners -->
+      <section class="container py-5 my-lg-3 my-xl-4 my-xxl-5">
+        <div class="overflow-auto pb-sm-4 pb-md-5 pt-sm-2 pt-md-3 mt-n2 mt-sm-0 mt-md-1 mt-lg-3 mb-lg-2" data-simplebar>
+          <h2 class="h4 text-center mb-5">Garanzia di Qualità e Affidabilità</h2>
+       
+            <div class="row row-cols-5 g-0 pb-2" style="min-width: 768px;">
+             
+
+            {% for p in partner_home %}
+        <div class="col d-flex justify-content-center">
+          <img src="{{ p.immagine.url }}" width="196" alt="{{ p.nome }}">
+        </div>
+        {% endfor %}
+             
+             
+              
+          </div>
+        </div>
+      </section>
+
 <section class="bg-secondary py-5">
     <div class="container">
         <div class="text-center mb-5">
@@ -267,7 +301,7 @@ Valutazione gratuita in pochi minuti
         </div>
     </div>
 </section>
-
+<!---
 <section class="container py-5 my-md-3">
     <div class="row align-items-center">
         <div class="col-md-6 col-xl-5 ">
@@ -308,8 +342,8 @@ Valutazione gratuita in pochi minuti
         </div>
     </div>
 </section>
-
-<section class="bg-secondary py-5">
+-->
+<section class="  py-5">
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="h1">I Nostri Lavori Migliori</h2>
@@ -346,18 +380,6 @@ Valutazione gratuita in pochi minuti
     </div>
 </section>
 
-<section class="container py-5 my-md-3">
-    <div class="row align-items-center">
-        <div class="col-md-6 mb-4 mb-md-0">
-             <img src="{% static 'img/copertine/cop-chisiamo.jpg' %}" class="rounded-3 shadow-lg" alt="Team Carrozzeria San Giorgio">
-        </div>
-        <div class="col-md-6 ps-md-5">
-            <h2 class="h1">Artigiani della Carrozzeria dal 1977</h2>
-            <p class="fs-lg text-muted">Nati da una piccola officina e da una grande passione, siamo cresciuti investendo in tecnologia senza mai perdere l'anima artigianale. Il nostro team tratta ogni veicolo con la cura e l'attenzione che merita, come se fosse il nostro.</p>
-            <a href="{% url 'main:chi_siamo' %}" class="btn btn-outline-primary">Scopri la Nostra Storia</a>
-        </div>
-    </div>
-</section>
 <!--
 <section class="py-5">
     <div class="container">
@@ -374,29 +396,9 @@ Valutazione gratuita in pochi minuti
 -->
 
 
-      <!-- Partners -->
-      <section class="container py-5 my-lg-3 my-xl-4 my-xxl-5">
-        <div class="overflow-auto pb-sm-4 pb-md-5 pt-sm-2 pt-md-3 mt-n2 mt-sm-0 mt-md-1 mt-lg-3 mb-lg-2" data-simplebar>
-          <h2 class="h4 text-center mb-5">Garanzia di Qualità e Affidabilità</h2>
-       
-            <div class="row row-cols-5 g-0 pb-2" style="min-width: 768px;">
-             
-
-            {% for p in partner_home %}
-        <div class="col d-flex justify-content-center">
-          <img src="{{ p.immagine.url }}" width="196" alt="{{ p.nome }}">
-        </div>
-        {% endfor %}
-             
-             
-              
-          </div>
-        </div>
-      </section>
-
  
 
- <!-- CTA  sebra ok -->
+ <!-- CTA  sebra  
 
 <section class="container pt-lg-4 pt-xl-5 mt-lg-2 mt-xxl-4 pb-5">
     <div class="position-relative bg-size-cover bg-position-center rounded-3 py-5" style="background-image: url({% static 'img/cta/cta-bg.jpg' %});">
@@ -411,5 +413,5 @@ Valutazione gratuita in pochi minuti
         </div>
     </div>
 </section>
-
+-->
 {% endblock %}
