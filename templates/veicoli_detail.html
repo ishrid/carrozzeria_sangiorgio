@@ -15,11 +15,6 @@
   body {
     overflow-x: hidden;
   }
-  .glightbox-container {
-    overflow: hidden !important;
-  }
- 
-   
 
   /* Immagine principale */
   .veicolo-gallery-main img {
@@ -48,13 +43,22 @@
     pointer-events: none;
   }
 
-  /* Fix per Lightbox: immagini sempre dentro viewport */
-  .glightbox-clean .gslide-media img {
-    max-width: 90vw;
-    max-height: 90vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+  /* --- CSS CORRETTO PER LA GALLERIA LIGHTBOX --- */
+
+  /* 1. Impedisce lo scroll della pagina in background quando la galleria è aperta */
+  body.glightbox-open {
+      overflow: hidden;
+  }
+
+  /* 2. Assicura che l'immagine si adatti perfettamente alla finestra senza creare barre di scorrimento */
+  .gslide img {
+      max-width: 95vw;     /* Larghezza massima: 95% della larghezza della finestra */
+      max-height: 95vh;    /* Altezza massima: 95% dell'altezza della finestra */
+      width: auto;         /* Larghezza automatica per mantenere le proporzioni */
+      height: auto;        /* Altezza automatica per mantenere le proporzioni */
+      object-fit: contain; /* Adatta l'immagine senza tagliarla o deformarla */
+      margin: auto;        /* Centra l'immagine nel suo contenitore */
+      display: block;
   }
 </style>
 {% endblock %}
@@ -64,11 +68,11 @@
   <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block"
        style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px;
               background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px),
-                                linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+                                  linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
   <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none"
        style="margin: -1px 0 0 -1px; background-size: 75px 75px;
               background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px),
-                                linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
+                                  linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
   <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
     <div class="py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5">
       <nav aria-label="breadcrumb">
@@ -89,7 +93,6 @@
       {# Colonna sinistra: Galleria immagini #}
       <div class="col-lg-8">
 
-        <!-- Immagine principale -->
         <div class="mb-4">
           <a href="{{ veicolo.foto_principale.url }}" class="js-glb" data-gallery="veicoloLightbox">
             <img src="{{ veicolo.foto_principale.url }}"
@@ -99,7 +102,6 @@
           </a>
         </div>
 
-        <!-- Griglia: 2 miniature + 1 speciale con overlay -->
         <div class="row g-2">
           {% with total=veicolo.galleria_foto.all|length %}
             {% for img in veicolo.galleria_foto.all %}
