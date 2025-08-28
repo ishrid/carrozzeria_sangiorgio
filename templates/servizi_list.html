@@ -101,7 +101,7 @@
                  -->
 {% if servizio.mostra_bottone_whatsapp and servizio.numero_whatsapp %}
                  <div class="mt-auto">
-                  <a class="btn btn-outline-primary"href="https://wa.me/{{ servizio.numero_whatsapp }}?text={{ messaggio_whatsapp }}
+                  <a class="btn btn-outline-primary"href="https://wa.me/{{ servizio.numero_whatsapp }}?text={{ servizio.messaggio_whatsapp }}
 " target="_blank" rel="noopener"><i class="ai-whatsapp fs-xl me-2 ms-n1"></i> 
 {{ servizio.testo_bottone_whatsapp }}
       
@@ -151,7 +151,7 @@
 {% endwith %}
 {% if servizio.mostra_bottone_whatsapp and servizio.numero_whatsapp %}
                  <div class="mt-auto">
-                  <a class="btn btn-outline-primary"href="https://wa.me/{{ servizio.numero_whatsapp }}?text={{ messaggio_whatsapp }}
+                  <a class="btn btn-outline-primary"href="https://wa.me/{{ servizio.numero_whatsapp }}?text={{ servizio.messaggio_whatsapp }}
 " target="_blank" rel="noopener"><i class="ai-whatsapp fs-xl me-2 ms-n1"></i> 
 {{ servizio.testo_bottone_whatsapp }}
       
