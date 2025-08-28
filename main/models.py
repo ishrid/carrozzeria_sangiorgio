@@ -36,8 +36,9 @@ class Servizio(models.Model):
         verbose_name="Numero WhatsApp",
         help_text="Inserisci il numero di telefono completo (es. 41765322296) a cui inviare il messaggio."
     )
-    messaggio_whatsapp = models.TextField(
+    messaggio_whatsapp = models.CharField(
         blank=True,
+        max_length=500,
         verbose_name="Messaggio WhatsApp Precompilato",
         help_text="Il testo che l'utente troverà precompilato su WhatsApp. Usa [NOME_SERVIZIO] per inserire dinamicamente il nome del servizio."
     )
