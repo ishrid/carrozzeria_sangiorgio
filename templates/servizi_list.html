@@ -33,7 +33,7 @@
                 </ol>
               </nav>
             <h1 class="display-3 pb-1 pb-sm-2 pb-md-3">Ogni intervento, una cura speciale</h1>
-            <p class="fs-lg mb-0">Alla Carrozzeria San Giorgio uniamo esperienza, precisione e passione per offrire un’assistenza completa ai vostri veicoli. Che si tratti di auto moderne, moto o veicoli storici, ogni intervento viene eseguito con la massima cura, garantendo trasparenza e qualità in ogni fase del lavoro.</p>
+            <p class="fs-lg mb-0">Alla Carrozzeria San Giorgio uniamo esperienza, precisione e passione per offrire un’assistenza completa ai nostri clienti. Che si tratti di auto moderne, moto o veicoli storici, ogni intervento viene eseguito con la massima cura, garantendo trasparenza e qualità in ogni fase del lavoro.</p>
           </div>
 
            
@@ -90,6 +90,8 @@
             {% endfor %}
         </ul>
     {% endif %}
+
+ 
 {% endwith %}<!-- 
                 <div class="mt-auto">
                   <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
@@ -97,6 +99,18 @@
                 </div>
 
                  -->
+{% if servizio.mostra_bottone_whatsapp and servizio.numero_whatsapp %}
+                 <div class="mt-auto">
+                  <a class="btn btn-outline-primary"href="https://wa.me/{{ servizio.numero_whatsapp }}?text={{ messaggio_codificato }}
+" target="_blank" rel="noopener"><i class="ai-whatsapp fs-xl me-2 ms-n1"></i> 
+{{ servizio.testo_bottone_whatsapp }}
+      
+            </a>
+
+             
+                </div>
+     
+{% endif %}
               </div>
             </div>
           </div>
@@ -132,8 +146,21 @@
             {% endfor %}
         </ul>
     {% endif %}
-{% endwith %}
 
+
+{% endwith %}
+{% if servizio.mostra_bottone_whatsapp and servizio.numero_whatsapp %}
+                 <div class="mt-auto">
+                  <a class="btn btn-outline-primary"href="https://wa.me/{{ servizio.numero_whatsapp }}?text={{ messaggio_codificato }}
+" target="_blank" rel="noopener"><i class="ai-whatsapp fs-xl me-2 ms-n1"></i> 
+{{ servizio.testo_bottone_whatsapp }}
+      
+            </a>
+
+             
+                </div>
+     
+{% endif %}
 <!--
                 <div class="mt-auto">
                   <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
@@ -158,26 +185,10 @@
   {% endfor %}
 
 
+  
  
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
+ 
 
 
      

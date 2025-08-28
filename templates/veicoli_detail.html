@@ -8,57 +8,23 @@
 
 {% block head %}
 <meta name="description" content="In vendita: {{ veicolo.marca }} {{ veicolo.modello }} del {{ veicolo.anno }} con {{ veicolo.chilometraggio|intcomma }} KM. Scopri i dettagli e richiedi un test drive alla Carrozzeria San Giorgio.">
-<link rel="stylesheet" media="screen" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+{# RIMOSSO GLightbox, AGGIUNTO LightGallery per coerenza con le altre pagine #}
+<link rel="stylesheet" media="screen" href="{% static 'vendor/lightgallery/css/lightgallery-bundle.min.css' %}">
+
 <style>
-  /* Fix doppia scrollbar */
+  /* Stili specifici per la pagina, il fix della galleria non è più necessario */
   body {
     overflow-x: hidden;
   }
-
-  /* Immagine principale */
   .veicolo-gallery-main img {
     max-height: 500px;
     width: 100%;
     object-fit: cover;
   }
-
-  /* Miniature */
-  .veicolo-gallery img {
-    max-width: 100%;
+  .veicolo-gallery-thumb {
     height: 150px;
     object-fit: cover;
-    display: block;
-  }
-
-  /* Overlay "+N" */
-  .veicolo-gallery .overlay-count {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    font-weight: bold;
-    font-size: 1.5rem;
-    pointer-events: none;
-  }
-
-  /* --- CSS CORRETTO PER LA GALLERIA LIGHTBOX --- */
-
-  /* 1. Impedisce lo scroll della pagina in background quando la galleria è aperta */
-  body.glightbox-open {
-      overflow: hidden;
-  }
-
-  /* 2. Assicura che l'immagine si adatti perfettamente alla finestra senza creare barre di scorrimento */
-  .gslide img {
-      max-width: 95vw;     /* Larghezza massima: 95% della larghezza della finestra */
-      max-height: 95vh;    /* Altezza massima: 95% dell'altezza della finestra */
-      width: auto;         /* Larghezza automatica per mantenere le proporzioni */
-      height: auto;        /* Altezza automatica per mantenere le proporzioni */
-      object-fit: contain; /* Adatta l'immagine senza tagliarla o deformarla */
-      margin: auto;        /* Centra l'immagine nel suo contenitore */
-      display: block;
+    width: 100%;
   }
 </style>
 {% endblock %}
@@ -93,48 +59,52 @@
       {# Colonna sinistra: Galleria immagini #}
       <div class="col-lg-8">
 
-        <div class="mb-4">
-          <a href="{{ veicolo.foto_principale.url }}" class="js-glb" data-gallery="veicoloLightbox">
-            <img src="{{ veicolo.foto_principale.url }}"
-                 class="img-fluid rounded shadow-sm w-100"
-                 alt="{{ veicolo.marca }} {{ veicolo.modello }}"
-                 style="height: 500px; object-fit: cover;">
-          </a>
-        </div>
+        {# AGGIUNTO IL CONTENITORE ".gallery" RICHIESTO DA LightGallery #}
+        <div class="gallery">
 
-        <div class="row g-2">
-          {% with total=veicolo.galleria_foto.all|length %}
-            {% for img in veicolo.galleria_foto.all %}
-              {% if forloop.counter <= 2 %}
-                <div class="col-4">
-                  <a href="{{ img.immagine.url }}" class="js-glb" data-gallery="veicoloLightbox">
-                    <img src="{{ img.immagine.url }}"
-                         class="img-fluid rounded shadow-sm"
-                         alt="{{ img.alt_text }}"
-                         style="height: 150px; object-fit: cover; width: 100%;">
-                  </a>
-                </div>
-              {% elif forloop.counter == 3 %}
-                <div class="col-4 position-relative">
-                  <a href="{{ img.immagine.url }}" class="js-glb" data-gallery="veicoloLightbox">
-                    <img src="{{ img.immagine.url }}"
-                         class="img-fluid rounded shadow-sm"
-                         alt="{{ img.alt_text }}"
-                         style="height: 150px; object-fit: cover; width: 100%; filter: brightness(70%);">
-                    {% if total|add:"-2" > 0 %}
-                      <span class="position-absolute top-50 start-50 translate-middle text-white fw-bold fs-4">
-                        +{{ total|add:"-2" }}
-                      </span>
-                    {% endif %}
-                  </a>
-                </div>
-              {% else %}
-                {# Le altre immagini restano nascoste ma incluse nella lightbox #}
-                <a href="{{ img.immagine.url }}" class="d-none js-glb" data-gallery="veicoloLightbox"></a>
-              {% endif %}
-            {% endfor %}
-          {% endwith %}
-        </div>
+            <div class="mb-4">
+              <a href="{{ veicolo.foto_principale.url }}">
+                <img src="{{ veicolo.foto_principale.url }}"
+                     class="img-fluid rounded shadow-sm w-100 veicolo-gallery-main"
+                     alt="{{ veicolo.marca }} {{ veicolo.modello }}">
+              </a>
+            </div>
+
+            <div class="row g-2">
+              {% with total=veicolo.galleria_foto.all|length %}
+                {% for img in veicolo.galleria_foto.all %}
+                  {% if forloop.counter <= 2 %}
+                    <div class="col-4">
+                      <a href="{{ img.immagine.url }}">
+                        <img src="{{ img.immagine.url }}"
+                             class="img-fluid rounded shadow-sm veicolo-gallery-thumb"
+                             alt="{{ img.alt_text }}">
+                      </a>
+                    </div>
+                  {% elif forloop.counter == 3 %}
+                    <div class="col-4 position-relative">
+                      <a href="{{ img.immagine.url }}">
+                        <img src="{{ img.immagine.url }}"
+                             class="img-fluid rounded shadow-sm veicolo-gallery-thumb"
+                             alt="{{ img.alt_text }}"
+                             style="filter: brightness(70%);">
+                        {% if total|add:"-3" > 0 %}
+                          <span class="position-absolute top-50 start-50 translate-middle text-white fw-bold fs-4">
+                            +{{ total|add:"-3" }}
+                          </span>
+                        {% endif %}
+                      </a>
+                    </div>
+                  {% else %}
+                    {# Le altre immagini restano nascoste ma i link vengono inclusi per LightGallery #}
+                    <a href="{{ img.immagine.url }}" class="d-none"></a>
+                  {% endif %}
+                {% endfor %}
+              {% endwith %}
+            </div>
+
+        </div> {# Chiusura del contenitore .gallery #}
+
 
         <h2 class="h3 mt-5 mb-3">Descrizione</h2>
         <p class="fs-lg text-muted mb-5">{{ veicolo.descrizione|linebreaksbr|default:"Nessuna descrizione disponibile." }}</p>
@@ -235,16 +205,24 @@ Sono interessato al veicolo {{ veicolo.marca }} {{ veicolo.modello }} (Anno {{ v
 {% endblock %}
 
 {% block extra_js %}
-<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js" defer></script>
+{# RIMOSSO GLightbox.js, AGGIUNTO LightGallery.js e i suoi plugin #}
+<script src="{% static 'vendor/lightgallery/lightgallery.min.js' %}"></script>
+<script src="{% static 'vendor/lightgallery/plugins/fullscreen/lg-fullscreen.min.js' %}"></script>
+<script src="{% static 'vendor/lightgallery/plugins/zoom/lg-zoom.min.js' %}"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  GLightbox({
-    selector: '.js-glb',
-    touchNavigation: true,
-    loop: true,
-    zoomable: true,
-    autoplayVideos: false
-  });
+  // Seleziona il contenitore della galleria che abbiamo aggiunto nell'HTML
+  const galleryContainer = document.querySelector('.gallery');
+  if (galleryContainer) {
+    lightGallery(galleryContainer, {
+      plugins: [lgZoom, lgFullscreen],
+      selector: 'a', // Cerca tutti i link 'a' all'interno del contenitore
+      download: false,
+      speed: 500,
+      loop: true
+    });
+  }
 });
 </script>
 {% endblock %}

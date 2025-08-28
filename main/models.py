@@ -24,7 +24,31 @@ class Servizio(models.Model):
         help_text="Numero per ordinare i servizi (servizi con numero più basso vengono prima)."
     )
     attivo = models.BooleanField(default=True, verbose_name="Servizio Attivo", help_text="Indica se il servizio è visibile sul sito.")
-
+    # --- NUOVI CAMPI PER IL BOTTONE WHATSAPP ---
+    mostra_bottone_whatsapp = models.BooleanField(
+        default=False,
+        verbose_name="Mostra bottone WhatsApp?",
+        help_text="Seleziona per mostrare un pulsante WhatsApp specifico per questo servizio."
+    )
+    numero_whatsapp = models.CharField(
+        max_length=20,
+        blank=True,
+        verbose_name="Numero WhatsApp",
+        help_text="Inserisci il numero di telefono completo (es. 41765322296) a cui inviare il messaggio."
+    )
+    messaggio_whatsapp = models.TextField(
+        blank=True,
+        verbose_name="Messaggio WhatsApp Precompilato",
+        help_text="Il testo che l'utente troverà precompilato su WhatsApp. Usa [NOME_SERVIZIO] per inserire dinamicamente il nome del servizio."
+    )
+    testo_bottone_whatsapp = models.CharField(
+        max_length=100,
+        blank=True,
+        default="Valutazione via WhatsApp",
+        verbose_name="Testo del bottone WhatsApp",
+        help_text="Il testo che apparirà sul pulsante (es. 'Richiedi un preventivo')."
+    )
+    # --- FINE NUOVI CAMPI ---
     class Meta:
         verbose_name = "Servizio"
         verbose_name_plural = "Servizi"
