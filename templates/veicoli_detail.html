@@ -83,8 +83,7 @@
     </div>
     <div class="col-md-3">
         <ul class="list-unstyled mb-3  ">
-                           
-                            <li class="mb-2"> 
+                            
 <li class="mb-2">52'500 km</li>
                             <li class="mb-2">Cambio manuale</li>
                         </ul>
@@ -178,7 +177,7 @@
           {% for item in veicolo.dotazione_opzionale|splitlines %}
             {% if item %}
               <li class="d-flex align-items-baseline mb-2">
-                <i class="ai-check text-primary me-2"></i> {{ item }}
+               <!-- <i class="ai-check text-primary me-2"></i>--> {{ item }}
               </li>
             {% endif %}
           {% endfor %}
@@ -190,23 +189,30 @@
 
         <h2 class="h3 mt-5 mb-3  ">Servizi aggiuntivi del rivenditore</h2>
         <div class="row mb-5 ">
+             <div class="col-md-3">
+                                <img src="{% static 'img/quality.svg' %}" alt=""  class="img-fluid">
+                            </div>
+                            <div class="col-md-9"></div>
           <div class="col-md-6">
-             Quality1
+             
 
-Garanzie per veicoli con prestazioni di alto livello
+<p> Garanzie per veicoli con prestazioni di alto livello</p>
 
-Copertura di costi di riparazione elevati in caso di sinistro
+<p>Copertura di costi di riparazione elevati in caso di sinistro</p>
 
-Autorizzazione velocissima alla riparazione del danno per rientrare in possesso del veicolo in breve tempo
+<p>Autorizzazione velocissima alla riparazione del danno per rientrare in possesso del veicolo in breve tempo </p>
 
 
           </div>
            <div class="col-md-6">
-             Nessun anticipo finanziario in caso di sinistro in Svizzera
+        <p>     Nessun anticipo finanziario in caso di sinistro in Svizzera</p>
 
-Copertura in tutta Europa secondo la carta internazionale d’assicurazione
+<p>Copertura in tutta Europa secondo la carta internazionale d’assicurazione</p>
 
-Saperne di più
+
+          </div>
+          <div class="col-md-3">
+<p>Saperne di più</p>
           </div>
         </div>
 
