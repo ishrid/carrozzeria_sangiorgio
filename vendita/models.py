@@ -31,7 +31,7 @@ class VeicoloInVendita(models.Model):
         ('venduto', 'Venduto'),
     ]
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='disponibile')
-   
+    
 
     marca = models.CharField(max_length=100, verbose_name="Marca")
     modello = models.CharField(max_length=100, verbose_name="Modello")
@@ -63,6 +63,7 @@ class VeicoloInVendita(models.Model):
     
     data_pubblicazione = models.DateTimeField(auto_now_add=True, verbose_name="Data di Pubblicazione")
     attivo = models.BooleanField(default=True, verbose_name="Disponibile per la Vendita")
+    is_quality = models.BooleanField(default=False, verbose_name="quality?")
 
     class Meta:
         verbose_name = "Veicolo in Vendita"

@@ -15,7 +15,7 @@ class VeicoloInVenditaAdmin(admin.ModelAdmin):
     inlines = [VeicoloImmagineInline] # Abilita l'aggiunta di immagini alla galleria
     fieldsets = (
         (None, {
-            'fields': ('marca', 'modello', 'slug', 'anno', 'chilometraggio', 'prezzo', 'descrizione', 'attivo')
+            'fields': ('marca', 'modello', 'slug', 'anno', 'chilometraggio', 'prezzo', 'descrizione', 'attivo', 'is_quality')
         }),
         ('Specifiche Tecniche', {
             'fields': ('tipo_carburante', 'tipo_cambio', 'trazione', 'potenza_cv', 'cilindrata', 'numero_porte', 'numero_posti')

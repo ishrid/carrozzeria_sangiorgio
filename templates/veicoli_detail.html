@@ -53,6 +53,44 @@
       {% if veicolo.status != 'disponibile' %}
         <span class="badge bg-dark fs-sm">{{ veicolo.get_status_display }}</span>
       {% endif %}
+       
+<div class="row">
+    <div class="col-md-3">
+<ul class="list-unstyled mb-3  ">
+                           
+                            <li class="mb-2">data</li>
+                            <li class="mb-2">SUV / Fuoristrada</li>
+                            
+                        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul class="list-unstyled mb-3  ">
+                           
+                            <li class="mb-2"><i class="ai-droplet"></i> Benzina</li> 
+
+<li class="mb-2"> Trazione anteriore</li> 
+
+ 
+                        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul class="list-unstyled mb-3  ">
+                           
+                            <li class="mb-2"> 120 PS (88 kW)</li> 
+
+<li class="mb-2"> 5.4 l/100 km</li>
+                        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul class="list-unstyled mb-3  ">
+                           
+                            <li class="mb-2"> 
+<li class="mb-2">52'500 km</li>
+                            <li class="mb-2">Cambio manuale</li>
+                        </ul>
+    </div>
+</div>
+
     </div>
 
     <div class="row">
@@ -146,6 +184,38 @@
           {% endfor %}
         </ul>
         {% endif %}
+
+
+{% if veicolo.is_quality %}
+
+        <h2 class="h3 mt-5 mb-3  ">Servizi aggiuntivi del rivenditore</h2>
+        <div class="row mb-5 ">
+          <div class="col-md-6">
+             Quality1
+
+Garanzie per veicoli con prestazioni di alto livello
+
+Copertura di costi di riparazione elevati in caso di sinistro
+
+Autorizzazione velocissima alla riparazione del danno per rientrare in possesso del veicolo in breve tempo
+
+
+          </div>
+           <div class="col-md-6">
+             Nessun anticipo finanziario in caso di sinistro in Svizzera
+
+Copertura in tutta Europa secondo la carta internazionale d’assicurazione
+
+Saperne di più
+          </div>
+        </div>
+
+{% endif%}
+
+
+
+
+
       </div>
 
       {# Colonna destra: Modulo contatto #}
@@ -170,6 +240,7 @@ Sono interessato al veicolo {{ veicolo.marca }} {{ veicolo.modello }} (Anno {{ v
             </div>
             <input type="hidden" name="veicolo_riferimento" value="{{ veicolo.id }}">
             <button type="submit" class="btn btn-primary w-100">Invia Richiesta</button>
+            <button type="submit" class="btn btn-success mt-2 w-100"> <i class="ai-whatsapp fs-xl me-2 ms-n1"></i> Contatto diretto</button>
           </form>
         </div>
       </div>

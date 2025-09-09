@@ -34,16 +34,17 @@
                 <p class="fs-lg mb-0"> Scopri la nostra selezione di veicoli in vendita. Ogni auto è controllata e garantita dalla Carrozzeria San Giorgio.
                 </p>
             </div>
-            
+            <!--
             <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
                 <div class="d-none d-md-block ratio ratio-21x9"></div>
                 <div class="d-md-none ratio ratio-16x9"></div>
                 
                 <div class="jarallax-img" style="background-image: url({% static 'img/copertine/cop-veicoli.jpg' %});"></div>
             </div>
+        -->
         </div>
     </section>
-
+<!--
     <section class="container py-5 my-md-3 my-lg-5 text-center">
         <h2 class="h1 mb-4">La Garanzia di Acquistare da Professionisti</h2>
         <p class="lead text-muted mb-5">Ogni veicolo in vendita è stato ispezionato e preparato dai nostri tecnici per garantirti la massima tranquillità.</p>
@@ -63,8 +64,8 @@
             </div>
         </div>
     </section>
-
-    <section class="container pb-5 mb-md-4">
+-->
+    <section class="container pb-5 mb-md-4 ">
     
         <div class="card card-body shadow-sm mb-5">
             <form method="GET" action="{% url 'vendita:lista_veicoli' %}" id="filterSortForm">
@@ -109,16 +110,47 @@
                     <img src="{{ veicolo.foto_principale.url }}" class="card-img-top object-fit-cover {% if veicolo.status == 'venduto' %}opacity-50{% endif %}" alt="{{ veicolo.marca }} {{ veicolo.modello }}" style="height: 220px;">
                     
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ veicolo.marca }} {{ veicolo.modello }}</h5>
+                        <h5 class="card-title mb-2">{{ veicolo.marca }} {{ veicolo.modello }}</h5>
                         <p class="card-text text-primary fs-4 fw-bold mb-2">{{ veicolo.prezzo|intcomma }} CHF</p>
-                        <ul class="list-unstyled mb-3 fs-sm text-muted">
+                        <div class="row mb-2">
+                            <div class="col-md-6">
+ <ul class="list-unstyled mb-3 fs-sm text-muted">
                             <li>Anno: {{ veicolo.anno }}</li>
                             <li>KM: {{ veicolo.chilometraggio|intcomma }}</li>
+                             
+                        </ul>
+                            </div>
+                            <div class="col-md-6">
+                                 <ul class="list-unstyled mb-3 fs-sm text-muted">
+                           
                             <li>Carburante: {{ veicolo.get_tipo_carburante_display }}</li>
                             <li>Cambio: {{ veicolo.get_tipo_cambio_display }}</li>
                         </ul>
-                        <p class="card-text flex-grow-1">{{ veicolo.descrizione|truncatechars:100 }}</p>
-                        <a href="{% url 'vendita:dettaglio_veicolo' slug=veicolo.slug %}" class="btn btn-outline-primary mt-auto">Vedi Dettagli</a>
+                            </div>
+                        </div>
+                       
+                         <div class="row align-items-center">
+                            
+                            {% if veicolo.is_quality %}
+                            <div class="col-9">
+                                
+<a href="{% url 'vendita:dettaglio_veicolo' slug=veicolo.slug %}" class="btn btn-outline-primary mt-auto  w-100">Vedi Dettagli</a>
+                    
+                            </div>
+                            <div class="col-3">
+                                <img src="{% static 'img/quality.svg' %}" alt=""  class="img-fluid">
+                            </div>
+                            {% else %}
+<div class="col-12">
+                                
+<a href="{% url 'vendita:dettaglio_veicolo' slug=veicolo.slug %}" class="btn btn-outline-primary mt-auto  w-100">Vedi Dettagli</a>
+                    
+                            </div>
+                            {% endif %}
+                            
+ 
+                         </div>
+                        
                     </div>
                 </div>
             </div>
