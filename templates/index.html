@@ -73,7 +73,7 @@ Tradizione, qualità, fiducia</h1>
   
  
 
-<section class="container py-5 my-md-3">
+<section class="container  pt-5 my-md-3">
     <div class="text-center mb-5">
         <h2 class="h1">Mostraci il danno, noi pensiamo al resto</h2>
         <p class="fs-lg text-muted">Clicca sul bottone WhatsApp qui sotto, inviaci una foto e ricevi subito senza impegno la nostra valutazione</p>
@@ -230,6 +230,31 @@ Valutazione gratuita in pochi minuti
 
 </section>
 
+<section class="container   my-md-3">
+    <div class="position-relative bg-size-cover bg-position-center rounded-3 py-5" style="background-image: url({% static 'img/cta/cta-bg.jpg' %});">
+        <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25 rounded-3"></span>
+        <div class="row position-relative z-2 py-md-4 py-lg-5 my-2">
+            <div class="col-8 col-sm-6 col-md-5     offset-1">
+                <h2 class="h1 text-white pb-2 pb-sm-3">Assistenza nelle pratiche assicurative</h2>
+
+                <li class="d-flex pb-2 mb-1 fs-lg text-white">
+                    <span class="bg-white mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Supporto nella denuncia del sinistro
+                </li>
+                <li class="d-flex pb-2 mb-1 fs-lg text-white">
+                    <span class="bg-white mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Preparazione della documentazione
+                </li>
+                <li class="d-flex pb-2 mb-1 fs-lg text-white">
+                    <span class="bg-white mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Gestione completa fino alla chiusura della pratica
+                </li>
+                 
+                
+             </div>
+        </div>
+    </div>
+</section> 
 
 <section class="container py-5 my-md-3">
     <div class="row align-items-center">
@@ -407,21 +432,6 @@ da oltre cinquant’anni
 
 
  
+ 
 
- <!-- CTA  sebra  
-
-<section class="container pt-lg-4 pt-xl-5 mt-lg-2 mt-xxl-4 pb-5">
-    <div class="position-relative bg-size-cover bg-position-center rounded-3 py-5" style="background-image: url({% static 'img/cta/cta-bg.jpg' %});">
-        <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25 rounded-3"></span>
-        <div class="row position-relative z-2 py-md-4 py-lg-5 my-2">
-            <div class="col-8 col-sm-6 col-md-5     offset-1">
-                <h2 class="h1 text-white pb-2 pb-sm-3">Hai un Danno da Riparare o un Progetto in Mente?</h2>
-                   <p class="fs-lg text-white pb-3 mb-3">Contattaci per una consulenza e un preventivo dettagliato, gratuito e senza impegno. Il nostro team è a tua completa disposizione.</p>
-                
-                <a class="btn btn-primary" href="{% url 'main:contatti' %}">Richiedi un preventivo ora</a>
-            </div>
-        </div>
-    </div>
-</section>
--->
 {% endblock %}
