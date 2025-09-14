@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Strada laterale sinistra -->
+  <polygon points="35,5 25,95 15,95 30,5" fill="gray"/>
+  <!-- Strada laterale destra -->
+  <polygon points="65,5 70,5 85,95 75,95" fill="gray"/>
+  <!-- Linea tratteggiata centrale -->
+  <rect x="47" y="10" width="6" height="12" fill="gray"/>
+  <rect x="47" y="30" width="6" height="12" fill="gray"/>
+  <rect x="47" y="50" width="6" height="12" fill="gray"/>
+  <rect x="47" y="70" width="6" height="12" fill="gray"/>
+  <rect x="47" y="90" width="6" height="5" fill="gray"/>
+</svg>

@@ -1,8 +1,9 @@
 {# carrozzeria_sangiorgio_project/templates/veicoli_detail.html #}
 {% extends 'base.html' %}
 {% load static %}
-{% load humanize %}
+{% load humanize %} 
 {% load custom_filters %}
+
 
 {% block title %}{{ veicolo.marca }} {{ veicolo.modello }} ({{veicolo.anno}}) - Usato Garantito{% endblock %}
 
@@ -48,8 +49,13 @@
           <li class="breadcrumb-item active" aria-current="page">{{ veicolo.marca }} {{ veicolo.modello }}</li>
         </ol>
       </nav>
+<!--
       <h1 class="display-3 pb-1 pb-sm-2 pb-md-3">{{ veicolo.marca }} {{ veicolo.modello }}</h1>
       <p class="lead text-primary fs-2 fw-bold mb-4">{{ veicolo.prezzo|intcomma }} CHF</p>
+    -->
+      <h1 class=" lead   fs-2 fw-bold mb-4">{{ veicolo.marca }} {{ veicolo.modello }}</h1>
+      <p class=" display-3 pb-1 pb-sm-2 pb-md-3 text-primary">CHF {{ veicolo.prezzo}}.-</p>
+
       {% if veicolo.status != 'disponibile' %}
         <span class="badge bg-dark fs-sm">{{ veicolo.get_status_display }}</span>
       {% endif %}
@@ -58,17 +64,73 @@
     <div class="col-md-3">
 <ul class="list-unstyled mb-3  ">
                            
-                            <li class="mb-2">data</li>
-                            <li class="mb-2">SUV / Fuoristrada</li>
+                            <li class="mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+  <line x1="3" y1="10" x2="21" y2="10"></line>
+  <line x1="8" y1="2" x2="8" y2="6"></line>
+  <line x1="16" y1="2" x2="16" y2="6"></line>
+</svg>
+ 📅(immatricolazione)
+                            </li>
+                            <li class="mb-3"> <svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M6 22L10 2"></path>
+  <path d="M18 22L14 2"></path>
+  <line x1="12" y1="6" x2="12" y2="10"></line>
+  <line x1="12" y1="14" x2="12" y2="18"></line>
+</svg>
+🛣️(chilometri percorsi)
+</li>
                             
                         </ul>
     </div>
     <div class="col-md-3">
         <ul class="list-unstyled mb-3  ">
                            
-                            <li class="mb-2"><i class="ai-droplet"></i> Benzina</li> 
+                            <li class="mb-3"><svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="3" width="12" height="18" rx="2" ry="2"></rect>
+  <path d="M15 7h2a2 2 0 0 1 2 2v7a3 3 0 0 0 3 3"></path>
+  <polyline points="10 9 7 14 12 14 9 19"></polyline>
+</svg>
 
-<li class="mb-2"> Trazione anteriore</li> 
+ ⛽⚡(carburante tipo)</li> 
+
+<li class="mb-3"> 
+    <svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <circle cx="12" cy="12" r="9"></circle>
+  <line x1="12" y1="12" x2="16" y2="9"></line>
+  <path d="M9 17h6"></path>
+</svg>
+⏱️(potenza PS/kW)
+</li> 
 
  
                         </ul>
@@ -76,16 +138,84 @@
     <div class="col-md-3">
         <ul class="list-unstyled mb-3  ">
                            
-                            <li class="mb-2"> 120 PS (88 kW)</li> 
+                            <li class="mb-3"> 
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="8" width="18" height="7" rx="2"></rect>
+  <path d="M5 8V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"></path>
+  <circle cx="7" cy="17" r="2"></circle>
+  <circle cx="17" cy="17" r="2"></circle>
+</svg>
+🚙(tipo veicolo)
 
-<li class="mb-2"> 5.4 l/100 km</li>
+                            </li> 
+
+<li class="mb-3"> 
+    <svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <line x1="8" y1="5" x2="8" y2="19"></line>
+  <line x1="16" y1="5" x2="16" y2="19"></line>
+  <line x1="8" y1="12" x2="16" y2="12"></line>
+  <circle cx="8" cy="5" r="1"></circle>
+  <circle cx="8" cy="12" r="1"></circle>
+  <circle cx="8" cy="19" r="1"></circle>
+  <circle cx="16" cy="5" r="1"></circle>
+  <circle cx="16" cy="12" r="1"></circle>
+  <circle cx="16" cy="19" r="1"></circle>
+</svg>
+⚙️(schema marce)
+</li>
                         </ul>
     </div>
     <div class="col-md-3">
         <ul class="list-unstyled mb-3  ">
                             
-<li class="mb-2">52'500 km</li>
-                            <li class="mb-2">Cambio manuale</li>
+<li class="mb-3"> 
+    <svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <circle cx="6" cy="6" r="2"></circle>
+  <circle cx="18" cy="6" r="2"></circle>
+  <circle cx="6" cy="18" r="2"></circle>
+  <circle cx="18" cy="18" r="2"></circle>
+  <line x1="6" y1="8" x2="6" y2="16"></line>
+  <line x1="18" y1="8" x2="18" y2="16"></line>
+  <line x1="8" y1="6" x2="16" y2="6"></line>
+  <line x1="8" y1="18" x2="16" y2="18"></line>
+</svg>
+⚙️(differenziale)
+</li>
+                            <li class="mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M12 2C12 2 6 9 6 14a6 6 0 0 0 12 0c0-5-6-12-6-12z"></path>
+</svg>💧(consumo carburante)
+
+                            </li>
                         </ul>
     </div>
 </div>
@@ -150,15 +280,28 @@
         <div class="row mb-5">
           <div class="col-md-6">
             <ul class="list-group list-group-flush">
+                <!--
               <li class="list-group-item"><strong>Marca:</strong> {{ veicolo.marca }}</li>
               <li class="list-group-item"><strong>Modello:</strong> {{ veicolo.modello }}</li>
               <li class="list-group-item"><strong>Anno:</strong> {{ veicolo.anno }}</li>
               <li class="list-group-item"><strong>Chilometraggio:</strong> {{ veicolo.chilometraggio|intcomma }} KM</li>
               <li class="list-group-item"><strong>Carburante:</strong> {{ veicolo.get_tipo_carburante_display }}</li>
+            -->
+            <li class="list-group-item"><strong>Marca:</strong>xx</li>
+            <li class="list-group-item"><strong>Modello:</strong>xx</li>
+            <li class="list-group-item"><strong>Cilindrata:</strong>xx</li>
+
+            <li class="list-group-item"><strong>Trazione:</strong>xx</li>
+            <li class="list-group-item"><strong>Chilometraggio:</strong>xx</li>
+            <li class="list-group-item"><strong>Carburante:</strong>xx</li>
+
+               
+    
             </ul>
           </div>
           <div class="col-md-6">
             <ul class="list-group list-group-flush">
+                <!--
               <li class="list-group-item"><strong>Cambio:</strong> {{ veicolo.get_tipo_cambio_display }}</li>
               <li class="list-group-item"><strong>Trazione:</strong> {{ veicolo.get_trazione_display }}</li>
               <li class="list-group-item"><strong>Colore Esterno:</strong> {{ veicolo.colore_esterno|default:"N.D." }}</li>
@@ -167,6 +310,15 @@
               {% if veicolo.cilindrata %}<li class="list-group-item"><strong>Cilindrata:</strong> {{ veicolo.cilindrata }} cc</li>{% endif %}
               {% if veicolo.numero_porte %}<li class="list-group-item"><strong>Porte:</strong> {{ veicolo.numero_porte }}</li>{% endif %}
               {% if veicolo.numero_posti %}<li class="list-group-item"><strong>Posti:</strong> {{ veicolo.numero_posti }}</li>{% endif %}
+           
+           -->
+            <li class="list-group-item"><strong>Consumo totale:</strong>xx</li>
+            <li class="list-group-item"><strong>Cambio:</strong>xx</li>
+            <li class="list-group-item"><strong>Marce:</strong>xx</li>
+
+             <li class="list-group-item"><strong>Colore:</strong>xx</li>
+            <li class="list-group-item"><strong>Porte:</strong>xx</li>
+            <li class="list-group-item"><strong>Posti:</strong>xx</li>
             </ul>
           </div>
         </div>
@@ -230,11 +382,13 @@
       {# Colonna destra: Modulo contatto #}
       <div class="col-lg-4">
         <div class="card p-4 shadow-sm border-0 sticky-top" style="top: 100px;">
-          <h4 class="card-title text-center mb-4">Richiesta Informazioni</h4>
-          <p class="text-center text-muted mb-4">Compila il modulo per maggiori dettagli su questo veicolo.</p>
+          <h4 class="card-title text-center mb-4">Richiesta di informazioni</h4>
+          <p class="text-muted mb-4">Compila il modulo per ricevere <br>
+maggiori dettagli su questo veicolo
+</p>
           <form action="{% url 'main:contatti' %}" method="get">
             <div class="mb-3">
-              <label for="id_nome" class="form-label">Nome Completo</label>
+              <label for="id_nome" class="form-label">Nome completo</label>
               <input type="text" class="form-control" id="id_nome" name="nome" required>
             </div>
             <div class="mb-3">
@@ -244,11 +398,11 @@
             <div class="mb-3">
               <label for="id_messaggio" class="form-label">Messaggio</label>
               <textarea class="form-control" id="id_messaggio" name="messaggio" rows="5" required>
-Sono interessato al veicolo {{ veicolo.marca }} {{ veicolo.modello }} (Anno {{ veicolo.anno }}, KM {{ veicolo.chilometraggio|intcomma }}). Potreste fornirmi maggiori informazioni?
+Sono interessato al veicolo {{ veicolo.marca }} {{ veicolo.modello }} (Anno {{ veicolo.anno }}, KM {{ veicolo.chilometraggio|intcomma }}).
               </textarea>
             </div>
             <input type="hidden" name="veicolo_riferimento" value="{{ veicolo.id }}">
-            <button type="submit" class="btn btn-primary w-100">Invia Richiesta</button>
+            <button type="submit" class="btn btn-primary w-100">Invia richiesta</button>
             <button type="submit" class="btn btn-success mt-2 w-100"> <i class="ai-whatsapp fs-xl me-2 ms-n1"></i> Contatto diretto</button>
           </form>
         </div>
@@ -256,7 +410,7 @@ Sono interessato al veicolo {{ veicolo.marca }} {{ veicolo.modello }} (Anno {{ v
     </div>
   </div>
 </section>
-
+<!--
 {% if altri_veicoli %}
 <section class="container mt-5 py-5 border-top">
   <h2 class="h1 text-center mb-5">Potrebbe interessarti anche</h2>
@@ -282,6 +436,9 @@ Sono interessato al veicolo {{ veicolo.marca }} {{ veicolo.modello }} (Anno {{ v
   </div>
 </section>
 {% endif %}
+
+-->
+<div class="mt-5"></div>
 {% endblock %}
 
 {% block extra_js %}
