@@ -116,16 +116,73 @@
                         <div class="row mb-2">
                             <div class="col-md-6">
  <ul class="list-unstyled mb-3 fs-sm text-muted">
-                            <li>Anno: {{ veicolo.anno }}</li>
-                            <li>Km: {{ veicolo.chilometraggio|intcomma }}</li>
+                            <li class="mb-2">  <svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+  <line x1="3" y1="10" x2="21" y2="10"></line>
+  <line x1="8" y1="2" x2="8" y2="6"></line>
+  <line x1="16" y1="2" x2="16" y2="6"></line>
+</svg>
+  {{ veicolo.anno }}</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M6 22L10 2"></path>
+  <path d="M18 22L14 2"></path>
+  <line x1="12" y1="6" x2="12" y2="10"></line>
+  <line x1="12" y1="14" x2="12" y2="18"></line>
+</svg>
+ {{ veicolo.chilometraggio }} Km</li>
                              
                         </ul>
                             </div>
                             <div class="col-md-6">
                                  <ul class="list-unstyled mb-3 fs-sm text-muted">
                            
-                            <li>Carburante: {{ veicolo.get_tipo_carburante_display }}</li>
-                            <li>Cambio: {{ veicolo.get_tipo_cambio_display }}</li>
+                            <li class="mb-2"><svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="3" width="12" height="18" rx="2" ry="2"></rect>
+  <path d="M15 7h2a2 2 0 0 1 2 2v7a3 3 0 0 0 3 3"></path>
+  <polyline points="10 9 7 14 12 14 9 19"></polyline>
+</svg>
+
+ {{ veicolo.get_tipo_carburante_display }}</li>
+                            <li>  <svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <line x1="8" y1="5" x2="8" y2="19"></line>
+  <line x1="16" y1="5" x2="16" y2="19"></line>
+  <line x1="8" y1="12" x2="16" y2="12"></line>
+  <circle cx="8" cy="5" r="1"></circle>
+  <circle cx="8" cy="12" r="1"></circle>
+  <circle cx="8" cy="19" r="1"></circle>
+  <circle cx="16" cy="5" r="1"></circle>
+  <circle cx="16" cy="12" r="1"></circle>
+  <circle cx="16" cy="19" r="1"></circle>
+</svg>
+ {{ veicolo.get_tipo_cambio_display }}</li>
                         </ul>
                             </div>
                         </div>

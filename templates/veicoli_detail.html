@@ -8,7 +8,7 @@
 {% block title %}{{ veicolo.marca }} {{ veicolo.modello }} ({{veicolo.anno}}) - Usato Garantito{% endblock %}
 
 {% block head %}
-<meta name="description" content="In vendita: {{ veicolo.marca }} {{ veicolo.modello }} del {{ veicolo.anno }} con {{ veicolo.chilometraggio|intcomma }} KM. Scopri i dettagli e richiedi un test drive alla Carrozzeria San Giorgio.">
+<meta name="description" content="In vendita: {{ veicolo.marca }} {{ veicolo.modello }} del {{ veicolo.anno }} con {{ veicolo.chilometraggio }} Km. Scopri i dettagli e richiedi un test drive alla Carrozzeria San Giorgio.">
 {# RIMOSSO GLightbox, AGGIUNTO LightGallery per coerenza con le altre pagine #}
 <link rel="stylesheet" media="screen" href="{% static 'vendor/lightgallery/css/lightgallery-bundle.min.css' %}">
 
@@ -64,7 +64,7 @@
     <div class="col-md-3">
 <ul class="list-unstyled mb-3  ">
                            
-                            <li class="mb-3">
+                            <li class="mb-3"><p >
                                 <svg xmlns="http://www.w3.org/2000/svg"
      width="24" height="24"
      viewBox="0 0 24 24"
@@ -78,7 +78,7 @@
   <line x1="8" y1="2" x2="8" y2="6"></line>
   <line x1="16" y1="2" x2="16" y2="6"></line>
 </svg>
- 📅(immatricolazione)
+  {{ veicolo.anno }}</p> 
                             </li>
                             <li class="mb-3"> <svg xmlns="http://www.w3.org/2000/svg"
      width="24" height="24"
@@ -93,7 +93,7 @@
   <line x1="12" y1="6" x2="12" y2="10"></line>
   <line x1="12" y1="14" x2="12" y2="18"></line>
 </svg>
-🛣️(chilometri percorsi)
+ {{ veicolo.chilometraggio }} Km
 </li>
                             
                         </ul>
@@ -114,7 +114,7 @@
   <polyline points="10 9 7 14 12 14 9 19"></polyline>
 </svg>
 
- ⛽⚡(carburante tipo)</li> 
+ {{ veicolo.get_tipo_carburante_display }}</li> 
 
 <li class="mb-3"> 
     <svg xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +129,7 @@
   <line x1="12" y1="12" x2="16" y2="9"></line>
   <path d="M9 17h6"></path>
 </svg>
-⏱️(potenza PS/kW)
+{{ veicolo.potenza_cv }} CV</li>
 </li> 
 
  
@@ -153,7 +153,7 @@
   <circle cx="7" cy="17" r="2"></circle>
   <circle cx="17" cy="17" r="2"></circle>
 </svg>
-🚙(tipo veicolo)
+ {{veicolo.tipo_veicolo}}
 
                             </li> 
 
@@ -176,7 +176,7 @@
   <circle cx="16" cy="12" r="1"></circle>
   <circle cx="16" cy="19" r="1"></circle>
 </svg>
-⚙️(schema marce)
+ {{ veicolo.get_tipo_cambio_display }}
 </li>
                         </ul>
     </div>
@@ -201,7 +201,7 @@
   <line x1="8" y1="6" x2="16" y2="6"></line>
   <line x1="8" y1="18" x2="16" y2="18"></line>
 </svg>
-⚙️(differenziale)
+{{ veicolo.get_trazione_display }}
 </li>
                             <li class="mb-3">
                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -213,7 +213,7 @@
      stroke-linecap="round"
      stroke-linejoin="round">
   <path d="M12 2C12 2 6 9 6 14a6 6 0 0 0 12 0c0-5-6-12-6-12z"></path>
-</svg>💧(consumo carburante)
+</svg> {{veicolo.consumo_totale}}
 
                             </li>
                         </ul>
@@ -276,24 +276,21 @@
         <h2 class="h3 mt-5 mb-3">Descrizione</h2>
         <p class="fs-lg text-muted mb-5">{{ veicolo.descrizione|linebreaksbr|default:"Nessuna descrizione disponibile." }}</p>
 
-        <h2 class="h3 mt-5 mb-3">Dettagli del Veicolo</h2>
+        <h2 class="h3 mt-5 mb-3">Dettagli del veicolo</h2>
         <div class="row mb-5">
           <div class="col-md-6">
             <ul class="list-group list-group-flush">
                 <!--
               <li class="list-group-item"><strong>Marca:</strong> {{ veicolo.marca }}</li>
-              <li class="list-group-item"><strong>Modello:</strong> {{ veicolo.modello }}</li>
-              <li class="list-group-item"><strong>Anno:</strong> {{ veicolo.anno }}</li>
-              <li class="list-group-item"><strong>Chilometraggio:</strong> {{ veicolo.chilometraggio|intcomma }} KM</li>
-              <li class="list-group-item"><strong>Carburante:</strong> {{ veicolo.get_tipo_carburante_display }}</li>
+              <li class="list-group-item"><strong>Modello:</strong> {{ veicolo.modello }}</li>  
             -->
             <li class="list-group-item"><strong>Marca:</strong> {{ veicolo.marca }}</li>
             <li class="list-group-item"><strong>Modello:</strong> {{ veicolo.modello }}</li>
-            <li class="list-group-item"><strong>Cilindrata:</strong>xx</li>
+            <li class="list-group-item"><strong>Cilindrata:</strong> {{ veicolo.cilindrata }} cc</li>
 
-            <li class="list-group-item"><strong>Trazione:</strong>xx</li>
-            <li class="list-group-item"><strong>Chilometraggio:</strong>xx</li>
-            <li class="list-group-item"><strong>Carburante:</strong>xx</li>
+            <li class="list-group-item"><strong>Trazione:</strong> {{ veicolo.get_trazione_display }}</li>
+            <li class="list-group-item"><strong>Chilometraggio:</strong> {{ veicolo.chilometraggio }} Km</li>
+            <li class="list-group-item"><strong>Carburante:</strong> {{ veicolo.get_tipo_carburante_display }}</li>
 
                
     
@@ -301,30 +298,20 @@
           </div>
           <div class="col-md-6">
             <ul class="list-group list-group-flush">
-                <!--
-              <li class="list-group-item"><strong>Cambio:</strong> {{ veicolo.get_tipo_cambio_display }}</li>
-              <li class="list-group-item"><strong>Trazione:</strong> {{ veicolo.get_trazione_display }}</li>
-              <li class="list-group-item"><strong>Colore Esterno:</strong> {{ veicolo.colore_esterno|default:"N.D." }}</li>
-              <li class="list-group-item"><strong>Colore Interno:</strong> {{ veicolo.colore_interno|default:"N.D." }}</li>
-              {% if veicolo.potenza_cv %}<li class="list-group-item"><strong>Potenza:</strong> {{ veicolo.potenza_cv }} CV</li>{% endif %}
-              {% if veicolo.cilindrata %}<li class="list-group-item"><strong>Cilindrata:</strong> {{ veicolo.cilindrata }} cc</li>{% endif %}
-              {% if veicolo.numero_porte %}<li class="list-group-item"><strong>Porte:</strong> {{ veicolo.numero_porte }}</li>{% endif %}
-              {% if veicolo.numero_posti %}<li class="list-group-item"><strong>Posti:</strong> {{ veicolo.numero_posti }}</li>{% endif %}
-           
-           -->
-            <li class="list-group-item"><strong>Consumo totale:</strong>xx</li>
-            <li class="list-group-item"><strong>Cambio:</strong>xx</li>
-            <li class="list-group-item"><strong>Marce:</strong>xx</li>
+                 
+            <li class="list-group-item"><strong>Consumo totale:</strong> {{veicolo.consumo_totale}}</li>
+            <li class="list-group-item"><strong>Cambio:</strong> {{ veicolo.get_tipo_cambio_display }}</li>
+            <li class="list-group-item"><strong>Marce:</strong> {{veicolo.marce}}</li>
 
-             <li class="list-group-item"><strong>Colore:</strong>xx</li>
-            <li class="list-group-item"><strong>Porte:</strong>xx</li>
-            <li class="list-group-item"><strong>Posti:</strong>xx</li>
+             <li class="list-group-item"><strong>Colore:</strong> {{ veicolo.colore|default:"N.D." }}</li>
+            <li class="list-group-item"><strong>Porte:</strong> {{ veicolo.numero_porte|default:"N.D." }}</li>
+            <li class="list-group-item"><strong>Posti:</strong> {{ veicolo.numero_posti }}</li>
             </ul>
           </div>
         </div>
 
         {% if veicolo.dotazione_opzionale %}
-        <h2 class="h3 mt-5 mb-3">Dotazione Opzionale</h2>
+        <h2 class="h3 mt-5 mb-3">Dotazione opzionale</h2>
         <ul class="list-unstyled mb-5">
           {% for item in veicolo.dotazione_opzionale|splitlines %}
             {% if item %}
@@ -398,13 +385,13 @@ maggiori dettagli su questo veicolo
             <div class="mb-3">
               <label for="id_messaggio" class="form-label">Messaggio</label>
               <textarea class="form-control" id="id_messaggio" name="messaggio" rows="5" required>
-Sono interessato al veicolo {{ veicolo.marca }} {{ veicolo.modello }} (Anno {{ veicolo.anno }}, KM {{ veicolo.chilometraggio|intcomma }}).
+Sono interessato al veicolo {{ veicolo.marca }} {{ veicolo.modello }} (Anno {{ veicolo.anno }}, Km {{ veicolo.chilometraggio }}).
               </textarea>
             </div>
             <input type="hidden" name="veicolo_riferimento" value="{{ veicolo.id }}">
             <button type="submit" class="btn btn-primary w-100">Invia richiesta</button>
              
-             <a class="btn btn-success mt-2 w-100"href="https://wa.me/41765322296?text=Sono%20interessato%20al%20veicolo%20{{veicolo.marca}}%20{{veicolo.modello}}%20(Anno%20{{veicolo.anno}},%20KM%20{{veicolo.chilometraggio|intcomma}})."
+             <a class="btn btn-success mt-2 w-100"href="https://wa.me/41765322296?text=Sono%20interessato%20al%20veicolo%20{{veicolo.marca}}%20{{veicolo.modello}}%20(Anno%20{{veicolo.anno}},%20Km%20{{veicolo.chilometraggio|intcomma}})."
    target="_blank" rel="noopener"><i class="ai-whatsapp fs-xl me-2 ms-n1"></i> 
 Contatto diretto
       
@@ -431,7 +418,7 @@ Contatto diretto
           <h5 class="card-title">{{ altro_veicolo.marca }} {{ altro_veicolo.modello }}</h5>
           <p class="card-text text-primary fs-5 fw-bold mb-2">{{ altro_veicolo.prezzo|intcomma }} CHF</p>
           <div class="fs-sm text-muted">
-            <span>{{ altro_veicolo.anno }}</span> &middot; <span>{{ altro_veicolo.chilometraggio|intcomma }} km</span>
+             
           </div>
           <a href="{% url 'vendita:dettaglio_veicolo' slug=altro_veicolo.slug %}" class="btn btn-outline-primary mt-3 mt-auto">Vedi Dettagli</a>
         </div>

@@ -230,46 +230,49 @@ Valutazione gratuita in pochi minuti
 
 </section>
 
-<section class="container   my-md-3">
-    <div class="position-relative bg-size-cover bg-position-center rounded-3 py-5" style="background-image: url({% static 'img/cta/cta-bbg.png' %});">
-        <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25 rounded-3"></span>
-        <div class="row position-relative z-2 py-md-4 py-lg-5 my-2">
-            <div class="col-8 col-sm-6 col-md-5     offset-1">
-                <h2 class="h1 text-white pb-2 pb-sm-3">Assistenza nelle pratiche assicurative</h2>
-
-                <li class="d-flex pb-2 mb-1 fs-lg text-white">
-                    <span class="bg-white mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                    Supporto nella denuncia del sinistro
-                </li>
-                <li class="d-flex pb-2 mb-1 fs-lg text-white">
-                    <span class="bg-white mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                    Preparazione della documentazione
-                </li>
-                <li class="d-flex pb-2 mb-1 fs-lg text-white">
-                    <span class="bg-white mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                    Gestione completa fino alla chiusura della pratica
-                </li>
-                 
-                
-             </div>
-        </div>
-    </div>
-</section> 
-
+ 
 <section class="container py-5 my-md-3">
     <div class="row align-items-center">
-        <div class="col-md-6 mb-4 mb-md-0">
-             <img src="{% static 'img/copertine/cop-chisiamo.jpg' %}" class="rounded-3 shadow-lg" alt="Team Carrozzeria San Giorgio">
+      <div class="col-md-6  pe-md-5">
+            
+             <img src="{% static 'img/cta/cta-bbg.png' %}" class="rounded-3 shadow-lg" alt="Team Carrozzeria San Giorgio">
+        
+          </div>
+        <div class="col-md-6  mb-4 mb-md-0">
+
+          <h2 class="h1   pb-2 pb-sm-3">Assistenza nelle pratiche assicurative</h2>
+
+                <li class="d-flex pb-2 mb-1 fs-lg  ">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Supporto nella denuncia del sinistro
+                </li>
+                <li class="d-flex pb-2 mb-1 fs-lg  ">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Preparazione della documentazione
+                </li>
+                <li class="d-flex pb-2 mb-1 fs-lg  ">
+                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                    Gestione completa fino alla chiusura della pratica
+                </li> 
         </div>
-        <div class="col-md-6 ps-md-5">
+        
+    </div>
+</section>
+<section class="container py-5 my-md-3">
+    <div class="row align-items-center">
+      <div class="col-md-6  mb-4 mb-md-0">
             <h2 class="h1">Un punto di riferimento <br>
 da oltre cinquant’anni
 </h2>
-            <p class="fs-lg text-muted">
+            <p class="fs-lg text-muted mb-4">
               Fondata nel 1973 ad Agno da Edo Camponovo e "Pierin" Rebuzzi, la Carrozzeria San Giorgio è da oltre cinquant'anni un punto di riferimento per chi cerca competenza, affidabilità e cura artigianale.
             </p>
             <a href="{% url 'main:chi_siamo' %}" class="btn btn-outline-primary">La nostra storia</a>
         </div>
+        <div class="col-md-6 ps-md-5">
+             <img src="{% static 'img/copertine/cop-chisiamo.jpg' %}" class="rounded-3 shadow-lg" alt="Team Carrozzeria San Giorgio">
+        </div>
+        
     </div>
 </section>
 
@@ -303,28 +306,125 @@ da oltre cinquant’anni
         </div>
         <div class="row g-4">
             
+  
+    {% for veicolo in veicoli %}
+            <div class="col-md-4" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{{ forloop.counter0|stringformat:"%s00" }}">
+                <div class="card h-100 shadow-sm border-0 position-relative">
+                    
+                    {% if veicolo.status != 'disponibile' %}
+                        <span class="badge bg-dark position-absolute top-0 end-0 m-2 fs-sm" style="z-index: 2;">{{ veicolo.get_status_display }}</span>
+                    {% endif %}
 
-{% for veicolo in veicoli %}
-
-            <div class="col-lg-4 col-md-6">
-                 <div class="card h-100 shadow-sm border-0 position-relative">
-                    <img src="{{ veicolo.foto_principale.url }}" class="card-img-top object-fit-cover" alt="Marca Modello Veicolo" style="height: 220px;">
+                    <img src="{{ veicolo.foto_principale.url }}" class="card-img-top object-fit-cover {% if veicolo.status == 'venduto' %}opacity-50{% endif %}" alt="{{ veicolo.marca }} {{ veicolo.modello }}" style="height: 220px;">
+                    
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ veicolo.marca }} {{ veicolo.modello }}</h5>
-                        <p class="card-text text-primary fs-4 fw-bold mb-2">{{ veicolo.prezzo|intcomma }} CHF</p>
-                        <ul class="list-unstyled mb-3 fs-sm text-muted">
-                            <li>Anno: {{ veicolo.anno }}</li>
-                            <li>KM: {{ veicolo.chilometraggio|intcomma }}</li>
-                            <li>Carburante: {{ veicolo.get_tipo_carburante_display }}</li>
-                            <li>Cambio: {{ veicolo.get_tipo_cambio_display }}</li>
+                        <h5 class="card-title mb-2">{{ veicolo.marca }} {{ veicolo.modello }}</h5>
+                        <p class="card-text text-primary fs-4 fw-bold mb-2">CHF {{ veicolo.prezzo|intcomma }}.-</p>
+                        <div class="row mb-2">
+                            <div class="col-md-6">
+ <ul class="list-unstyled mb-3 fs-sm text-muted">
+                            <li class="mb-2">  <svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+  <line x1="3" y1="10" x2="21" y2="10"></line>
+  <line x1="8" y1="2" x2="8" y2="6"></line>
+  <line x1="16" y1="2" x2="16" y2="6"></line>
+</svg>
+  {{ veicolo.anno }}</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M6 22L10 2"></path>
+  <path d="M18 22L14 2"></path>
+  <line x1="12" y1="6" x2="12" y2="10"></line>
+  <line x1="12" y1="14" x2="12" y2="18"></line>
+</svg>
+ {{ veicolo.chilometraggio }} Km</li>
+                             
                         </ul>
-                        <a href="{% url 'vendita:dettaglio_veicolo' slug=veicolo.slug %}" class="btn btn-outline-primary mt-auto">Vedi Dettagli</a>
+                            </div>
+                            <div class="col-md-6">
+                                 <ul class="list-unstyled mb-3 fs-sm text-muted">
+                           
+                            <li class="mb-2"><svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <rect x="3" y="3" width="12" height="18" rx="2" ry="2"></rect>
+  <path d="M15 7h2a2 2 0 0 1 2 2v7a3 3 0 0 0 3 3"></path>
+  <polyline points="10 9 7 14 12 14 9 19"></polyline>
+</svg>
+
+ {{ veicolo.get_tipo_carburante_display }}</li>
+                            <li>  <svg xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <line x1="8" y1="5" x2="8" y2="19"></line>
+  <line x1="16" y1="5" x2="16" y2="19"></line>
+  <line x1="8" y1="12" x2="16" y2="12"></line>
+  <circle cx="8" cy="5" r="1"></circle>
+  <circle cx="8" cy="12" r="1"></circle>
+  <circle cx="8" cy="19" r="1"></circle>
+  <circle cx="16" cy="5" r="1"></circle>
+  <circle cx="16" cy="12" r="1"></circle>
+  <circle cx="16" cy="19" r="1"></circle>
+</svg>
+ {{ veicolo.get_tipo_cambio_display }}</li>
+                        </ul>
+                            </div>
+                        </div>
+                       
+                         <div class="row align-items-center">
+                            
+                            {% if veicolo.is_quality %}
+                            <div class="col-9">
+                                
+<a href="{% url 'vendita:dettaglio_veicolo' slug=veicolo.slug %}" class="btn btn-outline-primary mt-auto  w-100">Vedi dettagli</a>
+                    
+                            </div>
+                            <div class="col-3">
+                                <img src="{% static 'img/quality.svg' %}" alt=""  class="img-fluid">
+                            </div>
+                            {% else %}
+<div class="col-12">
+                                
+<a href="{% url 'vendita:dettaglio_veicolo' slug=veicolo.slug %}" class="btn btn-outline-primary mt-auto  w-100">Vedi dettagli</a>
+                    
+                            </div>
+                            {% endif %}
+                            
+ 
+                         </div>
+                        
                     </div>
                 </div>
             </div>
-
-   
-            {% endfor %}
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <p>Nessun veicolo attualmente disponibile per la vendita.</p>
+                <p class="text-muted">Torna a trovarci presto per scoprire le nuove occasioni.</p>
+            </div>
+            {% endfor %} 
         </div>
 
 

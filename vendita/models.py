@@ -37,16 +37,22 @@ class VeicoloInVendita(models.Model):
     modello = models.CharField(max_length=100, verbose_name="Modello")
     slug = models.SlugField(unique=True, blank=True, help_text="Slug per URL puliti. Lascia vuoto per generare automaticamente.")
     anno = models.IntegerField(verbose_name="Anno di Immatricolazione")
-    chilometraggio = models.IntegerField(verbose_name="Chilometraggio (KM)")
-    prezzo = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Prezzo (CHF)")
-    
+    chilometraggio = models.CharField(verbose_name="Chilometraggio (Km)")
+    prezzo = models.CharField(max_length=100, verbose_name="Prezzo (CHF)")
     descrizione = models.TextField(verbose_name="Descrizione del Veicolo", blank=True, null=True)
+    consumo_totale = models.CharField(max_length=100, verbose_name="Consumo totale", blank=True,null=True)
+    marce = models.CharField(max_length=100, verbose_name="Marce", blank=True,null=True) 
+    
+ 
+    
+    
     
     tipo_carburante = models.CharField(max_length=50, choices=TIPO_CARBURANTE_CHOICES, verbose_name="Tipo Carburante")
     tipo_cambio = models.CharField(max_length=50, choices=TIPO_CAMBIO_CHOICES, verbose_name="Tipo Cambio")
     trazione = models.CharField(max_length=50, choices=TRAZIONE_CHOICES, verbose_name="Trazione")
-    colore_esterno = models.CharField(max_length=50, verbose_name="Colore Esterno", blank=True)
-    colore_interno = models.CharField(max_length=50, verbose_name="Colore Interno", blank=True)
+    tipo_veicolo = models.CharField(max_length=50, verbose_name="Tipo veicolo", blank=True)
+    colore = models.CharField(max_length=50, verbose_name="Colore", blank=True, null=True)
+    
     numero_porte = models.IntegerField(verbose_name="Numero Porte", blank=True, null=True)
     numero_posti = models.IntegerField(verbose_name="Numero Posti", blank=True, null=True)
     potenza_cv = models.IntegerField(verbose_name="Potenza (CV)", blank=True, null=True)
