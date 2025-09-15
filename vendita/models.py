@@ -61,6 +61,17 @@ class VeicoloInVendita(models.Model):
 
     tit1 = models.CharField(verbose_name="Motore e trasmissione", default="Motore e trasmissione", blank=True, null=True)
     box1 = models.TextField(verbose_name="Box 1", blank=True, null=True)
+    
+    tit2 = models.CharField(verbose_name="Prestazioni e consumi", default="Prestazioni e consumi", blank=True, null=True)
+    box2 = models.TextField(verbose_name="Box 2", blank=True, null=True)
+    
+
+    tit3 = models.CharField(verbose_name="Comfort, sicurezza e altre dotazioni", default="Comfort, sicurezza e altre dotazioni", blank=True, null=True)
+    box3 = models.TextField(verbose_name="Box 3", blank=True, null=True)
+    
+    
+    
+    
     # Dotazione opzionale (può essere un JSONField per maggiore flessibilità o TextField per una lista semplice)
     dotazione_opzionale = models.TextField(
         blank=True,

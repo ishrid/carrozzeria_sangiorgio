@@ -27,6 +27,16 @@ class VeicoloInVenditaAdmin(admin.ModelAdmin):
         ('Motore e trasmissione', {
             'fields': ('tit1','box1')
         }),
+        ('Prestazioni e consumi', {
+            'fields': ('tit2','box2')
+        }),
+        ('Comfort, sicurezza e altre dotazioni', {
+            'fields': ('tit3','box3')
+        }),
+
+        
+
+        
         ('Dotazione', {
             'fields': ('dotazione_opzionale',)
         }),

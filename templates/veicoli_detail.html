@@ -316,25 +316,51 @@
           {% for item in veicolo.box1|splitlines %}
             {% if item %}
               <li class="d-flex align-items-baseline mb-2">
-               <i class="ai-check text-primary me-2"></i> {{ item }}
+               <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span> {{ item }}
               </li>
             {% endif %}
           {% endfor %}
         </ul>
         {% endif %}
 
+        {% if veicolo.box2 %}
+        <h2 class="h3 mt-5 mb-3">{{veicolo.tit2}}</h2>
+        <ul class="list-unstyled mb-5">
+          {% for item in veicolo.box2|splitlines %}
+            {% if item %}
+              <li class="d-flex align-items-baseline mb-2">
+               <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span> {{ item }}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if veicolo.box3 %}
+        <h2 class="h3 mt-5 mb-3">{{veicolo.tit3}}</h2>
+        <ul class="list-unstyled mb-5">
+          {% for item in veicolo.box3|splitlines %}
+            {% if item %}
+              <li class="d-flex align-items-baseline mb-2">
+               <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span> {{ item }}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        {% endif %}
+<!-- 
         {% if veicolo.dotazione_opzionale %}
         <h2 class="h3 mt-5 mb-3">Dotazione opzionale</h2>
         <ul class="list-unstyled mb-5">
           {% for item in veicolo.dotazione_opzionale|splitlines %}
             {% if item %}
               <li class="d-flex align-items-baseline mb-2">
-               <!-- <i class="ai-check text-primary me-2"></i>--> {{ item }}
+               <i class="ai-check text-primary me-2"></i> {{ item }}
               </li>
             {% endif %}
           {% endfor %}
         </ul>
-        {% endif %}
+        {% endif %}-->
 
 
 {% if veicolo.is_quality %}
