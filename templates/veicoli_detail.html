@@ -287,8 +287,8 @@
               <li class="list-group-item"><strong>Chilometraggio:</strong> {{ veicolo.chilometraggio|intcomma }} KM</li>
               <li class="list-group-item"><strong>Carburante:</strong> {{ veicolo.get_tipo_carburante_display }}</li>
             -->
-            <li class="list-group-item"><strong>Marca:</strong>xx</li>
-            <li class="list-group-item"><strong>Modello:</strong>xx</li>
+            <li class="list-group-item"><strong>Marca:</strong> {{ veicolo.marca }}</li>
+            <li class="list-group-item"><strong>Modello:</strong> {{ veicolo.modello }}</li>
             <li class="list-group-item"><strong>Cilindrata:</strong>xx</li>
 
             <li class="list-group-item"><strong>Trazione:</strong>xx</li>
@@ -403,7 +403,12 @@ Sono interessato al veicolo {{ veicolo.marca }} {{ veicolo.modello }} (Anno {{ v
             </div>
             <input type="hidden" name="veicolo_riferimento" value="{{ veicolo.id }}">
             <button type="submit" class="btn btn-primary w-100">Invia richiesta</button>
-            <button type="submit" class="btn btn-success mt-2 w-100"> <i class="ai-whatsapp fs-xl me-2 ms-n1"></i> Contatto diretto</button>
+             
+             <a class="btn btn-success mt-2 w-100"href="https://wa.me/41765322296?text=Sono%20interessato%20al%20veicolo%20{{veicolo.marca}}%20{{veicolo.modello}}%20(Anno%20{{veicolo.anno}},%20KM%20{{veicolo.chilometraggio|intcomma}})."
+   target="_blank" rel="noopener"><i class="ai-whatsapp fs-xl me-2 ms-n1"></i> 
+Contatto diretto
+      
+            </a>
           </form>
         </div>
       </div>
