@@ -286,7 +286,7 @@
             -->
             <li class="list-group-item"><strong>Marca:</strong> {{ veicolo.marca }}</li>
             <li class="list-group-item"><strong>Modello:</strong> {{ veicolo.modello }}</li>
-            <li class="list-group-item"><strong>Cilindrata:</strong> {{ veicolo.cilindrata }} cc</li>
+            <li class="list-group-item"><strong>Cilindrata:</strong> {{ veicolo.cilindrata }} </li>
 
             <li class="list-group-item"><strong>Trazione:</strong> {{ veicolo.get_trazione_display }}</li>
             <li class="list-group-item"><strong>Chilometraggio:</strong> {{ veicolo.chilometraggio }} Km</li>
@@ -309,6 +309,19 @@
             </ul>
           </div>
         </div>
+
+        {% if veicolo.box1 %}
+        <h2 class="h3 mt-5 mb-3">{{veicolo.tit1}}</h2>
+        <ul class="list-unstyled mb-5">
+          {% for item in veicolo.box1|splitlines %}
+            {% if item %}
+              <li class="d-flex align-items-baseline mb-2">
+               <i class="ai-check text-primary me-2"></i> {{ item }}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        {% endif %}
 
         {% if veicolo.dotazione_opzionale %}
         <h2 class="h3 mt-5 mb-3">Dotazione opzionale</h2>

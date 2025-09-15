@@ -56,8 +56,11 @@ class VeicoloInVendita(models.Model):
     numero_porte = models.IntegerField(verbose_name="Numero Porte", blank=True, null=True)
     numero_posti = models.IntegerField(verbose_name="Numero Posti", blank=True, null=True)
     potenza_cv = models.IntegerField(verbose_name="Potenza (CV)", blank=True, null=True)
-    cilindrata = models.IntegerField(verbose_name="Cilindrata (cc)", blank=True, null=True)
+    cilindrata = models.CharField(verbose_name="Cilindrata", blank=True, null=True)
 
+
+    tit1 = models.CharField(verbose_name="Motore e trasmissione", default="Motore e trasmissione", blank=True, null=True)
+    box1 = models.TextField(verbose_name="Box 1", blank=True, null=True)
     # Dotazione opzionale (può essere un JSONField per maggiore flessibilità o TextField per una lista semplice)
     dotazione_opzionale = models.TextField(
         blank=True,

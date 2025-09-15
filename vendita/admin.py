@@ -24,6 +24,9 @@ class VeicoloInVenditaAdmin(admin.ModelAdmin):
             # ✅ CORREZIONE: Aggiunta la virgola finale
             'fields': ('colore',) 
         }),
+        ('Motore e trasmissione', {
+            'fields': ('tit1','box1')
+        }),
         ('Dotazione', {
             'fields': ('dotazione_opzionale',)
         }),
