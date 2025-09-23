@@ -94,21 +94,20 @@
 
  
   
-
+<!--
        {% if restauri_in_evidenza %}
 
-      <!-- Case studies list -->
+      
       <section class="container pt-5 pb-sm-3 mt-5 mb-2 mb-md-3 mb-lg-4 mb-xxl-5">
 
         
-
-        <!-- Page title -->
+ 
          
         <div class="fs-sm text-uppercase mb-3">La Nostra Passione</div>
                 <h2 class="display-6">I Nostri Gioiellio</h2>
  
         {% for restauro in restauri_in_evidenza %}
-        <!-- Item -->
+       
          
 <div class="row align-items-center pt-xl-2 pb-5 mb-lg-2 mb-xl-3 mb-xxl-4">
 
@@ -139,7 +138,7 @@
 
   {% endif %}
      
-
+-->
  
  
 
@@ -182,30 +181,32 @@
             <div class="masonry-grid" data-columns="3">
                 {% for restauro in restauri %}
                 <article class="masonry-grid-item pb-5 mb-md-2" data-groups='["{{ restauro.tipo_veicolo }}"]'>
-                    <div class="card card-portfolio zoom-effect border-0">
+                     <div class="card h-100 shadow-sm border-0 position-relative">
                         <div class="card-img-wrapper">
-                            <img src="{{ restauro.foto_copertina.url }}" alt="{{ restauro.titolo }}">
+                            <img src="{{ restauro.foto_copertina.url }}" alt="{{ restauro.titolo }}" class="card-img-top object-fit-cover"   style="height: 220px;">
                         </div>
 
 
-                        <div class="card-body px-0 pt-4">
+                        <div class="card-body px-4 py-4">
                             <h3 class="h4 mb-2">
                                 <a class="stretched-link" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">{{ restauro.titolo }}</a>
                             </h3>
 
-                            <div class="d-flex justify-content-between fs-sm text-body-secondary ">
+                            <div class="d-flex justify-content-between fs-sm text-body-secondary mb-3">
                                 <span>{{ restauro.get_tipo_veicolo_display }}</span>
-                                <span>{{ restauro.anno_veicolo }}</span>   
+                                <span> Alfa Romeo  Giulia GT 1300 </span>   
+                              <span> Scalino</span>
+                                <span>{{ restauro.anno_veicolo }}</span> 
 
-                            </div>
-
-                            <div class="d-flex justify-content-between fs-sm text-body-secondary mt-3">
-                                
-                                <span>{{ restauro.descrizione_breve }}</span>
-
+                                   
                             </div>
 
                              
+ 
+                                
+<a href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}" class="btn   btn-outline-primary mt-auto  w-100">Vedi dettagli</a>
+                    
+                            
 
 
                         </div>
@@ -223,8 +224,7 @@
     </section>
 
 
- 
- 
+   
  
   
     <!-- Vendor scripts: JS libraries and plugins -->
