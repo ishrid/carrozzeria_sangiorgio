@@ -4,6 +4,7 @@
 {% block title %}{{ restauro.titolo }} - Carrozzeria San Giorgio{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" media="screen" href="{% static 'vendor/lightgallery/css/lightgallery-bundle.min.css' %}">
 
 <style>
   .swiper-slide img {
@@ -24,7 +25,7 @@
   <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none"
        style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
   <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
-    <div class="py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5">
+    <div class="pt-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5">
       <nav aria-label="breadcrumb">
         <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -41,11 +42,63 @@
       </p>
     </div>
 
+ 
+
+
+ {# AGGIUNTO IL CONTENITORE ".gallery" RICHIESTO DA LightGallery #}
+        <div class="gallery">
+
+            <div class="mb-4">
+              <a href="{{ restauro.foto_dopo.url }}">
+                <img src="{{ restauro.foto_dopo.url }}"
+                     class="img-fluid rounded shadow-sm w-100 veicolo-gallery-main"
+                     alt="{{ restauro.titolo }}">
+              </a>
+            </div>
+
+            <div class="row g-2">
+              {% with total=restauro.galleria_foto.all|length %}
+                {% for img in restauro.galleria_foto.all %}
+                  {% if forloop.counter <= 2 %}
+                    <div class="col-4">
+                      <a href="{{ img.immagine.url }}">
+                        <img src="{{ img.immagine.url }}"
+                             class="img-fluid rounded shadow-sm veicolo-gallery-thumb"
+                             alt="{{ img.alt_text }}">
+                      </a>
+                    </div>
+                  {% elif forloop.counter == 3 %}
+                    <div class="col-4 position-relative">
+                      <a href="{{ img.immagine.url }}">
+                        <img src="{{ img.immagine.url }}"
+                             class="img-fluid rounded shadow-sm veicolo-gallery-thumb"
+                             alt="{{ img.alt_text }}"
+                             style="filter: brightness(70%);">
+                        {% if total|add:"-3" > 0 %}
+                          <span class="position-absolute top-50 start-50 translate-middle text-white fw-bold fs-4">
+                            +{{ total|add:"-3" }}
+                          </span>
+                        {% endif %}
+                      </a>
+                    </div>
+                  {% else %}
+                    {# Le altre immagini restano nascoste ma i link vengono inclusi per LightGallery #}
+                    <a href="{{ img.immagine.url }}" class="d-none"></a>
+                  {% endif %}
+                {% endfor %}
+              {% endwith %}
+            </div>
+
+        </div> {# Chiusura del contenitore .gallery #}
+
+           <!--
     <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65">
       <div class="d-none d-md-block" style="height: 600px;"></div>
       <div class="d-md-none ratio ratio-16x9"></div>
       <div class="jarallax-img" style="background-image: url({{ restauro.foto_dopo.url }});"></div>
     </div>
+
+  -->
   </div>
 </section>
 
@@ -177,5 +230,25 @@ guidare.</p>
 <script src="{% static 'vendor/jarallax/dist/jarallax.min.js' %}"></script>
 <script src="{% static 'vendor/img-comparison-slider/dist/index.js' %}"></script>
 <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+<script src="{% static 'vendor/lightgallery/lightgallery.min.js' %}"></script>
+<script src="{% static 'vendor/lightgallery/plugins/fullscreen/lg-fullscreen.min.js' %}"></script>
+<script src="{% static 'vendor/lightgallery/plugins/zoom/lg-zoom.min.js' %}"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Seleziona il contenitore della galleria che abbiamo aggiunto nell'HTML
+  const galleryContainer = document.querySelector('.gallery');
+  if (galleryContainer) {
+    lightGallery(galleryContainer, {
+      plugins: [lgZoom, lgFullscreen],
+      selector: 'a', // Cerca tutti i link 'a' all'interno del contenitore
+      download: false,
+      speed: 500,
+      loop: true
+    });
+  }
+});
+</script>
 
 {% endblock %}

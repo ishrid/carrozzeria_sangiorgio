@@ -99,3 +99,21 @@ class ImmagineFase(models.Model):
 
 # NOTA: Il modello "RestauroImmagine" è stato rimosso e sostituito 
 # dalla combinazione di "FaseLavoro" e "ImmagineFase" per una maggiore flessibilità.
+
+
+class RestauriImmagine(models.Model):
+    """
+    Modello per le immagini della galleria di un veicolo in vendita.
+    """
+    veicolo = models.ForeignKey(Restauro, related_name='galleria_foto', on_delete=models.CASCADE)
+    immagine = models.ImageField(upload_to='restauri_galleria/')
+    alt_text = models.CharField(max_length=255, blank=True, verbose_name="Testo Alt Immagine")
+    ordine = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ['ordine']
+        verbose_name = "Immagine Veicolo"
+        verbose_name_plural = "Immagini Veicolo"
+
+    def __str__(self):
+        return f"Immagine per {self.veicolo.titolo} ({self.id})"

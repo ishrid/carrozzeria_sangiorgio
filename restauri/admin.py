@@ -1,11 +1,15 @@
 # restauri/admin.py
 
 from django.contrib import admin
-from .models import Restauro, FaseLavoro, ImmagineFase # ✅ 1. Importiamo i nuovi modelli
+from .models import Restauro, FaseLavoro, ImmagineFase , RestauriImmagine# ✅ 1. Importiamo i nuovi modelli
 
 # =============================================================================
 # ✅ 2. CREIAMO GLI "INLINE" PER LA GESTIONE annidata
 # =============================================================================
+class RestauroImmagineInline(admin.TabularInline):
+    model = RestauriImmagine
+    extra = 1 # Numero di form vuoti da mostrare per le immagini della galleria
+    fields = ('immagine', 'alt_text', 'ordine')
 
 class ImmagineFaseInline(admin.TabularInline):
     """
@@ -47,6 +51,7 @@ class RestauroAdmin(admin.ModelAdmin):
     
     # Sostituiamo il vecchio inline con quello nuovo
     inlines = [FaseLavoroInline] 
+    inlines = [RestauroImmagineInline] # Abilita l'aggiunta di immagini alla galleria
     
     # I fieldset rimangono quasi identici, sono ben organizzati
     fieldsets = (
@@ -85,4 +90,4 @@ class FaseLavoroAdmin(admin.ModelAdmin):
     )
 
 # NOTA: Non è necessario registrare 'ImmagineFase' direttamente,
-# perché viene già gestito tramite l'inline dentro 'FaseLavoroAdmin'.
+# perché viene già gestito tramite l'inline dentro 'FaseLavoroAdmin'. 
