@@ -64,7 +64,7 @@
         <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block" style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
         <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none" style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
         <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
-          <div class=" py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5  "  >
+          <div class=" pt-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5  "  >
              <!-- Breadcrumb -->
               <nav aria-label="breadcrumb">
                 <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
@@ -78,17 +78,17 @@
             <p class="fs-lg mb-0">Diamo nuova vita alle auto d'epoca e realizziamo modifiche uniche con passione e precisione. Esplora il nostro portfolio.</p>
           </div>
 
-           
+           <img src="{% static 'img/copertine/cop-home.png' %}" class="img-fluid rounded" alt="" srcset="">
           
-          <!-- Parallax image -->
+          <!-- Parallax image 
           <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
             <div class="d-none d-md-block ratio ratio-21x9"></div>
             <div class="d-md-none ratio ratio-16x9"></div>
              
-            <div class="jarallax-img" style="background-image: url({% static 'img/copertine/cop-restauri.jpg' %});"></div>
+            <div class="jarallax-img" style="background-image: url({% static 'img/copertine/cop-home.png' %});"></div>
           </div>
 
-           
+        -->
         </div>
       </section>
 
@@ -191,15 +191,27 @@
                             <h3 class="h4 mb-2">
                                 <a class="stretched-link" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">{{ restauro.titolo }}</a>
                             </h3>
-
-                            <div class="d-flex justify-content-between fs-sm text-body-secondary mb-3">
-                                <span>{{ restauro.get_tipo_veicolo_display }}</span>
-                                <span> Alfa Romeo  Giulia GT 1300 </span>   
-                              <span> Scalino</span>
-                                <span>{{ restauro.anno_veicolo }}</span> 
-
-                                   
-                            </div>
+ 
+                                 
+<div class="row mb-3">
+  <div class="col-md-7">
+<ul class="list-group list-group-flush">
+                 
+             <li class="list-group-item"><strong>Marca: </strong> <!--{{ restauro.get_tipo_veicolo_display }}-->Alfa Romeo</li>
+             <li class="list-group-item"><strong>Modello:  </strong> Giulia GT 1300</li>
+            
+            </ul>
+  </div>
+  <div class="col-md-5">
+    <ul class="list-group list-group-flush">
+                 
+             <li class="list-group-item"><strong>Versione: </strong> Scalino</li>
+             <li class="list-group-item"><strong>Anno: </strong> {{ restauro.anno_veicolo }}</li>
+            
+            </ul>
+  </div>
+</div>
+                                    
 
                              
  
