@@ -156,7 +156,11 @@
                 
 
                 <div class="col-xxl-4 col-lg-4 text-center text-lg-start">
-                    <div class="fs-sm text-uppercase mb-3">La Nostra Passione</div>
+                    <div class="fs-sm text-uppercase mb-3">EMOZIONI SENZA TEMPO</div>
+                    
+
+
+
                 <h2 class="display-6">I nostri restauri</h2>
               </div>
 
@@ -188,10 +192,27 @@
 
 
                         <div class="card-body px-4 py-4">
-                            <h3 class="h4 mb-2">
+                          {%if restauro.logo_macchina%}
+                          <div class="row">
+                            <div class="col-md-2">
+                               
+                              <img src="{{restauro.logo_macchina.url}}" class="img-fluid" alt="" srcset="">
+                              
+                            </div>
+                            <div class="col-md-10">
+ <h3 class="h4 mb-2">
                                 <a class="stretched-link" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">{{ restauro.titolo }}</a>
                             </h3>
  
+                            </div>
+                          </div>
+                          {%else%}
+<h3 class="h4 mb-2">
+                                <a class="stretched-link" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">{{ restauro.titolo }}</a>
+                            </h3>
+
+                          {%endif%}
+                           
                                  
 <div class="row mb-3">
   <div class="col-md-7">

@@ -62,7 +62,7 @@ class RestauroAdmin(admin.ModelAdmin):
             'fields': ('marca_veicolo', 'modello_veicolo', 'anno_veicolo', 'tipo_veicolo', 'data_completamento')
         }),
         ('Immagini Principali', {
-            'fields': ('foto_copertina', 'foto_prima', 'foto_dopo')
+            'fields': ('logo_macchina','foto_copertina', 'foto_prima', 'foto_dopo')
         }),
         ('Ordinamento', {
             'fields': ('ordine_visualizzazione',)

@@ -10,8 +10,8 @@ from django.utils.text import slugify
 class Restauro(models.Model):
     TIPO_VEICOLO_CHOICES = [
         ('auto-epoca', "Auto d'Epoca"),
-        ('moto', 'Moto'),
-        ('progetti-speciali', 'Progetti Speciali'),
+        ('moto-epoca', 'Moto d’epoca'),
+        ('progetti-speciali', 'Progetti speciali'),
         ('altro', 'Altro'),
     ]
 
@@ -26,7 +26,10 @@ class Restauro(models.Model):
     
     descrizione_breve = models.TextField(verbose_name="Descrizione Breve", help_text="Breve riassunto per le anteprime e l'introduzione.")
     descrizione_dettagliata = models.TextField(verbose_name="Descrizione Generale", help_text="Descrizione generale del progetto. I dettagli specifici andranno nelle singole 'Fasi di Lavoro'.", blank=True)
-    
+    logo_macchina = models.ImageField(
+        upload_to='restauri/copertine/', 
+        verbose_name="Logo veicolo", blank=True, null=True
+    )
     foto_copertina = models.ImageField(
         upload_to='restauri/copertine/', 
         verbose_name="Immagine di Copertina",

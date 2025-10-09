@@ -34,12 +34,14 @@
         </ol>
       </nav>
       <h1 class="display-3 pb-1 pb-sm-2 pb-md-3">{{ restauro.titolo }}</h1>
+      <!--
       <p class="fs-lg text-muted fs-2 mb-4">
         {% if restauro.marca_veicolo %}{{ restauro.marca_veicolo }} {% endif %}
         {% if restauro.modello_veicolo %}{{ restauro.modello_veicolo }} {% endif %}
         {% if restauro.anno_veicolo %}({{ restauro.anno_veicolo }}) {% endif %}
         {% if restauro.data_completamento %}, Completato il {{ restauro.data_completamento|date:"d M Y" }}{% endif %}
       </p>
+    -->
     </div>
 
  
@@ -108,7 +110,7 @@
       
 
 
-      <h2 class="h3 mt-5 mb-3">Descrizione Generale</h2>
+      <h2 class="h3 mt-5 mb-3">Descrizione generale</h2>
         <p class="fs-lg text-muted mb-5">
 L'Alfa Romeo GT 1300 Scalino, conosciuta anche come "Giulia Sprint GT", è una delle automobili più
 iconiche prodotte dalla casa automobilistica italiana Alfa Romeo. Questa vettura sportiva,
@@ -117,7 +119,7 @@ molti appassionati di auto storiche. Il design elegante e la meccanica raffinata
 Scalino non solo un simbolo di stile italiano, ma anche una macchina performante e divertente da
 guidare.</p>
       
-      <h2 class="h3 mt-5 mb-3">Prima e Dopo il Restauro</h2>
+      <h2 class="h3 mt-5 mb-3">Prima e dopo il restauro</h2>
         <p class="fs-lg text-muted mb-5">Trascina il cursore per vedere la trasformazione.</p>
 
       {% if restauro.foto_prima and restauro.foto_dopo %}
@@ -162,8 +164,7 @@ guidare.</p>
              <li class="list-group-item"><strong>Marca</strong> Alfa Romeo</li>
              <li class="list-group-item"><strong>Modello</strong> GT</li>
              <li class="list-group-item"><strong>Anno</strong> 01.01.1969</li> 
-<li class="list-group-item"><strong>Freni</strong> Dischi anteriori e posteriori</li>
-<li class="list-group-item"><strong>Consumo carburante</strong> Circa 10 L/100 km</li>
+<li class="list-group-item"><strong>Freni</strong> Dischi anteriori e posteriori</li> 
              <li class="list-group-item"><strong>Sospensioni</strong> Indipendenti anteriori e posteriori</li>
 
             </ul>
@@ -171,9 +172,7 @@ guidare.</p>
   <div class="col-md-4">
     <ul class="list-group list-group-flush">
                  
-             <li class="list-group-item"><strong>Chilometraggio</strong> XXX</li>
-             <li class="list-group-item"><strong>Telaio </strong> AR1226042</li>
-             <li class="list-group-item"><strong>Ultimo Collaudo </strong> 24.05.2017</li> 
+            
              
 <li class="list-group-item"><strong>Velocità massima</strong> Circa 170 km/h</li>
 <li class="list-group-item"><strong>Peso</strong> Circa 950 kg</li>
@@ -216,13 +215,12 @@ guidare.</p>
  
 <div class="text-center py-5 my-3 border-top">
   <h2 class="h1 mb-4">Interessato a un restauro?</h2>
-  <p class="fs-lg text-muted mb-5">Hai un'auto a cui vuoi ridare vita? Contattaci per un preventivo senza impegno.</p>
   <div>
-    <a href="#" class="btn btn-lg btn-outline-secondary me-md-3 mb-3 mb-md-0">
-      <i class="ai-arrow-left me-2"></i>Vedi Altri Restauri
+    <a href="{% url 'restauri:lista_restauri' %}" class="btn btn-lg btn-outline-secondary me-md-3 mb-3 mb-md-0">
+      <i class="ai-arrow-left me-2"></i>Vedi altri restauri
     </a>
-    <a href="#" class="btn btn-lg btn-primary">
-      <i class="ai-mail me-2"></i>Richiedi un Preventivo
+    <a href="{% url 'main:contatti' %}" class="btn btn-lg btn-primary">
+      <i class="ai-mail me-2"></i>Richiedi  
     </a>
   </div>
 </div>
