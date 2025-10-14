@@ -585,20 +585,20 @@ da oltre cinquant’anni
                         <div class="card-body px-4 py-4">
                            {%if restauro.logo_macchina%}
                           <div class="row align-items-center">
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                
                               <img src="{{restauro.logo_macchina.url}}" class="img-fluid" alt="" srcset="">
                               
                             </div>
-                            <div class="col-md-10">
- <h3 class="h4 mb-2">
+                            <div class="col-md-9">
+ <h3 class="h5 mb-2">
                                 <a class="stretched-link" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">{{ restauro.titolo }}</a>
                             </h3>
  
                             </div>
                           </div>
                           {%else%}
-<h3 class="h4 mb-2">
+<h3 class="h5 mb-2">
                                 <a class="stretched-link" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">{{ restauro.titolo }}</a>
                             </h3>
 
