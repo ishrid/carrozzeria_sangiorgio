@@ -9,7 +9,7 @@ from django.utils.text import slugify
 
 class Restauro(models.Model):
     TIPO_VEICOLO_CHOICES = [
-        ('auto-epoca', "Auto d'Epoca"),
+        ('auto-epoca', "Auto d'epoca"),
         ('moto-epoca', 'Moto d’epoca'),
         ('progetti-speciali', 'Progetti speciali'),
         ('altro', 'Altro'),
