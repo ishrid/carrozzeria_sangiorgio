@@ -37,29 +37,14 @@
           </div>
 
            
- <img src="{% static 'img/copertine/cop-servizi.jpg' %}" class="img-fluid rounded" alt="" srcset="">
+ <img src="{% static 'img/copertine/cop-servizi2.jpg' %}" class="img-fluid rounded" alt="" srcset="">
           
            
-          
-          <!-- Parallax image  
-          <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
-            <div class="d-none d-md-block ratio ratio-21x9"></div>
-            <div class="d-md-none ratio ratio-16x9"></div>
-             
-            <div class="jarallax-img" style="background-image: url({% static 'img/copertine/cop-servizi.jpg' %});"></div>
-          </div>
-        -->
+           
            
         </div>
       </section>
 
-
- 
-<!-- INTRODUZIONE  
-<div class="container pt-4 pt-sm-5">
-    <div class="fs-sm text-uppercase text-primary mb-3">La Nostra Gamma di Servizi</div>
-    <h2 class="display-6 pb-3 mb-lg-4">Offriamo soluzioni per ogni esigenza, garantendo sempre la massima qualità e attenzione al dettaglio.</h2>
-</div>-->
  
   
 
@@ -211,6 +196,7 @@
 
 <!-- Partner -->
 <section class="py-5 my-2 my-xl-4 my-xxl-5">
+{%if partner %}
   <div class="container pt-3 pt-sm-4 pt-lg-5 mt-xl-2 mt-xxl-3">
     <div class="fs-sm text-uppercase mb-3">I Nostri Partner</div>
     <h2 class="display-6 pb-3 mb-lg-4">Collaborazioni con marchi d’eccellenza</h2>
@@ -226,26 +212,10 @@
     </div>
 
   </div>
+{%endif%}
 </section>
 
-
-
-<!-- CTA  sebra ok  
-
-<section class="container pt-lg-4 pt-xl-5 mt-lg-2 mt-xxl-4 pb-5">
-    <div class="position-relative bg-size-cover bg-position-center rounded-3 py-5" style="background-image: url({% static 'img/cta/cta-bg.jpg' %});">
-        <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25 rounded-3"></span>
-        <div class="row position-relative z-2 py-md-4 py-lg-5 my-2">
-            <div class="col-8 col-sm-6 col-md-5     offset-1">
-                <h2 class="h1 text-white pb-2 pb-sm-3">Hai un Danno da Riparare o un Progetto in Mente?</h2>
-                   <p class="fs-lg text-white pb-3 mb-3">Contattaci per una consulenza e un preventivo dettagliato, gratuito e senza impegno. Il nostro team è a tua completa disposizione.</p>
-                
-                <a class="btn btn-primary" href="{% url 'main:contatti' %}">Richiedi un preventivo ora</a>
-            </div>
-        </div>
-    </div>
-</section>
--->
+ 
 
  
 
