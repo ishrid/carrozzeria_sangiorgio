@@ -29,15 +29,15 @@
 
   <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
     <!-- Titolo -->
-    <div class="text-center py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5 mx-auto" style="max-width: 900px;">
+    <div class="text-sm-center py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5 mx-auto" style="max-width: 900px;">
       <h1 class="display-4 pb-1 pb-sm-2 pb-md-3">
-        Carrozzeria San Giorgio<br>
+        Carrozzeria San Giorgio <br class="d-none d-lg-block">
         Tradizione, qualità, fiducia
       </h1>
       <p class="fs-lg mb-0">
         Dal 1973 ad Agno ci prendiamo cura di ogni cliente con attenzione
         artigianale, tecniche all’avanguardia e trasparenza assoluta.
-        Dalla riparazione più semplice al restauro completo,<br>
+        Dalla riparazione più semplice al restauro completo,<br class="d-none d-lg-block">
         offriamo servizi su misura per auto moderne, moto e veicoli storici.
       </p>
     </div>
@@ -45,7 +45,8 @@
     <!-- Google reviews desktop -->
     <div class="position-relative d-none d-md-block">
       <div class="position-absolute" style="right: 78.24%;">
-        <img class="position-relative z-2" src="{% static 'img/cta/google-reviews.png' %}" width="282" alt="Google reviews">
+        <a href="https://maps.app.goo.gl/G5z2udw1eydi2Cu8A" target="_blank" rel="noopener noreferrer">
+        <img class="position-relative z-2" src="{% static 'img/cta/google-reviews.png' %}" width="282" alt="Google reviews"></a>
         <div class="position-absolute top-0 start-0 w-100 h-100 bg-light rounded-3 shadow-sm d-dark-mode-none"></div>
         <div class="position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block"
              style="background-color: #202327;"></div>
@@ -64,7 +65,8 @@
     <!-- Google reviews mobile -->
     <div class="d-flex flex-column flex-sm-row gap-3 pt-3 d-md-none">
       <div class="position-relative d-flex justify-content-center w-100">
-        <img class="position-relative z-2" src="{% static 'img/cta/google-reviews.png' %}" width="282" alt="Google reviews">
+        <a href="https://maps.app.goo.gl/G5z2udw1eydi2Cu8A" target="_blank" rel="noopener noreferrer">
+        <img class="position-relative z-2" src="{% static 'img/cta/google-reviews.png' %}" width="282" alt="Google reviews">  </a>
         <div class="position-absolute top-0 start-0 w-100 h-100 bg-light rounded-3 shadow-sm d-dark-mode-none"></div>
         <div class="position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block"
              style="background-color: #202327;"></div>
@@ -86,53 +88,7 @@
 
 </section>
 
-      <!-- Hero   
-      <section class="position-relative pt-md-2 pt-lg-4 pt-xl-5 pb-5 pb-lg-0">
-        <div class="position-absolute top-0 start-0 w-100 bg-secondary d-none d-lg-block" style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
-        <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none" style="margin: -1px 0 0 -1px; background-size: 75px 75px; background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px), linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
-        <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
-          <div class=" text-center py-5 mt-3 mt-sm-4 mb-md-3 mb-lg-4 mb-xl-5 mx-auto" style="max-width: 900px;">
-            <h1 class="display-4 pb-1 pb-sm-2 pb-md-3">Carrozzeria San Giorgio
-Tradizione, qualità, fiducia</h1>
-            <p class="fs-lg mb-0">Dal 1973 ad Agno ci prendiamo cura di ogni cliente con attenzione 
-              artigianale, tecniche all’avanguardia e trasparenza assoluta. Dalla riparazione più semplice al restauro completo,<br> offriamo servizi su misura per auto moderne, moto e veicoli storici.</p>
-          
-          </div>
- 
-          <div class="position-relative d-none d-md-block">
-            <div class="position-absolute" style="right: 78.24%;">
-                 
-              <img class="position-relative z-2" src="{% static 'img/cta/google-reviews.png' %}" width="282" alt="Google reviews">
-              <div class="position-absolute top-0 start-0 w-100 h-100 bg-light rounded-3 shadow-sm d-dark-mode-none"></div>
-              <div class="position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block" style="background-color: #202327;"></div>
-            </div>
-          </div>
-      
-          <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
-            <div class="d-none d-md-block ratio ratio-21x9"></div>
-            <div class="d-md-none ratio ratio-16x9"></div>
-            <svg class="d-none d-md-block" width="0" height="0" viewBox="0 0 1296 506">
-              <defs>
-                <clipPath id="shape" clipPathUnits="objectBoundingBox" transform="scale(0.0007716049383, 0.001976284585)">
-                  <path d="M18 110H288C297.941 110 306 101.941 306 92V18C306 8.05887 314.059 0 324 0H1278C1287.94 0 1296 8.05888 1296 18V378C1296 387.941 1287.94 396 1278 396H1008C998.059 396 990 404.059 990 414V488C990 497.941 981.941 506 972 506H18C8.05887 506 0 497.941 0 488V128C0 118.059 8.05887 110 18 110Z"/>
-                </clipPath>
-              </defs>
-            </svg>
-             <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25"></span>
-            <div class="jarallax-img" style="background-image: url({% static 'img/copertine/cop-home2.jpg' %});"></div>
-          </div>
-        
- 
-          <div class="d-flex flex-column flex-sm-row gap-3 pt-3 d-md-none">
-            <div class="position-relative d-flex justify-content-center w-100">
-              <img class="position-relative z-2" src="{% static 'img/cta/google-reviews.png' %}" width="282" alt="Google reviews">
-              <div class="position-absolute top-0 start-0 w-100 h-100 bg-light rounded-3 shadow-sm d-dark-mode-none"></div>
-              <div class="position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block" style="background-color: #202327;"></div>
-            </div>
-             
-          </div>
-        </div>
-      </section> -->
+     
       
    
   
@@ -144,101 +100,8 @@ Tradizione, qualità, fiducia</h1>
         <p class="fs-lg text-muted">Clicca sul bottone WhatsApp qui sotto, inviaci una foto e ricevi subito senza impegno la nostra valutazione</p>
     </div>
 
-
-<!--
-
-
-{% for servizio in servizi_in_evidenza %}
-
-    {% if forloop.counter|divisibleby:2 %}
-
- 
-      <section class="overflow-hidden pb-5">
-        <div class="container pb-sm-3 mb-md-2 mb-lg-3">
-          <div class="row g-4">
-            <div class="col-md-7" data-aos="fade-right" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
-              <img class="object-fit-cover w-100 h-100 rounded-3" src="{{ servizio.immagine_principale.url }}" alt="{{ servizio.nome }}">
-            </div>
-            <div class="col-md-5" data-aos="fade-left" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
-              <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
-                <h2 class="mb-xl-4">{{ servizio.nome }}</h2>
-                <p class="mb-4 mb-xl-5">{{ servizio.descrizione_dettagliata|default:servizio.descrizione_breve }}</p>
-                 {% with punti_chiave=servizio.punti_chiave.all %}
-    {% if punti_chiave %}
-        <ul class="list-unstyled mb-4 mb-xl-5">
-            {% for punto in punti_chiave %}
-                <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                    {{ punto.testo }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endwith %}
-                <div class="mt-auto">
-                  <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
-                <i class="ai-arrow-right ms-2"></i>  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    
-
-    {% else %}
-
-     
-      <section class="overflow-hidden pb-5">
-        <div class="container pb-sm-3 mb-md-2 mb-lg-3">
-          <div class="row g-4">
-            <div class="col-md-7 order-md-2" data-aos="fade-left" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
-              <img class="object-fit-cover w-100 h-100 rounded-3" src="{{ servizio.immagine_principale.url }}" alt="{{ servizio.nome }}">
-            </div>
-            <div class="col-md-5 order-md-1" data-aos="fade-right" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
-              <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
-                <h2 class="mb-xl-4">{{ servizio.nome }}</h2>
-                <p class="mb-4 mb-xl-5">{{ servizio.descrizione_dettagliata|default:servizio.descrizione_breve }}</p>
-                {% with punti_chiave=servizio.punti_chiave.all %}
-    {% if punti_chiave %}
-        <ul class="list-unstyled mb-4 mb-xl-5">
-            {% for punto in punti_chiave %}
-                <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                    {{ punto.testo }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endwith %}
-                <div class="mt-auto">
-                  <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
-                <i class="ai-arrow-right ms-2"></i>
-            </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
- 
-
-    {% endif %}
-  {% empty %}
-    <div class="col-12 text-center py-5">
-      <p>Nessun servizio disponibile al momento.</p>
-    </div>
-  {% endfor %}
-
-
  
  
-
-
-
--->
 <!-- Services: Car insurance -->
       <section class="overflow-hidden pb-5">
         <div class="container pb-sm-3 mb-md-2 mb-lg-3">
@@ -255,32 +118,33 @@ Tradizione, qualità, fiducia</h1>
                 
         <ul class="list-unstyled mb-4 mb-xl-5">
              <p class="text-primary"> <strong> Come funziona</strong></p>
-                <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                <li class="d-flex align-items-center pb-2 mb-1">
+                  <i class="ai-circle-arrow-right  text-primary me-2 fs-5"></i> 
                   Scatta una o più foto del danno  
 
 
                 </li>
-                <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                  Clicca sul bottone WhatsApp qui sotto 
+                <li class="d-flex align-items-center pb-2 mb-1">
+                  <i class="ai-circle-arrow-right  text-primary me-2 fs-5"></i>  
+                    Clicca sul bottone WhatsApp qui sotto 
 
                 </li>
-                <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                 Invia l’immagine della tua auto
+                <li class="d-flex align-items-center pb-2 mb-1">
+                  <i class="ai-circle-arrow-right  text-primary me-2 fs-5"></i> 
+                  Invia l’immagine della tua auto
                 </li>
-                <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
-                  
-Ricevi una prima valutazione entro breve
+                <li class="d-flex align-items-center pb-2 mb-1">
+                    <i class="ai-circle-arrow-right  text-primary me-2 fs-5"></i> 
+                    Ricevi una prima valutazione entro breve
                 </li> 
            
         </ul>
    
-                <div class="mt-auto">
-                  <a class="btn btn-outline-primary"href="https://wa.me/41765322296?text=Buongiorno,%0Aallego%20la%20foto%20dei%20danni%20della%20mia%20auto%20per%20una%20prima%20valutazione.%0AGrazie.
-" target="_blank" rel="noopener"><i class="ai-whatsapp fs-xl me-2 ms-n1"></i> 
+                <div class="mt-auto  ">
+                  <a class="btn btn-outline-primary  text-wrap d-block d-md-inline-block w-100 w-md-auto text-center "
+                  href="https://wa.me/41765322296?text=Buongiorno,%0Aallego%20la%20foto%20dei%20danni%20della%20mia%20auto%20per%20una%20prima%20valutazione.%0AGrazie.
+" target="_blank" rel="noopener">
+<i class="ai-whatsapp fs-5 me-2  "></i> 
 Valutazione gratuita in pochi minuti
       
             </a>
@@ -307,16 +171,18 @@ Valutazione gratuita in pochi minuti
 
           <h2 class="h1   pb-2 pb-sm-3">Assistenza nelle pratiche assicurative</h2>
 
-                <li class="d-flex pb-2 mb-1 fs-lg  ">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                <li class="d-flex pb-2 mb-1 fs-lg align-items-center ">
+                    <i class="ai-check-alt  text-primary me-2 fs-5"></i> 
+                    
+                    
                     Supporto nella denuncia del sinistro
                 </li>
-                <li class="d-flex pb-2 mb-1 fs-lg  ">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                <li class="d-flex pb-2 mb-1 fs-lg align-items-center ">
+                    <i class="ai-check-alt  text-primary me-2 fs-5"></i> 
                     Preparazione della documentazione
                 </li>
-                <li class="d-flex pb-2 mb-1 fs-lg  ">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                <li class="d-flex pb-2 mb-1 fs-lg align-items-center  ">
+                    <i class="ai-check-alt  text-primary me-2 fs-5"></i> 
                     Gestione completa fino alla chiusura della pratica
                 </li> 
         </div>
@@ -340,7 +206,7 @@ da oltre cinquant’anni
         
     </div>
 </section>
-
+ {% if partner_home %}
       <!-- Partners -->
       <section class="container py-5 my-lg-3 my-xl-4 my-xxl-5">
         <div class="overflow-auto pb-sm-4 pb-md-5 pt-sm-2 pt-md-3 mt-n2 mt-sm-0 mt-md-1 mt-lg-3 mb-lg-2" data-simplebar>
@@ -360,7 +226,7 @@ da oltre cinquant’anni
           </div>
         </div>
       </section>
-
+{% endif %}
 <section class="bg-secondary py-5">
     <div class="container">
         <div class="text-center mb-5">

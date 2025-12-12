@@ -22,39 +22,30 @@
     <nav class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav navbar-nav-scroll mx-auto" style="--ar-scroll-height: 520px;">
         <li class="nav-item">
-          <a class="nav-link " href="{% url 'main:home' %}">Home</a>
+          <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'main:home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'main:chi_siamo' %}">Chi siamo</a>
+          <a class="nav-link {% if request.resolver_match.url_name == 'chi_siamo' %}active{% endif %}" href="{% url 'main:chi_siamo' %}">Chi siamo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'main:servizi_list' %}">Servizi</a>
+          <a class="nav-link {% if request.resolver_match.url_name == 'servizi_list' %}active{% endif %}" href="{% url 'main:servizi_list' %}">Servizi</a>
         </li>
-
-        <!--
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#"   role="button" data-bs-toggle="dropdown" aria-expanded="false"    >
-            Servizi
-          </a>
-          <ul class="dropdown-menu"  >
-            {% for servizio in servizi_menu %}
-            <li><a class="dropdown-item" href="{% url 'main:servizi_detail' slug=servizio.slug %}">{{ servizio.nome }}</a></li>
-            {% endfor %}
-            <li><hr class="dropdown-divider"></li> {# Linea di separazione #}
-            <li><a class="dropdown-item" href="{% url 'main:servizi_list' %}">Tutti i servizi</a></li>
-          </ul>
-        </li>-->
-
-
-
+  
+       
+<li class="nav-item">
+  <a class="nav-link {% if request.resolver_match.namespace == 'restauri' %}active{% endif %}"
+     href="{% url 'restauri:lista_restauri' %}">
+    Restauri e modifiche
+  </a>
+</li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'restauri:lista_restauri' %}">Restauri e modifiche</a>  
-        </li>
+  <a class="nav-link {% if request.resolver_match.namespace == 'vendita' %}active{% endif %}"
+     href="{% url 'vendita:lista_veicoli' %}">
+    Vendita
+  </a>
+</li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'vendita:lista_veicoli' %}">Vendita</a> 
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'main:contatti' %}">Contatti</a>
+          <a class="nav-link {% if request.resolver_match.url_name == 'contatti' %}active{% endif %}" href="{% url 'main:contatti' %}">Contatti</a>
         </li>
       </ul>
       <div class="d-sm-none p-3 mt-n3">

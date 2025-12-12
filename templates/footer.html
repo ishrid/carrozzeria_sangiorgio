@@ -40,17 +40,22 @@
                 <div class="col-lg-8">
                     <div class="row">
 
-                        <div class="col-md-3 mb-4 mb-lg-0">
-                            <h4 class="h6 mb-4">La carrozzeria</h4>
-                            <ul class="nav flex-column">
-                                <li class="nav-item mb-2"><a class="nav-link p-0" href="{% url 'main:home' %}">Home</a></li>
-                                <li class="nav-item mb-2"><a class="nav-link p-0" href="{% url 'main:chi_siamo' %}">Chi siamo</a></li>
-                                <li class="nav-item mb-2"><a class="nav-link p-0" href="{% url 'main:servizi_list' %}">Servizi</a></li>
-                                <li class="nav-item mb-2"><a class="nav-link p-0" href="{% url 'restauri:lista_restauri' %}">Restauri e modifiche</a></li>
-                                <li class="nav-item mb-2"><a class="nav-link p-0" href="{% url 'vendita:lista_veicoli' %}">Vendita</a></li>
-                                <li class="nav-item mb-2"><a class="nav-link p-0" href="{% url 'main:contatti' %}">Contatti</a></li>
-                            </ul>
-                        </div>
+                       <div class="col-md-3 mb-4 mb-lg-0">
+    <h4 class="h6 mb-4">La carrozzeria</h4>
+ 
+    <ul class="nav row row-cols-2 row-cols-md-1 g-2">
+
+        <li class="nav-item mb-2 col"><a class="nav-link p-0" href="{% url 'main:home' %}">Home</a></li>
+        <li class="nav-item mb-2 col"><a class="nav-link p-0" href="{% url 'main:chi_siamo' %}">Chi siamo</a></li>
+        <li class="nav-item mb-2 col"><a class="nav-link p-0" href="{% url 'main:servizi_list' %}">Servizi</a></li>
+
+        <li class="nav-item mb-2 col"><a class="nav-link p-0" href="{% url 'restauri:lista_restauri' %}">Restauri e modifiche</a></li>
+        <li class="nav-item mb-2 col"><a class="nav-link p-0" href="{% url 'vendita:lista_veicoli' %}">Vendita</a></li>
+        <li class="nav-item mb-2 col"><a class="nav-link p-0" href="{% url 'main:contatti' %}">Contatti</a></li>
+
+    </ul>
+</div>
+
 
                         <div class="col-md-5 mb-4 mb-lg-0">
                             <h4 class="h6 mb-4">Contatti</h4>
@@ -80,14 +85,20 @@
                 </div>
             </div>
 
-            <div class="d-sm-flex justify-content-between fs-xs text-body-secondary pt-4 mt-lg-2">
-                <span>© {% now "Y" %} Carrozzeria San Giorgio SA CHE-106.883.451 IVA</span>
-                <div class="nav">
-                    <a class="nav-link p-0" href="{% url 'main:privacy_policy' %}">Privacy Policy</a>
-                    <span class="px-2">|</span>
-                    <a class="nav-link p-0" href="#">Cookie Policy</a>
-                </div>
-            </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between 
+            text-center text-sm-start fs-xs text-body-secondary pt-4 mt-lg-2">
+
+    <span class="mb-2 mb-sm-0 mx-auto mx-sm-0">
+        © {% now "Y" %} Carrozzeria San Giorgio SA CHE-106.883.451 IVA
+    </span>
+
+    <div class="nav justify-content-center">
+        <a class="nav-link p-0" href="{% url 'main:privacy_policy' %}">Privacy Policy</a>
+        <span class="px-2">|</span>
+        <a class="nav-link p-0" href="#">Cookie Policy</a>
+    </div>
+</div>
+
         </div>
     </div>
 </footer>
