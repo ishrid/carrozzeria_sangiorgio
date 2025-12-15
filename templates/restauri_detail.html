@@ -97,13 +97,13 @@
   </div>
 </section>
 
-<section class="container py-5 mt-5">
+<section class="container py-5 mt-md-5">
   <div class="row justify-content-center">
     <div class="col-lg-10">
       
 
 
-      <h2 class="h3 mt-5 mb-3">Descrizione generale</h2>
+      <h2 class="h3 mt-md-5 mb-3">Descrizione generale</h2>
         <p class="fs-lg text-muted mb-5">
 L'Alfa Romeo GT 1300 Scalino, conosciuta anche come "Giulia Sprint GT", è una delle automobili più
 iconiche prodotte dalla casa automobilistica italiana Alfa Romeo. Questa vettura sportiva,
@@ -111,11 +111,11 @@ caratterizzata dalla sua inconfondibile linea a scalino sulla parte frontale, ha
 molti appassionati di auto storiche. Il design elegante e la meccanica raffinata rendono la GT 1300
 Scalino non solo un simbolo di stile italiano, ma anche una macchina performante e divertente da
 guidare.</p>
-      
+      {% if restauro.foto_prima and restauro.foto_dopo %}
       <h2 class="h3 mt-5 mb-3">Prima e dopo il restauro</h2>
         <p class="fs-lg text-muted mb-5">Trascina il cursore per vedere la trasformazione.</p>
 
-      {% if restauro.foto_prima and restauro.foto_dopo %}
+      
       <div class="d-flex w-100 justify-content-center position-relative overflow-hidden">
         <div style="max-width: 1100px;">
           <img-comparison-slider>
@@ -137,66 +137,104 @@ guidare.</p>
         Immagini "prima" e "dopo" non disponibili per questo progetto.
       </div>
       {% endif %}
-<!--
-      <h2 class="h3 mt-5 mb-3">Descrizione Dettagliata dell'Intervento</h2>
-      <p class="fs-lg text-muted mb-5">{{ restauro.descrizione_dettagliata|linebreaksbr }}</p>
--->
+ 
 
 
-
-
-
-
+ 
 
 
 <h2 class="h3 mt-5 mb-3">Scheda Tecnica</h2>
-<div class="row">
-  <div class="col-md-4">
-<ul class="list-group list-group-flush">
-                 
-             <li class="list-group-item"><strong>Marca</strong> Alfa Romeo</li>
-             <li class="list-group-item"><strong>Modello</strong> GT</li>
-             <li class="list-group-item"><strong>Anno</strong> 01.01.1969</li> 
-<li class="list-group-item"><strong>Freni</strong> Dischi anteriori e posteriori</li> 
-             <li class="list-group-item"><strong>Sospensioni</strong> Indipendenti anteriori e posteriori</li>
+<div class="row row-cols-1 row-cols-lg-3 gx-5 gy-3">
 
-            </ul>
-  </div>
-  <div class="col-md-4">
-    <ul class="list-group list-group-flush">
-                 
-            
-             
-<li class="list-group-item"><strong>Velocità massima</strong> Circa 170 km/h</li>
-<li class="list-group-item"><strong>Peso</strong> Circa 950 kg</li>
-<li class="list-group-item"><strong>Dimensioni</strong> Lunghezza 4080 mm, Larghezza 1600 mm, Altezza 1300 mm</li>
-
-            </ul>
-  </div>
-  <div class="col-md-4">
-    <ul class="list-group list-group-flush">
-                 
-             <li class="list-group-item"><strong>Cilindrata </strong> 1300 cc</li>
-             <li class="list-group-item"><strong>Tipologia carrozzeria</strong>  Coupé</li>
-             <li class="list-group-item"><strong>Motore</strong> 4 cilindri in linea, aspirato</li> 
-<li class="list-group-item"><strong>Trasmissione</strong> Manuale a 5 marce</li>
-<li class="list-group-item"><strong>Potenza massima</strong> Circa 89 CV</li>
-<li class="list-group-item"><strong>Trazione</strong> Posteriore (RWD)</li>
-
-
-
-            </ul>
+  <!-- Voce -->
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Marca:</strong> Alfa Romeo
+    </div>
   </div>
 
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Modello:</strong> GT
+    </div>
+  </div>
 
-   
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Anno:</strong> 01.01.1969
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Freni:</strong> Dischi anteriori e posteriori
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Sospensioni:</strong> Indipendenti anteriori e posteriori
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Velocità massima:</strong> Circa 170 km/h
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Peso:</strong> Circa 950 kg
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Dimensioni:</strong> 4080 × 1600 × 1300 mm
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Cilindrata:</strong> 1300 cc
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Carrozzeria:</strong> Coupé
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Motore:</strong> 4 cilindri in linea, aspirato
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Trasmissione:</strong> Manuale a 5 marce
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Potenza massima:</strong> Circa 89 CV
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="border-bottom py-3">
+      <strong>Trazione:</strong> Posteriore (RWD)
+    </div>
+  </div>
+
 </div>
 
+
   
-
-
- 
- 
 
 
     </div>

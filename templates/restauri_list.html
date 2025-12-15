@@ -35,8 +35,8 @@
                   <li class="breadcrumb-item active" aria-current="page">Restauri</li>
                 </ol>
               </nav>
-            <h1 class="display-3 pb-1 pb-sm-2 pb-md-3 text-center">Ridiamo vita ad auto e moto d’epoca</h1>
-            <p class="fs-lg mb-0 text-center">Ogni veicolo d’epoca ha una storia da raccontare e noi ci impegniamo a farla rivivere. Con competenza artigianale e tecniche moderne, curiamo ogni restauro nei minimi dettagli per rispettare l’autenticità del mezzo e valorizzarne la bellezza. Che sia un’auto iconica o una moto storica, la Carrozzeria San Giorgio riporta su strada i tuoi ricordi, trasformandoli in emozioni da vivere ancora.</p>
+            <h1 class="display-3 pb-1 pb-sm-2 pb-md-3 text-md-center">Ridiamo vita ad auto e moto d’epoca</h1>
+            <p class="fs-lg pb-1 pb-sm-2 pb-md-3 text-md-center">Ogni veicolo d’epoca ha una storia da raccontare e noi ci impegniamo a farla rivivere. Con competenza artigianale e tecniche moderne, curiamo ogni restauro nei minimi dettagli per rispettare l’autenticità del mezzo e valorizzarne la bellezza. Che sia un’auto iconica o una moto storica, la Carrozzeria San Giorgio riporta su strada i tuoi ricordi, trasformandoli in emozioni da vivere ancora.</p>
           </div>
 
            <img src="{% static 'img/copertine/cop-home.png' %}" class="img-fluid rounded" alt="" srcset="">
@@ -46,52 +46,7 @@
       </section>
 
  
-  
-<!--
-       {% if restauri_in_evidenza %}
-
-      
-      <section class="container pt-5 pb-sm-3 mt-5 mb-2 mb-md-3 mb-lg-4 mb-xxl-5">
-
-        
- 
-         
-        <div class="fs-sm text-uppercase mb-3">La Nostra Passione</div>
-                <h2 class="display-6">I Nostri Gioiellio</h2>
- 
-        {% for restauro in restauri_in_evidenza %}
-       
-         
-<div class="row align-items-center pt-xl-2 pb-5 mb-lg-2 mb-xl-3 mb-xxl-4">
-
-    <div class="col-md-7 col-lg-6 mb-4 mb-md-0">
-        <a class="d-block position-relative" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">
-            
-            <img class="d-block position-relative z-2 mx-auto rounded-5 shadow-lg" src="{{ restauro.foto_copertina.url }}" width="636" alt="{{ restauro.titolo }}" data-aos="fade-in" data-aos-duration="400" data-aos-offset="250">
-
-        </a>
-    </div>
-    
-    <div class="col-md-5 col-xl-4 offset-lg-1" data-aos="fade-up" data-aos-duration="400" data-aos-offset="170">
-        <div class="ps-md-3 ps-lg-0">
-            <h3 class="h2">{{ restauro.titolo }}</h3>
-            <p class="fs-sm pb-3 pb-lg-4 mb-3">{{ restauro.descrizione_breve }}</p>
-            <a class="btn btn-sm btn-outline-primary rounded-pill" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">Scopri il progetto</a>
-        </div>
-    </div>
-
-</div>
-
-        {% endfor %}
-
-
- 
-
-      </section>
-
-  {% endif %}
-     
--->
+   
  
  
 
@@ -121,7 +76,7 @@
              
               
              <!-- Filters -->
-                <div class="col-xxl-7 col-lg-8 d-flex offset-xxl-1">
+                <div class="col-xxl-7 col-lg-8 d-flex offset-xxl-1 mb-4">
 
                     <ul class="masonry-filters nav nav-pills fs-sm flex-nowrap overflow-auto text-nowrap w-100 mx-auto me-lg-0 pb-3" >
                         <li class="nav-item mb-0"><a class="nav-link border active" href="#" data-group="all">Tutti</a></li>
@@ -133,6 +88,8 @@
  
 
                 </div>
+
+
             </div>
 
             <div class="masonry-grid" data-columns="3">
@@ -147,12 +104,12 @@
                         <div class="card-body px-4 py-4">
                           {%if restauro.logo_macchina%}
                           <div class="row align-items-center">
-                            <div class="col-md-3">
+                            <div class="col-3">
                                
                               <img src="{{restauro.logo_macchina.url}}" class="img-fluid" alt="" srcset="">
                               
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-9">
  <h3 class="h5 mb-2">
                                 <a class="stretched-link" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">{{ restauro.titolo }}</a>
                             </h3>
@@ -168,15 +125,15 @@
                            
                                  
 <div class="row mb-3">
-  <div class="col-md-7">
+  <div class="col-md-7 d-none d-sm-block">
 <ul class="list-group list-group-flush">
                  
-             <li class="list-group-item"><strong>Marca: </strong> <!--{{ restauro.get_tipo_veicolo_display }}-->Alfa Romeo</li>
+             <li class="list-group-item"><strong>Marca: </strong>  Alfa Romeo</li>
              <li class="list-group-item"><strong>Modello:  </strong> Giulia GT 1300</li>
             
             </ul>
   </div>
-  <div class="col-md-5">
+  <div class="col-md-5 d-none d-sm-block">
     <ul class="list-group list-group-flush">
                  
              <li class="list-group-item"><strong>Versione: </strong> Scalino</li>
@@ -184,6 +141,22 @@
             
             </ul>
   </div>
+
+<div class="col-12 d-block d-sm-none">
+<ul class="list-group list-group-flush">
+                 
+             <li class="list-group-item"><strong>Marca: </strong>  Alfa Romeo</li>
+             <li class="list-group-item"><strong>Modello:  </strong> Giulia GT 1300</li>
+            
+           
+                 
+             <li class="list-group-item"><strong>Versione: </strong> Scalino</li>
+             <li class="list-group-item"><strong>Anno: </strong> {{ restauro.anno_veicolo }}</li>
+            
+            </ul>
+  </div>
+
+
 </div>
                                     
 

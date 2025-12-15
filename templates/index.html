@@ -252,7 +252,7 @@ da oltre cinquant’anni
                         <h5 class="card-title mb-2">{{ veicolo.marca }} {{ veicolo.modello }}</h5>
                         <p class="card-text text-primary fs-4 fw-bold mb-2">CHF {{ veicolo.prezzo|intcomma }}.-</p>
                         <div class="row mb-2">
-                            <div class="col-md-6">
+                            <div class="col-6">
  <ul class="list-unstyled mb-3 fs-sm text-muted">
                             <li class="mb-2">  <svg xmlns="http://www.w3.org/2000/svg"
      width="24" height="24"
@@ -285,7 +285,7 @@ da oltre cinquant’anni
                              
                         </ul>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-6">
                                  <ul class="list-unstyled mb-3 fs-sm text-muted">
                            
                             <li class="mb-2"><svg xmlns="http://www.w3.org/2000/svg"
@@ -417,27 +417,7 @@ da oltre cinquant’anni
                Rimettiamo in strada la bellezza autentica di auto e moto storiche per trasformare ricordi preziosi in emozioni da guidare di nuovo.</p>
         </div>
         <div class="row g-4">
-              <!--
-{% for restauro in restauri_in_evidenza %}
-  <div class="col-lg-4 col-md-6 mb-4">
-    <a href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}" 
-       class="card h-100 border-0 text-decoration-none shadow-sm transition-all rounded-4 hover-shadow-lg">
-
-      <div class="card-img-wrapper overflow-hidden rounded-top-4">
-        <img src="{{ restauro.foto_copertina.url }}" 
-             alt="{{ restauro.titolo }}" 
-             class="w-100 h-100 object-fit-cover transition-transform" 
-             style="aspect-ratio: 4/3;">
-      </div>
-
-      <div class="card-body text-center px-3 py-4">
-        <h3 class="h5 mb-2">{{ restauro.titolo }}</h3>
-        <p class="fs-sm text-muted mb-0">{{ restauro.descrizione_breve|truncatechars:250 }}</p>
-      </div>
-    </a>
-  </div>
-{% endfor %}
--->
+             
 
 <div class="masonry-grid" data-columns="3">
                 {% for restauro in restauri_in_evidenza %}
@@ -451,12 +431,12 @@ da oltre cinquant’anni
                         <div class="card-body px-4 py-4">
                            {%if restauro.logo_macchina%}
                           <div class="row align-items-center">
-                            <div class="col-md-3">
+                            <div class="col-3">
                                
                               <img src="{{restauro.logo_macchina.url}}" class="img-fluid" alt="" srcset="">
                               
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-9">
  <h3 class="h5 mb-2">
                                 <a class="stretched-link" href="{% url 'restauri:dettaglio_restauro' slug=restauro.slug %}">{{ restauro.titolo }}</a>
                             </h3>
@@ -472,7 +452,7 @@ da oltre cinquant’anni
  
                                  
 <div class="row mb-3">
-  <div class="col-md-7">
+  <div class="col-md-7 d-none d-sm-block">
 <ul class="list-group list-group-flush">
                  
              <li class="list-group-item"><strong>Marca: </strong> <!--{{ restauro.get_tipo_veicolo_display }}-->Alfa Romeo</li>
@@ -480,14 +460,39 @@ da oltre cinquant’anni
             
             </ul>
   </div>
-  <div class="col-md-5">
+  <div class="col-md-5 d-none d-sm-block">
     <ul class="list-group list-group-flush">
                  
              <li class="list-group-item"><strong>Versione: </strong> Scalino</li>
              <li class="list-group-item"><strong>Anno: </strong> {{ restauro.anno_veicolo }}</li>
             
             </ul>
+
+
+
+            
   </div>
+
+<div class="col-md-12 d-block d-sm-none">
+<ul class="list-group list-group-flush">
+                 
+             <li class="list-group-item"><strong>Marca: </strong> <!--{{ restauro.get_tipo_veicolo_display }}-->Alfa Romeo</li>
+             <li class="list-group-item"><strong>Modello:  </strong> Giulia GT 1300</li>
+            
+             
+                 
+             <li class="list-group-item"><strong>Versione: </strong> Scalino</li>
+             <li class="list-group-item"><strong>Anno: </strong> {{ restauro.anno_veicolo }}</li>
+            
+            </ul>
+
+
+
+            
+  </div>
+
+
+  
 </div>
                                     
 

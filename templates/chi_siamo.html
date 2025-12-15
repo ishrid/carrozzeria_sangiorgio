@@ -157,7 +157,7 @@ Oggi la tradizione continua con Monica, responsabile amministrativa, e Davide, c
         </div>
     </div>
 
-    <div class="container-start position-relative z-2 pe-0">
+    <div class="container-start position-relative z-2  ">
         <div class="swiper" data-swiper-options='{
             "slidesPerView": "auto",
             "spaceBetween": 24,
@@ -170,15 +170,20 @@ Oggi la tradizione continua con Monica, responsabile amministrativa, e Davide, c
             <div class="swiper-wrapper gallery align-items-end">
 
                 {% for foto in foto_list %}
-                <div class="swiper-slide w-auto">
+                <div class="swiper-slide w-100 w-md-auto">
                     <a class="d-block gallery-item card-hover zoom-effect" href="{{ foto.foto.url }}" style="max-width: {{foto.max_width}}px;">
                         <div class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 rounded-5 overflow-hidden z-2 opacity-0">
                             <i class="ai-zoom-in fs-2 text-white position-relative z-2"></i>
                             <div class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-40"></div>
                         </div>
                         <div class="zoom-effect-wrapper rounded-5">
-                            <div class="zoom-effect-img">
-                                <img src="{{ foto.foto.url }}"  >
+                            <div class="zoom-effect-img overflow-hidden">
+                                <img
+  src="{{ foto.foto.url }}"
+  class="img-fluid"
+  style="display:block; width:100%; height:auto;"
+  alt=""
+>
                             </div>
                         </div>
                     </a>
