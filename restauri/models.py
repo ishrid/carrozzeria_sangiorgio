@@ -7,6 +7,9 @@ from django.utils.text import slugify
 # Questo modello rimane il cuore del progetto e non viene modificato significativamente.
 # Contiene tutte le informazioni generali sul veicolo e sul lavoro svolto.
 
+
+    
+
 class Restauro(models.Model):
     TIPO_VEICOLO_CHOICES = [
         ('auto-epoca', "Auto d'epoca"),
@@ -15,34 +18,100 @@ class Restauro(models.Model):
         ('altro', 'Altro'),
     ]
 
+    # Base
     titolo = models.CharField(max_length=255, verbose_name="Titolo del Progetto")
     slug = models.SlugField(unique=True, blank=True, help_text="Lascia vuoto per generare automaticamente dal titolo.")
-    
-    in_evidenza = models.BooleanField(default=False, verbose_name="In Evidenza", help_text="Seleziona per mostrare questo progetto nella sezione principale della pagina restauri.")
 
-    marca_veicolo = models.CharField(max_length=100, verbose_name="Marca del Veicolo", blank=True)
-    modello_veicolo = models.CharField(max_length=100, verbose_name="Modello del Veicolo", blank=True)
-    anno_veicolo = models.IntegerField(verbose_name="Anno del Veicolo", blank=True, null=True)
-    
-    descrizione_breve = models.TextField(verbose_name="Descrizione Breve", help_text="Breve riassunto per le anteprime e l'introduzione.")
-    descrizione_dettagliata = models.TextField(verbose_name="Descrizione Generale", help_text="Descrizione generale del progetto. I dettagli specifici andranno nelle singole 'Fasi di Lavoro'.", blank=True)
-    logo_macchina = models.ImageField(
-        upload_to='restauri/copertine/', 
-        verbose_name="Logo veicolo", blank=True, null=True
+    in_evidenza = models.BooleanField(
+        default=False,
+        verbose_name="In Evidenza",
+        help_text="Seleziona per mostrare questo progetto nella sezione principale della pagina restauri."
     )
+
+    # Veicolo
+    marca_veicolo = models.CharField(max_length=100, verbose_name="Marca del Veicolo", blank=True, null=True)
+    modello_veicolo = models.CharField(max_length=100, verbose_name="Modello del Veicolo", blank=True, null=True)
+    anno_veicolo = models.IntegerField(verbose_name="Anno del Veicolo", blank=True, null=True)
+
+    # 🔧 NUOVE VOCI TECNICHE (tutte opzionali)
+    freni = models.CharField("Freni", max_length=150, blank=True, null=True)
+    sospensioni = models.CharField("Sospensioni", max_length=150, blank=True, null=True)
+    velocita_massima = models.CharField("Velocità massima", max_length=50, blank=True, null=True)
+    peso = models.CharField("Peso", max_length=50, blank=True, null=True)
+    dimensioni = models.CharField(
+        "Dimensioni (L × P × A)",
+        max_length=100,
+        help_text="Esempio: 4080 × 1600 × 1300 mm",
+        blank=True,
+        null=True
+    )
+    cilindrata = models.CharField("Cilindrata", max_length=50, blank=True, null=True)
+    carrozzeria = models.CharField("Carrozzeria", max_length=50, blank=True, null=True)
+    motore = models.CharField("Motore", max_length=150, blank=True, null=True)
+    trasmissione = models.CharField("Trasmissione", max_length=100, blank=True, null=True)
+    potenza_massima = models.CharField(    max_length=100,    verbose_name="Potenza massima",    blank=True    )
+
+    trazione = models.CharField(        max_length=100,        verbose_name="Trazione",        blank=True    )
+
+    # Contenuti
+    descrizione_breve = models.TextField(
+        verbose_name="Descrizione Breve",
+        help_text="Breve riassunto per le anteprime e l'introduzione."
+    )
+    descrizione_dettagliata = models.TextField(
+        verbose_name="Descrizione Generale",
+        help_text="Descrizione generale del progetto. I dettagli specifici andranno nelle singole 'Fasi di Lavoro'.",
+        blank=True
+    )
+
+    # Media
+    logo_macchina = models.ImageField(
+        upload_to='restauri/copertine/',
+        verbose_name="Logo veicolo",
+        blank=True,
+        null=True
+    )
+
     foto_copertina = models.ImageField(
-        upload_to='restauri/copertine/', 
+        upload_to='restauri/copertine/',
         verbose_name="Immagine di Copertina",
         help_text="Immagine principale mostrata nelle liste e anteprime."
     )
 
-    foto_prima = models.ImageField(upload_to='restauri/prima_dopo/', verbose_name="Foto Prima del Restauro", blank=True, null=True)
-    foto_dopo = models.ImageField(upload_to='restauri/prima_dopo/', verbose_name="Foto Dopo il Restauro", blank=True, null=True)
-    
-    tipo_veicolo = models.CharField(max_length=50, choices=TIPO_VEICOLO_CHOICES, default='auto-epoca', verbose_name="Tipo di Progetto")
-    
-    data_completamento = models.DateField(verbose_name="Data Completamento Progetto", blank=True, null=True)
-    ordine_visualizzazione = models.IntegerField(default=0, verbose_name="Ordine di Visualizzazione", help_text="Numero per ordinare i progetti (più basso = prima).")
+    foto_prima = models.ImageField(
+        upload_to='restauri/prima_dopo/',
+        verbose_name="Foto Prima del Restauro",
+        blank=True,
+        null=True
+    )
+
+    foto_dopo = models.ImageField(
+        upload_to='restauri/prima_dopo/',
+        verbose_name="Foto Dopo il Restauro",
+        blank=True,
+        null=True
+    )
+
+    # Stato
+    tipo_veicolo = models.CharField(
+        max_length=50,
+        choices=TIPO_VEICOLO_CHOICES,
+        default='auto-epoca',
+        verbose_name="Tipo di Progetto"
+    )
+
+    data_completamento = models.DateField(
+        verbose_name="Data Completamento Progetto",
+        blank=True,
+        null=True
+    )
+
+    ordine_visualizzazione = models.IntegerField(
+        default=0,
+        verbose_name="Ordine di Visualizzazione",
+        help_text="Numero per ordinare i progetti (più basso = prima)."
+    )
+
     attivo = models.BooleanField(default=True, verbose_name="Visibile sul Sito")
 
     class Meta:

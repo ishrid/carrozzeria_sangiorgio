@@ -144,95 +144,123 @@ guidare.</p>
 
 
 <h2 class="h3 mt-5 mb-3">Scheda Tecnica</h2>
+
+
 <div class="row row-cols-1 row-cols-lg-3 gx-5 gy-3">
 
-  <!-- Voce -->
+  {% if restauro.marca_veicolo %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Marca:</strong> Alfa Romeo
+      <strong>Marca:</strong> {{ restauro.marca_veicolo }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.modello_veicolo %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Modello:</strong> GT
+      <strong>Modello:</strong> {{ restauro.modello_veicolo }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.anno_veicolo %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Anno:</strong> 01.01.1969
+      <strong>Anno:</strong> {{ restauro.anno_veicolo }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.freni %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Freni:</strong> Dischi anteriori e posteriori
+      <strong>Freni:</strong> {{ restauro.freni }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.sospensioni %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Sospensioni:</strong> Indipendenti anteriori e posteriori
+      <strong>Sospensioni:</strong> {{ restauro.sospensioni }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.velocita_massima %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Velocità massima:</strong> Circa 170 km/h
+      <strong>Velocità massima:</strong> {{ restauro.velocita_massima }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.peso %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Peso:</strong> Circa 950 kg
+      <strong>Peso:</strong> {{ restauro.peso }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.dimensioni %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Dimensioni:</strong> 4080 × 1600 × 1300 mm
+      <strong>Dimensioni:</strong> {{ restauro.dimensioni }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.cilindrata %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Cilindrata:</strong> 1300 cc
+      <strong>Cilindrata:</strong> {{ restauro.cilindrata }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.carrozzeria %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Carrozzeria:</strong> Coupé
+      <strong>Carrozzeria:</strong> {{ restauro.carrozzeria }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.motore %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Motore:</strong> 4 cilindri in linea, aspirato
+      <strong>Motore:</strong> {{ restauro.motore }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.trasmissione %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Trasmissione:</strong> Manuale a 5 marce
+      <strong>Trasmissione:</strong> {{ restauro.trasmissione }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.potenza_massima %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Potenza massima:</strong> Circa 89 CV
+      <strong>Potenza massima:</strong> {{ restauro.potenza_massima }}
     </div>
   </div>
+  {% endif %}
 
+  {% if restauro.trazione %}
   <div class="col">
     <div class="border-bottom py-3">
-      <strong>Trazione:</strong> Posteriore (RWD)
+      <strong>Trazione:</strong> {{ restauro.trazione }}
     </div>
   </div>
+  {% endif %}
 
 </div>
-
 
   
 

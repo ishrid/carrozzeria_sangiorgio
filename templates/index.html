@@ -54,7 +54,7 @@
     </div>
 
     <!-- Immagine hero senza parallax -->
-    <div class="rounded overflow-hidden z-2"
+    <div class="rounded overflow-hidden z-2  "
          style="-webkit-clip-path: url(#shape); clip-path: url(#shape);
                 background: url({% static 'img/copertine/cop-home2.jpg' %}) center/cover no-repeat;">
       <div class="d-none d-md-block ratio ratio-21x9"></div>
@@ -72,6 +72,7 @@
              style="background-color: #202327;"></div>
       </div>
     </div>
+
   </div>
 
   <!-- ClipPath -->
@@ -95,7 +96,7 @@
  
 
 <section class="container  pt-5 my-md-3">
-    <div class="text-center mb-5">
+    <div class="text-md-center mb-5">
         <h2 class="h1">Mostraci il danno, noi pensiamo al resto</h2>
         <p class="fs-lg text-muted">Clicca sul bottone WhatsApp qui sotto, inviaci una foto e ricevi subito senza impegno la nostra valutazione</p>
     </div>
@@ -160,14 +161,14 @@ Valutazione gratuita in pochi minuti
 </section>
 
  
-<section class="container py-5 my-md-3">
+<section class="container py-3 py-md-5 my-md-3">
     <div class="row align-items-center">
-      <div class="col-md-6  pe-md-5">
+      <div class="col-md-6  pe-md-5 pb-3    ">
             
              <img src="{% static 'img/cta/cta-bbg.png' %}" class="rounded-3 shadow-lg" alt="Team Carrozzeria San Giorgio">
         
           </div>
-        <div class="col-md-6  mb-4 mb-md-0">
+        <div class="col-md-6  mb-4 mb-md-0   ">
 
           <h2 class="h1   pb-2 pb-sm-3">Assistenza nelle pratiche assicurative</h2>
 
@@ -191,7 +192,7 @@ Valutazione gratuita in pochi minuti
 </section>
 <section class="container py-5 my-md-3">
     <div class="row align-items-center">
-      <div class="col-md-6  mb-4 mb-md-0">
+      <div class="col-md-6  mb-4 mb-md-0   order-2 order-md-1">
             <h2 class="h1">Un punto di riferimento <br>
 da oltre cinquant’anni
 </h2>
@@ -200,7 +201,7 @@ da oltre cinquant’anni
             </p>
             <a href="{% url 'main:chi_siamo' %}" class="btn btn-outline-primary">La nostra storia</a>
         </div>
-        <div class="col-md-6 ps-md-5">
+        <div class="col-md-6 ps-md-5  mb-4 order-1 order-md-2">
              <img src="{% static 'img/servi/50-list.png' %}" class="rounded-3 shadow-lg" alt="Team Carrozzeria San Giorgio">
         </div>
         
@@ -229,7 +230,7 @@ da oltre cinquant’anni
 {% endif %}
 <section class="bg-secondary py-5">
     <div class="container">
-        <div class="text-center mb-5">
+        <div class="text-md-center mb-5">
             <h2 class="h1">Auto selezionate sicure e affidabili</h2>
             <p class="fs-lg text-muted mx-auto"  >
               Nella nostra selezione trovi veicoli d’occasione controllati con la stessa cura che riserviamo alle auto dei nostri clienti. Ogni vettura viene verificata in officina, sottoposta a controlli accurati di carrozzeria e meccanica, e consegnata dopo test completi per un acquisto sicuro.
@@ -367,56 +368,15 @@ da oltre cinquant’anni
         </div>
     </div>
 </section>
-<!---
-<section class="container py-5 my-md-3">
-    <div class="row align-items-center">
-        <div class="col-md-6 col-xl-5 ">
-            <h2 class="h1 mb-4">Tecnologia, Esperienza e Passione al Tuo Servizio.</h2>
-            <div class="pt-2">
-                <div class="d-flex pb-3 mb-2">
-                    <div class="text-primary fs-xl fw-bold pt-1 me-3">01</div>
-                    <div>
-                        <h3 class="h5">Tecnologia e Precisione</h3>
-                        <p class="text-muted mb-0">Utilizziamo banchi di riscontro e tintometri computerizzati per riparazioni precise e colori identici all'originale.</p>
-                    </div>
-                </div>
-                <div class="d-flex pb-3 mb-2">
-                    <div class="text-primary fs-xl fw-bold pt-1 me-3">02</div>
-                    <div>
-                        <h3 class="h5">Gestione Sinistri Semplificata</h3>
-                        <p class="text-muted mb-0">Pensiamo a tutta la burocrazia del sinistro, interfacciandoci direttamente con la tua assicurazione per un'esperienza senza stress.</p>
-                    </div>
-                </div>
-                <div class="d-flex pb-3 mb-2">
-                    <div class="text-primary fs-xl fw-bold pt-1 me-3">03</div>
-                    <div>
-                        <h3 class="h5">Materiali di Alta Qualità</h3>
-                        <p class="text-muted mb-0">Selezioniamo solo vernici e ricambi dei migliori marchi per assicurare un risultato non solo bello, ma anche duraturo.</p>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <div class="text-primary fs-xl fw-bold pt-1 me-3">04</div>
-                    <div>
-                        <h3 class="h5">Garanzia sul Lavoro</h3>
-                        <p class="text-muted mb-0">Ogni nostro intervento è coperto da garanzia, perché la tua tranquillità e la tua sicurezza sono la nostra priorità.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 offset-xl-1 mt-4 mt-md-0">
-             <img src="{% static 'img/servi/servizi-list.jpg' %}" class="rounded-3 shadow-lg" alt="Tecnico al lavoro">
-        </div>
-    </div>
-</section>
--->
+ 
 <section class="  py-5">
     <div class="container">
-        <div class="text-center mb-5">
+        <div class="text-md-center mb-5">
             <h2 class="h1">Restauri d’epoca, emozioni senza tempo che tornano a vivere</h2>
             <p class="fs-lg text-muted">
                Rimettiamo in strada la bellezza autentica di auto e moto storiche per trasformare ricordi preziosi in emozioni da guidare di nuovo.</p>
         </div>
-        <div class="row g-4">
+         
              
 
 <div class="masonry-grid" data-columns="3">
@@ -517,8 +477,7 @@ da oltre cinquant’anni
             </div>
 
 
-
-        </div>
+ 
     </div>
 </section>
 
