@@ -1,8 +1,7 @@
 # main/admin.py
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Servizio, ServizioImmagine, MembroTeam, FotoOfficina, Certificazione, Partner, PuntoChiaveServizio
-
+from .models import Servizio, ServizioImmagine, MembroTeam, FotoOfficina, Certificazione, Partner, PuntoChiaveServizio, Contatto
 
 class PuntoChiaveServizioInline(admin.TabularInline):
     model = PuntoChiaveServizio
@@ -98,3 +97,13 @@ class PartnerAdmin(admin.ModelAdmin):
     list_display = ('nome', 'ordine', 'in_homepage')
     list_filter = ('in_homepage',)
     ordering = ('ordine',)
+
+
+
+ 
+
+
+@admin.register(Contatto)
+class ContattoAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'email', 'tipo_richiesta', 'data_invio')
+    ordering = ('-data_invio',)

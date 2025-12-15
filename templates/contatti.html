@@ -36,20 +36,12 @@
                   <li class="breadcrumb-item active" aria-current="page">Contatti</li>
                 </ol>
               </nav>
-            <h1 class="display-3 pb-1 pb-sm-2 pb-md-3 text-center">Il contatto giusto per ogni esigenza</h1>
-            <p class="fs-lg mb-0 text-center">Una telefonata, una mail o un semplice messaggio WhatsApp. Qualunque sia la tua esigenza, ti rispondiamo in tempi rapidi e con la massima chiarezza.</p>
+            <h1 class="display-3 pb-1 pb-sm-2 pb-md-3 text-md-center">Il contatto giusto per ogni esigenza</h1>
+            <p class="fs-lg pb-1 pb-sm-2 pb-md-3 text-md-center">Una telefonata, una mail o un semplice messaggio WhatsApp. Qualunque sia la tua esigenza, ti rispondiamo in tempi rapidi e con la massima chiarezza.</p>
           </div>
 
            
-          
-          <!-- Parallax image  
-          <div class="jarallax rounded overflow-hidden z-2" data-jarallax data-speed="0.65" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
-            <div class="d-none d-md-block ratio ratio-21x9"></div>
-            <div class="d-md-none ratio ratio-16x9"></div>
-             
-            <div class="jarallax-img" style="background-image: url({% static 'img/copertine/cop-contatti.jpg' %});"></div>
-          </div>
-        -->
+           
            <!-- Mappa al posto dell'immagine -->
 <div class="rounded overflow-hidden z-2" style="-webkit-clip-path: url(#shape); clip-path: url(#shape);">
   <div class="ratio ratio-21x9 d-none d-md-block">
@@ -80,7 +72,7 @@
 
 
       <!-- Page content-->
-      <section class="container pt-5 pb-lg-2 pb-xl-4 py-xxl-5 my-5">
+      <section class="container pt-md-5 pb-lg-2 pb-xl-4 py-xxl-5 my-5">
 
          
  
@@ -91,12 +83,18 @@
             <!-- Address -->
             <div class="col pb-2">
               <h4 class="mb-lg-4">Indirizzo</h4>
-              <p class="fs-lg fw-medium pb-3 mb-3">Via Mulino della Bolla 5<br>6982 Agno, Svizzera</p>
+              <p class="fs-lg fw-medium pb-md-3 mb-3">Via Mulino della Bolla 5<br>6982 Agno, Svizzera</p>
                
 
-                  <a class="btn btn-secondary btn-icon btn-sm btn-instagram rounded-circle" href="https://www.instagram.com/carrozzeria_san_giorgio?igsh=Mm9naXc5Y3A1cWxm" target="_blank" aria-label="Instagram">
-                            <i class="ai-instagram"></i>
-                        </a>
+                   
+                        <a class="btn btn-secondary btn-sm btn-instagram d-inline-flex align-items-center gap-2 rounded-pill"
+   href="https://www.instagram.com/carrozzeria_san_giorgio?igsh=Mm9naXc5Y3A1cWxm"
+   target="_blank" aria-label="Instagram">
+
+    <i class="ai-instagram"></i>
+    <span>Instagram</span>
+</a>
+
             </div>
 
             <!-- Phone -->
@@ -165,45 +163,57 @@
         </div>
 
         <div class="col-lg-6 ps-lg-5">
-            <h2 class="h3 mb-4">Inviaci un messaggio</h2>
-            <form class="row g-4 needs-validation" novalidate>
-                <div class="col-sm-6">
-                    <label class="form-label fs-base" for="name">Nome</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="Il tuo nome" required id="name">
-                    <div class="invalid-feedback">Per favore, inserisci il tuo nome!</div>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label fs-base" for="email">Email</label>
-                    <input class="form-control form-control-lg" type="email" placeholder="Indirizzo email" required id="email">
-                    <div class="invalid-feedback">Per favore, fornisci un indirizzo email valido!</div>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label fs-base" for="phone">Telefono</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="Numero di telefono (opzionale)" id="phone">
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label fs-base" for="request-type">Tipo di richiesta</label>
-                    <select class="form-select form-select-lg" id="request-type">
-                        <option value="Preventivo riparazione">Preventivo riparazione</option>
-                        <option value="Servizi generali">Servizi generali</option>
-                        <option value="Informazioni restauro">Informazioni restauro</option>
-                        <option value="Altro">Altro</option>
+    <h2 class="h3 mb-4">Inviaci un messaggio</h2>
 
+    <form method="post" class="row g-4 needs-validation" novalidate>
+        {% csrf_token %}
 
-
-
-                    </select>
-                </div>
-                <div class="col-12">
-                    <label class="form-label fs-base" for="id_messaggio">Come possiamo aiutarti?</label>
-                    <textarea class="form-control form-control-lg" rows="5" placeholder="Scrivi qui il tuo messaggio..." required id="id_messaggio"></textarea>
-                    <div class="invalid-feedback">Per favore, inserisci un messaggio!</div>
-                </div>
-                <div class="col-12 pt-2">
-                    <button class="btn btn-lg btn-primary" type="submit">Invia richiesta</button>
-                </div>
-            </form>
+        <div class="col-sm-6">
+            <label class="form-label fw-bold" for="{{ form.nome.id_for_label }}">
+                {{ form.nome.label }}
+            </label>
+            {{ form.nome }}
+            {{ form.nome.errors }}
         </div>
+
+        <div class="col-sm-6">
+            <label class="form-label fw-bold" for="{{ form.email.id_for_label }}">
+                {{ form.email.label }}
+            </label>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+
+        <div class="col-sm-6">
+            <label class="form-label fw-bold" for="{{ form.telefono.id_for_label }}">
+                {{ form.telefono.label }}
+            </label>
+            {{ form.telefono }}
+        </div>
+
+        <div class="col-sm-6">
+            <label class="form-label fw-bold" for="{{ form.tipo_richiesta.id_for_label }}">
+                {{ form.tipo_richiesta.label }}
+            </label>
+            {{ form.tipo_richiesta }}
+        </div>
+
+        <div class="col-12">
+            <label class="form-label fw-bold" for="{{ form.messaggio.id_for_label }}">
+                {{ form.messaggio.label }}
+            </label>
+            {{ form.messaggio }}
+            {{ form.messaggio.errors }}
+        </div>
+
+        <div class="col-12 pt-2">
+            <button class="btn btn-lg btn-primary" type="submit">
+                Invia richiesta
+            </button>
+        </div>
+    </form>
+</div>
+
     </div>
 </section>
   

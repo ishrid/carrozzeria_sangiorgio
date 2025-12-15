@@ -14762,7 +14762,7 @@ hr.dropdown-divider {
 .navbar-brand {
   --ar-navbar-brand-padding-y: 0.5rem;
   --ar-navbar-brand-margin-end: 1rem;
-  --ar-navbar-brand-font-size: 1.3rem;
+  --ar-navbar-brand-font-size: 1.25rem;
   --ar-navbar-brand-font-weight: 600;
   display: flex;
   align-items: center;

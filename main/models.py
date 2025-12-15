@@ -181,3 +181,43 @@ class Partner(models.Model):
 
     def __str__(self):
         return self.nome
+    
+
+ 
+
+class Contatto(models.Model):
+    TIPO_RICHIESTA_CHOICES = [
+        ('Preventivo riparazione', 'Preventivo riparazione'),
+        ('Servizi generali', 'Servizi generali'),
+        ('Informazioni restauro', 'Informazioni restauro'),
+        ('Altro', 'Altro'),
+    ]
+
+    nome = models.CharField(max_length=100)
+    email = models.EmailField()
+    telefono = models.CharField(max_length=30, blank=True)
+    tipo_richiesta = models.CharField(
+        max_length=50,
+        choices=TIPO_RICHIESTA_CHOICES
+    )
+    messaggio = models.TextField()
+    data_invio = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-data_invio']
+        verbose_name = "Messaggi Contatti"
+        verbose_name_plural = "Messaggi Contatti"
+
+    
+    
+    def __str__(self):
+        return f"{self.data_invio.strftime('%d/%m/%Y')} - {self.tipo_richiesta} - {self.nome}"
+
+
+
+
+
+
+
+
+

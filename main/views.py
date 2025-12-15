@@ -1,8 +1,10 @@
 # main/views.py
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Servizio, MembroTeam, FotoOfficina, Certificazione, Partner
 from restauri.models import Restauro
 from vendita.models import VeicoloInVendita
+
+from .forms import ContattoForm
 # View per la homepage
 def home_view(request):
     
@@ -31,10 +33,21 @@ def chi_siamo_view(request):
     }
     return render(request, 'chi_siamo.html', context)
 
-# View per la pagina 'Contatti'
+
+
 def contatti_view(request):
-    # Logica per il form di contatto sarà aggiunta qui (se necessario)
-    return render(request, 'contatti.html')
+    if request.method == 'POST':
+        form = ContattoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('main:contatti_success')
+    else:
+        form = ContattoForm()
+
+    return render(request, 'contatti.html', {'form': form})
+ 
+def contatti_success(request):
+    return render(request, 'contatti_success.html')     
 
 # View per la pagina lista servizi
 def servizi_list_view(request):
