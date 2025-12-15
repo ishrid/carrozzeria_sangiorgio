@@ -32,8 +32,8 @@
                   <li class="breadcrumb-item active" aria-current="page">Servizi</li>
                 </ol>
               </nav>
-            <h1 class="display-3 pb-1 pb-sm-2 pb-md-3 text-center">Ogni intervento, una cura speciale</h1>
-            <p class="fs-lg mb-0 text-center">Alla Carrozzeria San Giorgio uniamo esperienza, precisione e passione per offrire un’assistenza completa ai nostri clienti. Che si tratti di auto moderne, moto o veicoli storici, ogni intervento viene eseguito con la massima cura, garantendo trasparenza e qualità in ogni fase del lavoro.</p>
+            <h1 class="display-3 pb-1 pb-sm-2 pb-md-3 text-md-center">Ogni intervento, una cura speciale</h1>
+            <p class="fs-lg pb-1 pb-sm-2 pb-md-3 text-md-center">Alla Carrozzeria San Giorgio uniamo esperienza, precisione e passione per offrire un’assistenza completa ai nostri clienti. Che si tratti di auto moderne, moto o veicoli storici, ogni intervento viene eseguito con la massima cura, garantendo trasparenza e qualità in ogni fase del lavoro.</p>
           </div>
 
            
@@ -64,15 +64,17 @@
             <div class="col-md-5" data-aos="fade-left" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
               <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
                 <h2 class="mb-xl-4">{{ servizio.nome }}</h2>
-                <!-- 
-                <p class="mb-4 mb-xl-5">{{ servizio.descrizione_breve }}</p>
- -->
+          
                  {% with punti_chiave=servizio.punti_chiave.all %}
     {% if punti_chiave %}
         <ul class="list-unstyled mb-4 mb-xl-5">
             {% for punto in punti_chiave %}
-                <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+
+            
+                <li class="d-flex pb-2 mb-1   align-items-center ">
+                    <i class="ai-check-alt  text-primary me-2 fs-5"></i> 
+                    
+                    
                     {{ punto.testo }}
                 </li>
             {% endfor %}
@@ -80,17 +82,17 @@
     {% endif %}
 
  
-{% endwith %}<!-- 
-                <div class="mt-auto">
-                  <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
-                <i class="ai-arrow-right ms-2"></i>  </a>
-                </div>
+{% endwith %}
 
-                 -->
+
 {% if servizio.mostra_bottone_whatsapp and servizio.numero_whatsapp %}
-                 <div class="mt-auto">
-                  <a class="btn btn-outline-primary"href="https://wa.me/{{ servizio.numero_whatsapp }}?text={{ servizio.messaggio_whatsapp }}
-" target="_blank" rel="noopener"><i class="ai-whatsapp fs-xl me-2 ms-n1"></i> 
+                 
+
+                <div class="mt-auto  ">
+                  <a class="btn btn-outline-primary  text-wrap d-block d-md-inline-block w-100 w-md-auto text-center "
+                  href="https://wa.me/41765322296?text=Buongiorno,%0Aallego%20la%20foto%20dei%20danni%20della%20mia%20auto%20per%20una%20prima%20valutazione.%0AGrazie.
+" target="_blank" rel="noopener">
+<i class="ai-whatsapp fs-5 me-2  "></i> 
 {{ servizio.testo_bottone_whatsapp }}
       
             </a>
@@ -120,15 +122,17 @@
             <div class="col-md-5 order-md-1" data-aos="fade-right" data-aos-duration="600" data-aos-offset="280" data-disable-parallax-down="md">
               <div class="d-flex flex-column h-100 bg-secondary rounded-3 py-5 px-4 px-lg-5">
                 <h2 class="mb-xl-4">{{ servizio.nome }}</h2>
-<!-- 
-                <p class="mb-4 mb-xl-5">{{ servizio.descrizione_breve }}</p>
- -->
+ 
                 {% with punti_chiave=servizio.punti_chiave.all %}
     {% if punti_chiave %}
         <ul class="list-unstyled mb-4 mb-xl-5">
             {% for punto in punti_chiave %}
-                <li class="d-flex pb-2 mb-1">
-                    <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span>
+                 
+
+                <li class="d-flex pb-2 mb-1   align-items-center ">
+                    <i class="ai-check-alt  text-primary me-2 fs-5"></i> 
+                    
+                    
                     {{ punto.testo }}
                 </li>
             {% endfor %}
@@ -138,9 +142,11 @@
 
 {% endwith %}
 {% if servizio.mostra_bottone_whatsapp and servizio.numero_whatsapp %}
-                 <div class="mt-auto">
-                  <a class="btn btn-outline-primary"href="https://wa.me/{{ servizio.numero_whatsapp }}?text={{ servizio.messaggio_whatsapp }}
-" target="_blank" rel="noopener"><i class="ai-whatsapp fs-xl me-2 ms-n1"></i> 
+                 <div class="mt-auto  ">
+                  <a class="btn btn-outline-primary  text-wrap d-block d-md-inline-block w-100 w-md-auto text-center "
+                  href="https://wa.me/41765322296?text=Buongiorno,%0Aallego%20la%20foto%20dei%20danni%20della%20mia%20auto%20per%20una%20prima%20valutazione.%0AGrazie.
+" target="_blank" rel="noopener">
+<i class="ai-whatsapp fs-5 me-2  "></i> 
 {{ servizio.testo_bottone_whatsapp }}
       
             </a>
@@ -149,14 +155,8 @@
                 </div>
      
 {% endif %}
-<!--
-                <div class="mt-auto">
-                  <a class="btn btn-outline-primary" href="{% url 'main:servizi_detail' slug=servizio.slug %}">Scopri di più
-                <i class="ai-arrow-right ms-2"></i>
-            </a>
-                </div>
 
-                 -->
+
               </div>
             </div>
           </div>

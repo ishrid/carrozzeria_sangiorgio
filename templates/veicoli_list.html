@@ -30,49 +30,18 @@
                         <li class="breadcrumb-item active" aria-current="page">Vendita veicoli</li>
                     </ol>
                 </nav>
-                <h1 class="display-3 pb-1 pb-sm-2 pb-md-3 text-center">Auto selezionate sicure e affidabili</h1>
-                <p class="fs-lg mb-0 text-center"> 
+                <h1 class="display-3 pb-1 pb-sm-2 pb-md-3 text-md-center">Auto selezionate sicure e affidabili</h1>
+                <p class="fs-lg mb-0 text-md-center"> 
                     Nella nostra selezione trovi veicoli d’occasione controllati con la stessa cura che riserviamo alle auto dei nostri clienti. Ogni vettura viene verificata in officina, sottoposta a controlli accurati di carrozzeria e meccanica, e consegnata dopo test completi per un acquisto sicuro.
                 </p>
             </div>
              
         </div>
-    </section>
+     
  
-    <section class="container pb-5 mb-md-4 ">
-    <!--
-        <div class="card card-body shadow-sm mb-5">
-            <form method="GET" action="{% url 'vendita:lista_veicoli' %}" id="filterSortForm">
-                <div class="row g-3 align-items-end">
-                    <div class="col-md-4">
-                        <label for="marcaFilter" class="form-label">Marca</label>
-                        <select name="marca" id="marcaFilter" class="form-select">
-                            <option value="">Tutte le Marche</option>
-                            {% for marca in marche_disponibili %}
-                            <option value="{{ marca }}" {% if request.GET.marca == marca %}selected{% endif %}>{{ marca }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="orderBy" class="form-label">Ordina per</label>
-                        <select name="order_by" id="orderBy" class="form-select">
-                            <option value="-data_pubblicazione" {% if request.GET.order_by == '-data_pubblicazione' %}selected{% endif %}>Più Recenti</option>
-                            <option value="prezzo" {% if request.GET.order_by == 'prezzo' %}selected{% endif %}>Prezzo (basso > alto)</option>
-                            <option value="-prezzo" {% if request.GET.order_by == '-prezzo' %}selected{% endif %}>Prezzo (alto > basso)</option>
-                            <option value="chilometraggio" {% if request.GET.order_by == 'chilometraggio' %}selected{% endif %}>KM (basso > alto)</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <button type="submit" class="btn btn-primary w-100">Filtra</button>
-                    </div>
-                    <div class="col-md-2">
-                        <a href="{% url 'vendita:lista_veicoli' %}" class="btn btn-outline-secondary w-100">Reset</a>
-                    </div>
-                </div>
-            </form>
-        </div>
-    -->
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="container pb-5">
+     
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4  ">
             {% for veicolo in veicoli %}
             <div class="col" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{{ forloop.counter0|stringformat:"%s00" }}">
                 <div class="card h-100 shadow-sm border-0 position-relative">
@@ -87,7 +56,7 @@
                         <h5 class="card-title mb-2">{{ veicolo.marca }} {{ veicolo.modello }}</h5>
                         <p class="card-text text-primary fs-4 fw-bold mb-2">CHF {{ veicolo.prezzo|intcomma }}.-</p>
                         <div class="row mb-2">
-                            <div class="col-md-6">
+                            <div class="col-6">
  <ul class="list-unstyled mb-3 fs-sm text-muted">
                             <li class="mb-2">  <svg xmlns="http://www.w3.org/2000/svg"
      width="24" height="24"
@@ -120,7 +89,7 @@
                              
                         </ul>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-6">
                                  <ul class="list-unstyled mb-3 fs-sm text-muted">
                            
                             <li class="mb-2"><svg xmlns="http://www.w3.org/2000/svg"
@@ -192,6 +161,8 @@
             </div>
             {% endfor %}
         </div>
+</div>
+ 
     </section>
 
 {% endblock %}

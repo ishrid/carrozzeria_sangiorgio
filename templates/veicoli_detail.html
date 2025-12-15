@@ -36,8 +36,8 @@
        style="height: 792px; margin: -1px 0 0 -1px; background-size: 75px 75px;
               background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px),
                                   linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
-  <div class="position-absolute top-0 start-0 w-100 h-100 bg-secondary d-lg-none"
-       style="margin: -1px 0 0 -1px; background-size: 75px 75px;
+  <div class="position-absolute top-0 start-0 w-100   bg-secondary d-lg-none"
+       style="height: 600px; margin: -1px 0 0 -1px; background-size: 75px 75px;
               background-image: linear-gradient(to right, var(--ar-gray-200) 1px, transparent 1px),
                                   linear-gradient(to bottom, var(--ar-gray-200) 1px, transparent 1px);"></div>
   <div class="container position-relative z-2 pt-5 pb-2 pb-sm-3 pb-lg-0">
@@ -61,7 +61,7 @@
       {% endif %}
        
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-6 col-md-3">
 <ul class="list-unstyled mb-3  ">
                            
                             <li class="mb-3"><p >
@@ -98,7 +98,7 @@
                             
                         </ul>
     </div>
-    <div class="col-md-3">
+    <div class="col-6 col-md-3">
         <ul class="list-unstyled mb-3  ">
                            
                             <li class="mb-3"><svg xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +135,7 @@
  
                         </ul>
     </div>
-    <div class="col-md-3">
+    <div class="col-6 col-md-3">
         <ul class="list-unstyled mb-3  ">
                            
                             <li class="mb-3"> 
@@ -180,7 +180,7 @@
 </li>
                         </ul>
     </div>
-    <div class="col-md-3">
+    <div class="col-6 col-md-3">
         <ul class="list-unstyled mb-3  ">
                             
  
@@ -290,13 +290,13 @@
         <p class="fs-lg text-muted mb-5">{{ veicolo.descrizione|linebreaksbr|default:"Nessuna descrizione disponibile." }}</p>
 
         <h2 class="h3 mt-5 mb-3">Dettagli del veicolo</h2>
-        <div class="row mb-5">
+
+  
+<div class="d-none d-lg-block">
+        <div class="row mb-5 ">
           <div class="col-md-6">
             <ul class="list-group list-group-flush">
-                <!--
-              <li class="list-group-item"><strong>Marca:</strong> {{ veicolo.marca }}</li>
-              <li class="list-group-item"><strong>Modello:</strong> {{ veicolo.modello }}</li>  
-            -->
+                
             <li class="list-group-item"><strong>Marca:</strong> {{ veicolo.marca }}</li>
             <li class="list-group-item"><strong>Modello:</strong> {{ veicolo.modello }}</li>
             <li class="list-group-item"><strong>Cilindrata:</strong> {{ veicolo.cilindrata }} </li>
@@ -322,15 +322,52 @@
             </ul>
           </div>
         </div>
+</div>
+
+<div class="d-block d-lg-none">
+        <div class="row mb-5 ">
+          <div class="col-md-6">
+            <ul class="list-group list-group-flush">
+                
+            <li class="list-group-item"><strong>Marca:</strong> {{ veicolo.marca }}</li>
+            <li class="list-group-item"><strong>Modello:</strong> {{ veicolo.modello }}</li>
+            <li class="list-group-item"><strong>Cilindrata:</strong> {{ veicolo.cilindrata }} </li>
+
+            <li class="list-group-item"><strong>Trazione:</strong> {{ veicolo.get_trazione_display }}</li>
+            <li class="list-group-item"><strong>Chilometraggio:</strong> {{ veicolo.chilometraggio }} Km</li>
+            <li class="list-group-item"><strong>Carburante:</strong> {{ veicolo.get_tipo_carburante_display }}</li>
+
+               
+     
+                 
+            <li class="list-group-item"><strong>Consumo totale:</strong> {{veicolo.consumo_totale}}</li>
+            <li class="list-group-item"><strong>Cambio:</strong> {{ veicolo.get_tipo_cambio_display }}</li>
+            <li class="list-group-item"><strong>Marce:</strong> {{veicolo.marce}}</li>
+
+             <li class="list-group-item"><strong>Colore:</strong> {{ veicolo.colore|default:"N.D." }}</li>
+            <li class="list-group-item"><strong>Porte:</strong> {{ veicolo.numero_porte|default:"N.D." }}</li>
+            <li class="list-group-item"><strong>Posti:</strong> {{ veicolo.numero_posti }}</li>
+            </ul>
+          </div>
+        </div>
+</div>
+
+
+
 
         {% if veicolo.box1 %}
         <h2 class="h3 mt-5 mb-3">{{veicolo.tit1}}</h2>
         <ul class="list-unstyled mb-5">
           {% for item in veicolo.box1|splitlines %}
             {% if item %}
-              <li class="d-flex align-items-baseline mb-2">
-               <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span> {{ item }}
-              </li>
+               
+
+              <li class="d-flex pb-2 mb-1 fs-lg align-items-center ">
+                    <i class="ai-circle-arrow-right  text-primary me-2 fs-5"></i> 
+                    
+                    
+                    {{ item }}
+                </li>
             {% endif %}
           {% endfor %}
         </ul>
@@ -341,9 +378,12 @@
         <ul class="list-unstyled mb-5">
           {% for item in veicolo.box2|splitlines %}
             {% if item %}
-              <li class="d-flex align-items-baseline mb-2">
-               <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span> {{ item }}
-              </li>
+              <li class="d-flex pb-2 mb-1 fs-lg align-items-center ">
+                    <i class="ai-circle-arrow-right  text-primary me-2 fs-5"></i> 
+                    
+                    
+                    {{ item }}
+                </li>
             {% endif %}
           {% endfor %}
         </ul>
@@ -354,26 +394,17 @@
         <ul class="list-unstyled mb-5">
           {% for item in veicolo.box3|splitlines %}
             {% if item %}
-              <li class="d-flex align-items-baseline mb-2">
-               <span class="bg-primary mt-2 me-2" style="width: 10px; height: 10px; border-radius: 2px;"></span> {{ item }}
-              </li>
+              <li class="d-flex pb-2 mb-1 fs-lg align-items-center ">
+                    <i class="ai-circle-arrow-right  text-primary me-2 fs-5"></i> 
+                    
+                    
+                    {{ item }}
+                </li>
             {% endif %}
           {% endfor %}
         </ul>
         {% endif %}
-<!-- 
-        {% if veicolo.dotazione_opzionale %}
-        <h2 class="h3 mt-5 mb-3">Dotazione opzionale</h2>
-        <ul class="list-unstyled mb-5">
-          {% for item in veicolo.dotazione_opzionale|splitlines %}
-            {% if item %}
-              <li class="d-flex align-items-baseline mb-2">
-               <i class="ai-check text-primary me-2"></i> {{ item }}
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-        {% endif %}-->
+ 
 
 
 {% if veicolo.is_quality %}
@@ -384,21 +415,21 @@
                                 <img src="{% static 'img/quality.svg' %}" alt=""  class="img-fluid">
                             </div>
                             <div class="col-md-9"></div>
-          <div class="col-md-6">
+          <div class="col-md-6 ">
              
 
-<p><i class="ai-check text-primary me-2"></i> Garanzie per veicoli con prestazioni di alto livello</p>
+<p><i class="ai-check-alt text-primary me-2"></i> Garanzie per veicoli con prestazioni di alto livello</p>
 
-<p><i class="ai-check text-primary me-2"></i> Copertura di costi di riparazione elevati in caso di sinistro</p>
+<p><i class="ai-check-alt text-primary me-2"></i> Copertura di costi di riparazione elevati in caso di sinistro</p>
 
-<p><i class="ai-check text-primary me-2"></i> Autorizzazione velocissima alla riparazione del danno per rientrare in possesso del veicolo in breve tempo </p>
+<p><i class="ai-check-alt text-primary me-2"></i> Autorizzazione velocissima alla riparazione del danno per rientrare in possesso del veicolo in breve tempo </p>
 
 
           </div>
            <div class="col-md-6">
-        <p>     <i class="ai-check text-primary me-2"></i> Nessun anticipo finanziario in caso di sinistro in Svizzera</p>
+        <p>     <i class="ai-check-alt text-primary me-2"></i> Nessun anticipo finanziario in caso di sinistro in Svizzera</p>
 
-<p> <i class="ai-check text-primary me-2"></i> Copertura in tutta Europa secondo la carta internazionale d’assicurazione</p>
+<p> <i class="ai-check-alt text-primary me-2"></i> Copertura in tutta Europa secondo la carta internazionale d’assicurazione</p>
 
 
           </div>
@@ -421,67 +452,64 @@
       {# Colonna destra: Modulo contatto #}
       <div class="col-lg-4">
         <div class="card p-4 shadow-sm border-0 sticky-top" style="top: 100px;">
+
+          
           <h4 class="card-title text-center mb-4">Richiesta di informazioni</h4>
-          <p class="text-muted mb-4">Compila il modulo per ricevere <br>
+
+          {% if messages %}
+  <div class="container mt-3">
+    {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    {% endfor %}
+  </div>
+
+  {%else%}
+<p class="text-muted mb-4">
+            Compila il modulo per ricevere <br>
 maggiori dettagli su questo veicolo
 </p>
-          <form action="{% url 'main:contatti' %}" method="get">
-            <div class="mb-3">
-              <label for="id_nome" class="form-label">Nome completo</label>
-              <input type="text" class="form-control" id="id_nome" name="nome" required>
-            </div>
-            <div class="mb-3">
-              <label for="id_email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="id_email" name="email" required>
-            </div>
-            <div class="mb-3">
-              <label for="id_messaggio" class="form-label">Messaggio</label>
-              <textarea class="form-control" id="id_messaggio" name="messaggio" rows="5" required>
-Sono interessato al veicolo {{ veicolo.marca }} {{ veicolo.modello }} (Anno {{ veicolo.anno }}, Km {{ veicolo.chilometraggio }}).
-              </textarea>
-            </div>
-            <input type="hidden" name="veicolo_riferimento" value="{{ veicolo.id }}">
-            <button type="submit" class="btn btn-primary w-100">Invia richiesta</button>
-             
-             <a class="btn btn-success mt-2 w-100"href="https://wa.me/41765322296?text=Sono%20interessato%20al%20veicolo%20{{veicolo.marca}}%20{{veicolo.modello}}%20(Anno%20{{veicolo.anno}},%20Km%20{{veicolo.chilometraggio|intcomma}})."
+{% endif %}
+          
+
+
+<form method="post"  >
+    {% csrf_token %}
+
+    <div class="mb-3">
+        {{ form.nome.label_tag }}
+        {{ form.nome }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.messaggio.label_tag }}
+        {{ form.messaggio }}
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">
+        Invia richiesta
+    </button>
+    <a class="btn btn-success mt-2 w-100"href="https://wa.me/41765322296?text=Sono%20interessato%20al%20veicolo%20{{veicolo.marca}}%20{{veicolo.modello}}%20(Anno%20{{veicolo.anno}},%20Km%20{{veicolo.chilometraggio|intcomma}})."
    target="_blank" rel="noopener"><i class="ai-whatsapp fs-xl me-2 ms-n1"></i> 
 Contatto diretto
       
             </a>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!--
-{% if altri_veicoli %}
-<section class="container mt-5 py-5 border-top">
-  <h2 class="h1 text-center mb-5">Potrebbe interessarti anche</h2>
-  <div class="row">
-    {% for altro_veicolo in altri_veicoli %}
-    <div class="col-md-4">
-      <div class="card h-100 shadow-sm border-0">
-        <img src="{{ altro_veicolo.foto_principale.url }}"
-             class="card-img-top object-fit-cover"
-             alt="{{ altro_veicolo.marca }} {{ altro_veicolo.modello }}"
-             style="height: 200px;">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">{{ altro_veicolo.marca }} {{ altro_veicolo.modello }}</h5>
-          <p class="card-text text-primary fs-5 fw-bold mb-2">{{ altro_veicolo.prezzo|intcomma }} CHF</p>
-          <div class="fs-sm text-muted">
-             
-          </div>
-          <a href="{% url 'vendita:dettaglio_veicolo' slug=altro_veicolo.slug %}" class="btn btn-outline-primary mt-3 mt-auto">Vedi Dettagli</a>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-</section>
-{% endif %}
+</form>
 
--->
+           
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
 <div class="mt-5"></div>
 {% endblock %}
 

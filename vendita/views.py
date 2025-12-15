@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from .models import VeicoloInVendita
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import VeicoloInVendita 
+from .forms import RichiestaVeicoloForm
+from django.contrib import messages
 
 def veicoli_list_view(request):
     """
@@ -44,15 +46,30 @@ def veicoli_detail_view(request, slug):
     if veicolo.dotazione_opzionale:
         # Divide la stringa per virgola o per newline
         dotazione_list = [item.strip() for item in veicolo.dotazione_opzionale.replace('\n', ',').split(',') if item.strip()]
-
+    if request.method == 'POST':
+        form = RichiestaVeicoloForm(request.POST)
+        if form.is_valid():
+            richiesta = form.save(commit=False)
+            richiesta.veicolo = veicolo
+            richiesta.save()
+            messages.success(request, "Richiesta inviata con successo!")
+            return redirect(request.path)
+    else:
+        form = RichiestaVeicoloForm(initial={
+            'messaggio': f"Sono interessato al veicolo {veicolo.marca} {veicolo.modello} "
+                         f"(Anno {veicolo.anno}, Km {veicolo.chilometraggio})."
+        })
     context = {
         'veicolo': veicolo,
         'altri_veicoli': altri_veicoli,
         'dotazione_list': dotazione_list,
+        'form': form
     }
     
     return render(request, 'veicoli_detail.html', context)
 
  
+
+
  
-     
+ 

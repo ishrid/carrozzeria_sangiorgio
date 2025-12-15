@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import VeicoloInVendita, VeicoloImmagine
+from .models import VeicoloInVendita, VeicoloImmagine, RichiestaVeicolo
 
 class VeicoloImmagineInline(admin.TabularInline):
     model = VeicoloImmagine
@@ -44,3 +44,12 @@ class VeicoloInVenditaAdmin(admin.ModelAdmin):
             'fields': ('foto_principale',)
         }),
     )
+
+
+ 
+
+@admin.register(RichiestaVeicolo)
+class RichiestaVeicoloAdmin(admin.ModelAdmin):
+    list_display = ('data_invio', 'nome', 'email', 'veicolo')
+    list_filter = ('veicolo',)
+    search_fields = ('nome', 'email', 'veicolo__marca', 'veicolo__modello')

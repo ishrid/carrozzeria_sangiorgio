@@ -115,3 +115,24 @@ class VeicoloImmagine(models.Model):
 
     def __str__(self):
         return f"Immagine per {self.veicolo.marca} {self.veicolo.modello} ({self.id})"
+    
+
+
+class RichiestaVeicolo(models.Model):
+    veicolo = models.ForeignKey(
+        'VeicoloInVendita',
+        on_delete=models.CASCADE,
+        related_name='richieste'
+    )
+    nome = models.CharField(max_length=150)
+    email = models.EmailField()
+    messaggio = models.TextField()
+    data_invio = models.DateTimeField(auto_now_add=True)
+
+
+
+    class Meta:
+        ordering = ['-data_invio']
+
+    def __str__(self):
+        return f"{self.data_invio.strftime('%d/%m/%Y')} - {self.nome} - {self.veicolo}"
