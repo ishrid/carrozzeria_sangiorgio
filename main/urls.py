@@ -12,5 +12,9 @@ urlpatterns = [
     path('servizi/', views.servizi_list_view, name='servizi_list'),
     path('servizi/<slug:slug>/', views.servizi_detail_view, name='servizi_detail'),
     path('privacy/', views.privacy_policy_view, name='privacy_policy'),
+    path('cookie/', views.cookie_policy_view, name='cookie_policy'),
+
+
+    
     path('termini-di-uso/', views.terms_of_use_view, name='terms_of_use'),
 ]

@@ -73,6 +73,10 @@ def servizi_detail_view(request, slug):
 # Aggiungi qui altre view statiche se necessario (es. privacy_policy, terms_of_use)
 def privacy_policy_view(request):
     return render(request, 'privacy_policy.html')
+def cookie_policy_view(request):
+    return render(request, 'cookie_policy.html')
+
+
 
 def terms_of_use_view(request):
     return render(request, 'terms_of_use.html')

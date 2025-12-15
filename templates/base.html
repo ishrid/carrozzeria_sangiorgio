@@ -164,6 +164,8 @@
  
 
         {% block content %}{% endblock %}
+
+
       </main>
 
     <footer>
@@ -171,6 +173,7 @@
     </footer>
  
     
+
      
     <!-- Back to top button -->
     <a class="btn-scroll-top" href="#top" data-scroll aria-label="Scroll back to top">
@@ -196,5 +199,93 @@
     {% block extra_js %}
     
     {% endblock %}
+
+    <!-- Cookie Banner -->
+<div id="cookie-banner"
+     class="position-fixed bottom-0 start-0 w-100 bg-dark text-white py-3 px-3 px-md-4 shadow-lg"
+     style="z-index: 1050; display: none;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8 mb-3 mb-md-0">
+        <p class="mb-1 fw-semibold">Questo sito utilizza cookie</p>
+        <p class="mb-0 small text-muted">
+          Utilizziamo cookie tecnici e, previo consenso, cookie di analisi (Google Analytics)
+          e servizi di terze parti (Google Maps).
+          <a href="{% url 'main:cookie_policy' %}" class="text-white text-decoration-underline">
+            Scopri di più
+          </a>
+        </p>
+      </div>
+      <div class="col-md-4 text-md-end">
+        <button id="cookie-decline"
+                class="btn btn-outline-light btn-sm me-2">
+          Rifiuta
+        </button>
+        <button id="cookie-accept"
+                class="btn btn-primary btn-sm">
+          Accetta
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    document.cookie = name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
+  }
+
+  function getCookie(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+
+  function loadAnalytics() {
+    // Google Analytics
+    const script = document.createElement('script');
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX";
+    script.async = true;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  }
+
+  function loadMaps() {
+    document.querySelectorAll('[data-google-map]').forEach(el => {
+      el.innerHTML = el.dataset.googleMap;
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const consent = getCookie('cookie_consent');
+
+    if (!consent) {
+      document.getElementById('cookie-banner').style.display = 'block';
+    }
+
+    if (consent === 'accepted') {
+      loadAnalytics();
+      loadMaps();
+    }
+
+    document.getElementById('cookie-accept').onclick = function () {
+      setCookie('cookie_consent', 'accepted', 365);
+      document.getElementById('cookie-banner').remove();
+      loadAnalytics();
+      loadMaps();
+    };
+
+    document.getElementById('cookie-decline').onclick = function () {
+      setCookie('cookie_consent', 'declined', 365);
+      document.getElementById('cookie-banner').remove();
+    };
+  });
+</script>
+
 </body>
 </html>
