@@ -5008,7 +5008,7 @@ textarea.form-control-lg {
   --ar-list-group-border-width: var(--ar-border-width);
   --ar-list-group-border-radius: var(--ar-border-radius-xl);
   --ar-list-group-item-padding-x: 1.25rem;
-  --ar-list-group-item-padding-y: 0.875rem;
+  --ar-list-group-item-padding-y: 0.675rem;
   --ar-list-group-action-color: var(--ar-gray-800);
   --ar-list-group-action-hover-color: var(--ar-primary);
   --ar-list-group-action-hover-bg: transparent;
