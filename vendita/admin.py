@@ -18,7 +18,7 @@ class VeicoloInVenditaAdmin(admin.ModelAdmin):
             'fields': ('marca', 'modello', 'slug', 'anno', 'chilometraggio', 'prezzo', 'descrizione', 'attivo', 'is_quality')
         }),
         ('Specifiche Tecniche', {
-            'fields': ('tipo_carburante', 'tipo_cambio', 'trazione', 'potenza_cv', 'cilindrata', 'numero_porte', 'numero_posti','consumo_totale','marce','tipo_veicolo')
+            'fields': ('tipo_carburante', 'tipo_cambio', 'trazione', 'potenza_cv', 'cilindrata', 'numero_porte', 'numero_posti','consumo_totale','marce','tipo_veicolo','lunghezza','larghezza','altezza','peso')
         }),
         ('Dettagli Estetici', {
             # ✅ CORREZIONE: Aggiunta la virgola finale

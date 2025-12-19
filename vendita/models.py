@@ -57,7 +57,10 @@ class VeicoloInVendita(models.Model):
     numero_posti = models.IntegerField(verbose_name="Numero Posti", blank=True, null=True)
     potenza_cv = models.IntegerField(verbose_name="Potenza (CV)", blank=True, null=True)
     cilindrata = models.CharField(verbose_name="Cilindrata", blank=True, null=True)
-
+    lunghezza = models.CharField(verbose_name="Lunghezza", blank=True, null=True)
+    larghezza = models.CharField(verbose_name="Larghezza", blank=True, null=True)
+    altezza = models.CharField(verbose_name="Altezza", blank=True, null=True)
+    peso = models.CharField(verbose_name="Peso totale", blank=True, null=True)
 
     tit1 = models.CharField(verbose_name="Motore e trasmissione", default="Motore e trasmissione", blank=True, null=True)
     box1 = models.TextField(verbose_name="Box 1", blank=True, null=True)
