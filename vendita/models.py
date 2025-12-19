@@ -55,7 +55,7 @@ class VeicoloInVendita(models.Model):
     
     numero_porte = models.IntegerField(verbose_name="Numero Porte", blank=True, null=True)
     numero_posti = models.IntegerField(verbose_name="Numero Posti", blank=True, null=True)
-    potenza_cv = models.IntegerField(verbose_name="Potenza (CV)", blank=True, null=True)
+    potenza_cv = models.CharField(verbose_name="Potenza (CV)", blank=True, null=True)
     cilindrata = models.CharField(verbose_name="Cilindrata", blank=True, null=True)
     lunghezza = models.CharField(verbose_name="Lunghezza", blank=True, null=True)
     larghezza = models.CharField(verbose_name="Larghezza", blank=True, null=True)
