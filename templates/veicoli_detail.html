@@ -305,21 +305,31 @@
             <li class="list-group-item"><strong>Chilometraggio:</strong> {{ veicolo.chilometraggio }} Km</li>
             <li class="list-group-item"><strong>Carburante:</strong> {{ veicolo.get_tipo_carburante_display }}</li>
 
-               
+               <li class="list-group-item"><strong>Consumo totale:</strong> {{veicolo.consumo_totale}}</li>
+            <li class="list-group-item"><strong>Cambio:</strong> {{ veicolo.get_tipo_cambio_display }}</li>
+            
     
             </ul>
           </div>
           <div class="col-md-6">
             <ul class="list-group list-group-flush">
                  
-            <li class="list-group-item"><strong>Consumo totale:</strong> {{veicolo.consumo_totale}}</li>
-            <li class="list-group-item"><strong>Cambio:</strong> {{ veicolo.get_tipo_cambio_display }}</li>
             <li class="list-group-item"><strong>Marce:</strong> {{veicolo.marce}}</li>
 
              <li class="list-group-item"><strong>Colore:</strong> {{ veicolo.colore|default:"N.D." }}</li>
             <li class="list-group-item"><strong>Porte:</strong> {{ veicolo.numero_porte|default:"N.D." }}</li>
             <li class="list-group-item"><strong>Posti:</strong> {{ veicolo.numero_posti }}</li>
-            </ul>
+            
+          
+          <li class="list-group-item"><strong>Lunghezza:</strong> {{veicolo.lunghezza}}</li>
+
+             <li class="list-group-item"><strong>Larghezza:</strong> {{ veicolo.larghezza|default:"N.D." }}</li>
+            <li class="list-group-item"><strong>Altezza:</strong> {{ veicolo.altezza|default:"N.D." }}</li>
+            <li class="list-group-item"><strong>Peso:</strong> {{ veicolo.peso }}</li>
+
+
+          
+          </ul>
           </div>
         </div>
 </div>
