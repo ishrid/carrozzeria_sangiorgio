@@ -9,7 +9,7 @@ INSTALLED_APPS += [
     'cloudinary',
 ]
 
-ALLOWED_HOSTS = ['web-production-6298c6.up.railway.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['web-production-6298c6.up.railway.app', 'localhost', '127.0.0.1','www.carrozzeriasangiorgio.ch','carrozzeriasangiorgio.ch']
 
 DATABASES = {
     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
