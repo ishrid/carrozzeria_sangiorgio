@@ -75,7 +75,7 @@ Messaggio:
                 payload = {
                     "personalizations": [
                         {
-                            "to": [{"email": "carr.sangiorgio@ticino.com"}],
+                            "to": [{"email": "csg.agno@gmail.com"}],
                             "subject": f"Richiesta {contatto.tipo_richiesta} – {contatto.nome}",
                         }
                     ],
