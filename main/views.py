@@ -3,9 +3,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Servizio, MembroTeam, FotoOfficina, Certificazione, Partner
 from restauri.models import Restauro
 from vendita.models import VeicoloInVendita
-
- 
 from django.core.mail import send_mail
+from django.conf import settings
 from .forms import ContattoForm
 # View per la homepage
 def home_view(request):
@@ -38,39 +37,32 @@ def chi_siamo_view(request):
 
 
 
-
 def contatti_view(request):
     if request.method == 'POST':
         form = ContattoForm(request.POST)
         if form.is_valid():
             contatto = form.save()
 
-            messaggio_email = f"""
-Nuova richiesta dal sito Carrozzeria San Giorgio
-
-Nome: {contatto.nome}
-Email: {contatto.email}
-Telefono: {contatto.telefono}
-Tipo richiesta: {contatto.tipo_richiesta}
-
-Messaggio:
-{contatto.messaggio}
-"""
-
-            send_mail(
-                subject="Nuova richiesta dal sito – Carrozzeria San Giorgio",
-                message=messaggio_email,
-                from_email=None,  # usa DEFAULT_FROM_EMAIL
-                recipient_list=["carr.sangiorgio@ticino.com"],
-                reply_to=[contatto.email],
-                fail_silently=False,
-            )
+            try:
+                send_mail(
+                    subject="Nuova richiesta dal sito",
+                    message="Test invio email",
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=["carr.sangiorgio@ticino.com"],
+                    reply_to=[contatto.email],
+                )
+            except Exception as e:
+                print("ERRORE EMAIL:", e)
+                # TEMPORANEO: non bloccare l’utente
+                return redirect('main:contatti_success')
 
             return redirect('main:contatti_success')
+
     else:
         form = ContattoForm()
 
     return render(request, 'contatti.html', {'form': form})
+
 
 
 def contatti_success(request):
