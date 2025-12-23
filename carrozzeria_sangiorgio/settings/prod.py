@@ -61,9 +61,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 
-EMAIL_HOST_USER = os.environ.get("SMTP_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("SMTP_PASSWORD")
+EMAIL_HOST_USER = os.environ.get("SMTP_USER")      # csg.agno@gmail.com
+EMAIL_HOST_PASSWORD = os.environ.get("SMTP_PASSWORD")  # App Password Gmail
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-# L’email finale del cliente dove arrivano le richieste
-CONTACT_RECEIVER_EMAIL = 'carr.sangiorgio@ticino.com'

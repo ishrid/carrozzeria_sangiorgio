@@ -39,8 +39,6 @@ def chi_siamo_view(request):
 
 
 
-
-
 def contatti_view(request):
     if request.method == 'POST':
         form = ContattoForm(request.POST)
@@ -60,20 +58,21 @@ Messaggio:
 """
 
             try:
+                # Invia direttamente alla Gmail personale
                 email = EmailMessage(
                     subject=f"Richiesta {contatto.tipo_richiesta} – {contatto.nome}",
                     body=messaggio_email,
-                    from_email=settings.DEFAULT_FROM_EMAIL,          # Gmail
-                    to=[settings.CONTACT_RECEIVER_EMAIL],            # L’email finale del cliente, ad esempio Ticino.com
-                    reply_to=[contatto.email],                       # Così se rispondono va al visitatore
+                    from_email=settings.DEFAULT_FROM_EMAIL,  # csg.agno@gmail.com
+                    to=[settings.DEFAULT_FROM_EMAIL],        # stessa Gmail
+                    reply_to=[contatto.email],               # così se rispondi, va al visitatore
                 )
                 email.send(fail_silently=False)
 
             except Exception as e:
-                # fallback: stampa in console se SMTP Gmail non funziona
+                # fallback: stampa in console se SMTP non funziona
                 print("ERRORE INVIO EMAIL:", e)
                 print("=== EMAIL FORM CONTATTI (FALLBACK) ===")
-                print(f"To: {settings.CONTACT_RECEIVER_EMAIL}")
+                print(f"To: {settings.DEFAULT_FROM_EMAIL}")
                 print(f"Reply-To: {contatto.email}")
                 print(f"Subject: Richiesta {contatto.tipo_richiesta} – {contatto.nome}")
                 print(messaggio_email)
@@ -84,7 +83,6 @@ Messaggio:
         form = ContattoForm()
 
     return render(request, 'contatti.html', {'form': form})
-
 
 
 def contatti_success(request):
