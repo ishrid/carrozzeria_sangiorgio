@@ -6,6 +6,8 @@ from vendita.models import VeicoloInVendita
 from django.core.mail import EmailMessage 
 from django.conf import settings
 from .forms import ContattoForm
+from django.core.mail import send_mail
+from django.http import HttpResponse
  
 
 
@@ -121,18 +123,23 @@ def cookie_policy_view(request):
 def terms_of_use_view(request):
     return render(request, 'terms_of_use.html')
 
-
-# views.py
-from django.core.mail import send_mail
-from django.http import HttpResponse
  
+ 
+from django.conf import settings
+import traceback
 
 def test_email(request):
-    send_mail(
-        subject="TEST EMAIL DJANGO",
-        message="Se ricevi questa email, SMTP Gmail funziona.",
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=[settings.DEFAULT_FROM_EMAIL],
-        fail_silently=False,
-    )
-    return HttpResponse("Email inviata")
+    try:
+        send_mail(
+            subject="TEST EMAIL DJANGO",
+            message="Se ricevi questa email, SMTP Gmail funziona.",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.DEFAULT_FROM_EMAIL],
+            fail_silently=False,
+        )
+        return HttpResponse("Email inviata correttamente")
+    except Exception as e:
+        print("❌ ERRORE SMTP")
+        print(str(e))
+        traceback.print_exc()
+        return HttpResponse("Errore SMTP - controlla i logs Railway", status=500)
