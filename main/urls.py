@@ -17,4 +17,5 @@ urlpatterns = [
 
     
     path('termini-di-uso/', views.terms_of_use_view, name='terms_of_use'),
+    path("test-email/", views.test_email, name="test_email"),
 ]
