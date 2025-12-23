@@ -124,22 +124,45 @@ def terms_of_use_view(request):
     return render(request, 'terms_of_use.html')
 
  
- 
-from django.conf import settings
-import traceback
+import os
+import requests
+from django.http import HttpResponse
 
 def test_email(request):
-    try:
-        send_mail(
-            subject="TEST EMAIL DJANGO",
-            message="Se ricevi questa email, SMTP Gmail funziona.",
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[settings.DEFAULT_FROM_EMAIL],
-            fail_silently=False,
+    SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+
+    if not SENDGRID_API_KEY:
+        return HttpResponse("❌ SENDGRID_API_KEY non trovata", status=500)
+
+    url = "https://api.sendgrid.com/v3/mail/send"
+
+    payload = {
+        "personalizations": [
+            {
+                "to": [{"email": "csg.agno@gmail.com"}],
+                "subject": "Test email SendGrid API"
+            }
+        ],
+        "from": {"email": "csg.agno@gmail.com"},
+        "content": [
+            {
+                "type": "text/plain",
+                "value": "Email inviata correttamente tramite SendGrid API 🚀"
+            }
+        ]
+    }
+
+    headers = {
+        "Authorization": f"Bearer {SENDGRID_API_KEY}",
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(url, json=payload, headers=headers, timeout=10)
+
+    if response.status_code == 202:
+        return HttpResponse("✅ Email inviata correttamente (SendGrid API)")
+    else:
+        return HttpResponse(
+            f"❌ Errore SendGrid API: {response.status_code}<br>{response.text}",
+            status=500
         )
-        return HttpResponse("Email inviata correttamente")
-    except Exception as e:
-        print("❌ ERRORE SMTP")
-        print(str(e))
-        traceback.print_exc()
-        return HttpResponse("Errore SMTP - controlla i logs Railway", status=500)
