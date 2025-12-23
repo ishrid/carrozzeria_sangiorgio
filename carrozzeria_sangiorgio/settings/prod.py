@@ -11,6 +11,15 @@ INSTALLED_APPS += [
 
 ALLOWED_HOSTS = ['web-production-6298c6.up.railway.app', 'localhost', '127.0.0.1','www.carrozzeriasangiorgio.ch','carrozzeriasangiorgio.ch']
 
+SECURE_SSL_REDIRECT = True
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://www.carrozzeriasangiorgio.ch",
+]
+
+
+
 DATABASES = {
     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
@@ -43,3 +52,16 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 if not SECRET_KEY:
     raise Exception('DJANGO_SECRET_KEY non impostata!')
+
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.ticino.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = os.environ.get("SMTP_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("SMTP_PASSWORD")
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

@@ -4,6 +4,8 @@ from .models import Servizio, MembroTeam, FotoOfficina, Certificazione, Partner
 from restauri.models import Restauro
 from vendita.models import VeicoloInVendita
 
+ 
+from django.core.mail import send_mail
 from .forms import ContattoForm
 # View per la homepage
 def home_view(request):
@@ -35,19 +37,45 @@ def chi_siamo_view(request):
 
 
 
+
+
 def contatti_view(request):
     if request.method == 'POST':
         form = ContattoForm(request.POST)
         if form.is_valid():
-            form.save()
+            contatto = form.save()
+
+            messaggio_email = f"""
+Nuova richiesta dal sito Carrozzeria San Giorgio
+
+Nome: {contatto.nome}
+Email: {contatto.email}
+Telefono: {contatto.telefono}
+Tipo richiesta: {contatto.tipo_richiesta}
+
+Messaggio:
+{contatto.messaggio}
+"""
+
+            send_mail(
+                subject="Nuova richiesta dal sito – Carrozzeria San Giorgio",
+                message=messaggio_email,
+                from_email=None,  # usa DEFAULT_FROM_EMAIL
+                recipient_list=["carr.sangiorgio@ticino.com"],
+                reply_to=[contatto.email],
+                fail_silently=False,
+            )
+
             return redirect('main:contatti_success')
     else:
         form = ContattoForm()
 
     return render(request, 'contatti.html', {'form': form})
- 
+
+
 def contatti_success(request):
-    return render(request, 'contatti_success.html')     
+    return render(request, 'contatti_success.html')
+  
 
 # View per la pagina lista servizi
 def servizi_list_view(request):
