@@ -3,8 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Servizio, MembroTeam, FotoOfficina, Certificazione, Partner
 from restauri.models import Restauro
 from vendita.models import VeicoloInVendita
- 
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage 
 from django.conf import settings
 from .forms import ContattoForm
 # View per la homepage
@@ -37,6 +36,7 @@ def chi_siamo_view(request):
 
 
 
+
 def contatti_view(request):
     if request.method == 'POST':
         form = ContattoForm(request.POST)
@@ -55,19 +55,16 @@ Messaggio:
 {contatto.messaggio}
 """
 
-            email = EmailMessage(
-                subject=f"Richiesta {contatto.tipo_richiesta} – {contatto.nome}",
-                body=messaggio_email,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                to=["carr.sangiorgio@ticino.com"],
-                reply_to=[contatto.email],
-            )
-
+            # Email “interno” – stampa in console invece di inviare SMTP
             try:
-                email.send(fail_silently=False)
+                print("=== EMAIL FORM CONTATTI ===")
+                print("To: carr.sangiorgio@ticino.com")
+                print(f"Reply-To: {contatto.email}")
+                print(f"Subject: Richiesta {contatto.tipo_richiesta} – {contatto.nome}")
+                print(messaggio_email)
+                print("===========================")
             except Exception as e:
-                print("Errore invio email:", e)
-                # L’invio fallito non blocca l’utente
+                print("Errore simulazione email:", e)
 
             return redirect('main:contatti_success')
     else:
