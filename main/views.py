@@ -59,22 +59,21 @@ Messaggio:
 {contatto.messaggio}
 """
 
-            # Prova a inviare email reale
             try:
                 email = EmailMessage(
                     subject=f"Richiesta {contatto.tipo_richiesta} – {contatto.nome}",
                     body=messaggio_email,
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    to=["carr.sangiorgio@ticino.com"],
-                    reply_to=[contatto.email],
+                    from_email=settings.DEFAULT_FROM_EMAIL,          # Gmail
+                    to=[settings.CONTACT_RECEIVER_EMAIL],            # L’email finale del cliente, ad esempio Ticino.com
+                    reply_to=[contatto.email],                       # Così se rispondono va al visitatore
                 )
                 email.send(fail_silently=False)
 
             except Exception as e:
-                # Fallback: stampa in console se SMTP non funziona
+                # fallback: stampa in console se SMTP Gmail non funziona
                 print("ERRORE INVIO EMAIL:", e)
                 print("=== EMAIL FORM CONTATTI (FALLBACK) ===")
-                print("To: carr.sangiorgio@ticino.com")
+                print(f"To: {settings.CONTACT_RECEIVER_EMAIL}")
                 print(f"Reply-To: {contatto.email}")
                 print(f"Subject: Richiesta {contatto.tipo_richiesta} – {contatto.nome}")
                 print(messaggio_email)
