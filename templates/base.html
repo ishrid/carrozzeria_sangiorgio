@@ -157,7 +157,15 @@
 
     <!-- Page wrapper -->
     <main class="page-wrapper">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8Y5K0KSZX3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-8Y5K0KSZX3');
+</script>
      
         {% include 'nav.html' %}
     
@@ -242,18 +250,7 @@
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
-  function loadAnalytics() {
-    // Google Analytics
-    const script = document.createElement('script');
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX";
-    script.async = true;
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  }
+ 
 
   function loadMaps() {
     document.querySelectorAll('[data-google-map]').forEach(el => {
