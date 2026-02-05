@@ -73,7 +73,7 @@ class RestauroAdmin(admin.ModelAdmin):
                 'in_evidenza',
                 'attivo',
                 'descrizione_breve',
-                'descrizione_dettagliata'
+                 
             )
         }),
 
