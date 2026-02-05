@@ -32,6 +32,8 @@ class Restauro(models.Model):
     marca_veicolo = models.CharField(max_length=100, verbose_name="Marca del Veicolo", blank=True, null=True)
     modello_veicolo = models.CharField(max_length=100, verbose_name="Modello del Veicolo", blank=True, null=True)
     anno_veicolo = models.IntegerField(verbose_name="Anno del Veicolo", blank=True, null=True)
+    versione_veicolo = models.CharField(verbose_name="Versione Veicolo", blank=True, null=True)
+
 
     # 🔧 NUOVE VOCI TECNICHE (tutte opzionali)
     freni = models.CharField("Freni", max_length=150, blank=True, null=True)

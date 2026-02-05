@@ -82,6 +82,7 @@ class RestauroAdmin(admin.ModelAdmin):
                 'marca_veicolo',
                 'modello_veicolo',
                 'anno_veicolo',
+                'versione_veicolo',
                 'tipo_veicolo',
                 'data_completamento'
             )
